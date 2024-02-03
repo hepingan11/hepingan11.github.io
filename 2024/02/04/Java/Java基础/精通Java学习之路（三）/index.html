@@ -30,7 +30,7 @@
 
 
   <title>
-精通Java学习之路（三） |
+精通Java学习之路（三） - Java web - Java |
 练竹园 = 何平安 = 世界很大，代码连接世界</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -100,12 +100,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlmoFI.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/UBWtnixc.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/E1XT8m6p.jpg"></li>
-          <li class="item" data-background-image="https://picst.sunbangyan.cn/2024/02/04/310a36f7f4a957840ebf9bedaaf12551.jpeg"></li>
-          <li class="item" data-background-image="https://picdm.sunbangyan.cn/2024/02/04/641422acbb61718b3b3fa67c910c1a64.jpeg"></li>
-          <li class="item" data-background-image="https://picst.sunbangyan.cn/2024/02/04/8e8f1ff48d7d9a048957fbc34facc557.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/se1ylCIc.jpg"></li>
+          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/6f4e1c010336fd60947972ab6b6f1c94.jpeg"></li>
+          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/7b63011683b8fbe48aeb454069754742.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/rsbTT6M3.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/WZeVsA0P.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/cHt7zXWV.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,7 +130,12 @@
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/java/" itemprop="item" rel="index" title="In Java"><span itemprop="name">Java</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/java/javaweb/" itemprop="item" rel="index" title="In Java web"><span itemprop="name">Java web</span></a>
+<meta itemprop="position" content="2" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
@@ -149,12 +154,106 @@
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <p>JDK 17 API中文文档：<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXp4ZHAuY24vamRrLzE3L3poL2FwaS9pbmRleC5odG1s">Java17中文文档 – API参考文档 – 全栈行动派 (qzxdp.cn)</span></p>
+<p>说说自己的话：Java的基础和一些进阶我已经学完了，把java学完只是相当于在英语中学会读24个字母，还有许多模块需要学习。现在我在想是继续学java开发框架还是python大数据，毕竟我的专业是数据科学与大数据技术，学了java框架搭建再学下JavaWeb我就可以直接去面试上班了，而且JavaWeb中的Mysql，JDBC,HTML,CSS我已经学完了，阿巴阿巴阿巴…..但是python学了不仅可以搞大数据还可以搞ai,但是ai就业就比较难了。之前还准备学C++去搞游戏开发，算了，那又是个新的大领域….不过不慌我还是大二，暑假先把下学习要学的python给学了，然后去玩玩ai或者数据挖掘，争取自己搞个“挖矿机”，这可是我自己放假时的承若！</p>
+<hr>
+<p><strong>–异常处理–</strong></p>
+<p>异常检测基本结构：try{要检查的代码}catch(Exception e){出错时抛出的代码}<br>一个例子讲述异常，输入的int类型变量age错误时抛出异常：<br><code>import java.util.Scanner;</code></p>
+<p><code>public class xiancheng &#123;  public static void main(String[] args) &#123;    while (true) &#123;      try &#123;        Scanner sc = new Scanner(System.in);        System.out.println(&quot;请输入你的年龄:&quot;);        int age = sc.nextInt();        System.out.println(&quot;你的年龄是：&quot; + age);        break;      &#125; catch (Exception e) &#123;        System.err.println(&quot;你TM再乱输试试???&quot;);//err表示错误输出，输出时会红色字体显示      &#125;    &#125;  &#125;&#125;</code><br>运行结果：</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/07/JJP1RWDQFVW5CVCQYCS.png" alt="img"></p>
+<p><strong>–线程</strong>—</p>
+<p>多线程（并发编程）<br>并发性：如果CPU是单核的，其实一个时刻只有一个进程在被执行，CPU会分时切换每个进程，因为切换的速度非常快，所以以为同时在进行。n核就是可以同时执行n个进程。一个进程可以包含多个线程，这就是多线程。</p>
+<p>创建线程的三种方法：<br>1，定义一个类继承Thread线程类，重写run()方法,创建线程对象调用线程对象的start()方法启动线程。<br>2，定义一个线程任务类实现Runnable接口，重写run()方法，创建线程任务对象，把线程任务对象包装成线程对象，调用线程对象的start()方法启动线程<br>3，实现Callable接口（扩展）</p>
+<p><strong>Thread类：</strong></p>
+<p>多线程简单案例：main方法和run方法抢单核的cpu：<br><code>public class xiancheng &#123;  public static void main(String[] args) &#123;    xiancheng2 THREAD =new xiancheng2();    THREAD.start();    for(int i=0;i&lt;100;i++)&#123;      System.out.println(&quot;main线程输出&quot;+i);    &#125;  &#125;  static class xiancheng2 extends Thread&#123;    @Override    public void run()&#123;      for(int i=0;i&lt;100;i++)&#123;        System.out.println(&quot;子线程输出&quot;+i);      &#125;    &#125;  &#125;</code></p>
+<p><code>&#125;</code><br>运行结果：</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/07/QR5VZD9E7KTWDZF99PU0.png" alt="img"></p>
+<p>可以看到跑的无规则，就是因为<strong>两个线程在抢一个CPU</strong></p>
+<p>Runnable接口就是Thread的高级版，Callable&lt;&gt;又是Runnable的高级版,Runnable的主要作用是空出父类来，Callable&lt;&gt;的主要作用是增加返回值的(return),线程的内容建议直接看代码，里面有亲手写的注释，好理解些</p>
+<p>—<strong>线程安全问题模拟项目训练</strong>—</p>
+<p>如果两个线程同时取钱（即两个线程同时共享一个资源）：</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/07/LAZM86BMSNTNO6LALP5ZF.png" alt="img"></p>
+<p>就会产生如下情况：</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/07/0E6XR6YN1_GPDQ01FMS1.png" alt="img"></p>
+<p>这就需要一个一个排队来取，即把共享资源进行上锁，让每次只能有一个线程运行，这时就需要调用synchronized(锁对象){&#x2F;&#x2F;访问共享资源的代码}来实现，这里的锁对象可以是任意的，即：<img data-src="http://www.hepingan.top/wp-content/uploads/2023/07/CCM785XKI6F0LGSP5F.png" alt="img"></p>
+<p><strong>—线程池—</strong></p>
+<p>为防止线程的过多（因为一个人对象就要创建一个线程），就诞生了线程池，无需创建线程销毁线程，降低资源消耗，在线程池中放一些固定的线程，同一个线程可以创建多个任务。</p>
+<p>创建线程池：ExecutorService pools &#x3D;Executors.<em>newFixedThreadPool</em>(线程池数量);</p>
+<p>创建线程：Thread&#x2F;Runnable xxx &#x3D;new MyThread&#x2F;MyRunnable();&#x2F;&#x2F;这里的My是自己的线程类名</p>
+<p>调用线程池：pools.submit(xxx);</p>
+<p>Callable接口的线程的线程池调用：<br>Future&lt;数据类型&gt; 对象名称 &#x3D;线程池.submit(new Callable接口类(变量n));<br>Callable类：static class MyCallable implements Callable{有参构造变量n…}</p>
+<p>volatile关键字：<br>问题：多个线程访问共享变量是会出现一个线程修改变量值后其他线程看不到最新的线程值。<br>例子：<br>@Override<br>  public void run(){<br>    try {<br>      Thread.sleep(1000);<br>    } catch (InterruptedException e) {<br>      throw new RuntimeException(e);<br>    }<br>    flag&#x3D;true;<br>    System.out.println(“flag is become TRUE”);<br>  }<br>VolatileDemo v1&#x3D;new VolatileDemo();<br>    &#x2F;&#x2F;子线程修改flag的值<br>    v1.start();<br>    &#x2F;&#x2F;主线程<br>    while (true){<br>      if(v1.isFlag()){<br>        System.out.println(“Going..”);<br>      }<br>    }<br>这时控制台不会输出Going…因为主线程直接拿的是一开始的false,并不是经过子线程修改过后的true</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/07/1CB@EFAKIE1H0PV0@K-1024x461.jpg" alt="img"></p>
+<p>解决办法：1，加锁sysnchronized(xxx.class){}，因为加锁会清空工作内容，读取最新的内存出来。2，直接给变量加上volatile修饰，volatile修饰后，一旦这个变量改变，所有线程都可以读取最新值。volatile变量的流程图：</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/07/6FEDEWL0AMJ8UCHYUFP-1024x461.jpg" alt="img"></p>
+<p>一个方式是清空再读取，一个直接修改</p>
+<p><strong>—原子性与原子类—</strong></p>
+<p>原子性（就是线程安全问题）<br>问题：假如转账给别人，如果转账失败报错，但是对方钱这个变量已经变了。</p>
+<p>可以用下面这些代码来测试，有时候就不会加到10000</p>
+<p>@Override<br>public void run() {<br>for(int i&#x3D;1;i&lt;&#x3D;100;i++){<br>count++;<br>System.*out*.println(“count&#x3D;&#x3D;&gt;”+count);<br>}<br>}</p>
+<p>Runnable r1&#x3D;new MyRunnable();<br>for(int i&#x3D;1;i&lt;&#x3D;100;i++){<br>&#x2F;&#x2F;启动100个线程，执行100次任务<br>new Thread(r1).start();<br>}</p>
+<p>volatile只能保证可见性，不能保证原子性，直接用synchonized加锁，锁住任务结束后再进行下一个任务，而不是两个任务同时执行。<br>由于加锁机制性能差（因为是一个一个进行，会堵塞线程），所以就诞生了<strong>原子类</strong>。创建原子；类对象：AtomicInteger xxx&#x3D;new AtomicInteger();<br>输出原子类结果：xxx.incrementAndGet()。原理是先进行任务再取结果</p>
+<p>原子类的CAS机制介绍：就是多个线程会先同时进行任务，然后一个线程的结果会优先返回最新值到原来开始拿的值，其他线程会再次检测原来开始拿的值，如果发现其值与最开始取的值不一样则会报废刚刚执行的值再拿新的值进行任务。</p>
+<p><strong>线程学习时的代码</strong></p>
+<p>import java.util.concurrent.Callable;<br>import java.util.concurrent.Future;<br>import java.util.concurrent.FutureTask;</p>
+<p>public class xiancheng {<br>static class MyThread extends Thread{<br>public MyThread(String name){<br>&#x2F;&#x2F;public Thread(String name):父类的有参构造器<br>super(name);<br>}<br>public MyThread(){}</p>
+<p>@Override<br>public void run(){<br>for(int i&#x3D;0;i&lt;10;i++){<br>System.<em>out</em>.println(Thread.<em>currentThread</em>().getName()+”输出”+i);<br>&#x2F;&#x2F;currrentThread为获取当前执行的线程<br>}<br>}<br>}</p>
+<p>static class MyRunnable implements Runnable{<br><em>&#x2F;</em>*<br>*** Runnable<strong>接口优点：拥有</strong>Runnable<strong>的所有优点，线程任务类</strong>(MyRunnable)<strong>只是实现</strong>Runnable<strong>接口，还可以继承其他类</strong>(Thread<strong>类是继承的得嘛</strong>)<br>**** *同一个线程任务对象可以被包装成多个线程对象（意思就是可以分类）<br>**** *适合多个相同程序代码的线程去共享同一个资源<br>**** *线程池可以放入实现<strong>Runnable</strong>或<strong>Callable</strong>线程任务对象<br>***&#x2F;<br>*@Override<br>public void run() {<br>for (int i&#x3D;0;i&lt;5;i++){<br>System.<em>out</em>.println(Thread.<em>currentThread</em>().getName()+”输出”+i);&#x2F;&#x2F;currentThread方法为获取当前线程<br>}<br>}<br>}</p>
+<p>static class MyCallable implements Callable<String>{<br>&#x2F;&#x2F;这个Callable接口也需要重写，不过不是run方法咯<br>@Override<br>public String call() throws Exception {<br>int sum&#x3D;0;<br>for(int i&#x3D;0;i&lt;10;i++){<br>System.<em>out</em>.println(Thread.<em>currentThread</em>().getName()+”输出”+i);<br>sum+&#x3D;i;<br>}<br>System.<em>out</em>.println(Thread.<em>currentThread</em>().getName()+”执行结果为”+sum);<br>return null;<br>}<br>}</p>
+<p>public static void main(String[] args) throws InterruptedException {</p>
+<p>Thread THREAD &#x3D;new MyThread();&#x2F;&#x2F;无参构造的线程<br>THREAD.start();<br>THREAD.setName(“一号线程”);&#x2F;&#x2F;设置线程名字,默认为Thread-0<br>System.<em>out</em>.println(THREAD.getName());&#x2F;&#x2F;获取线程名字</p>
+<p>Thread THREAD2 &#x3D; new MyThread(“二号线程”);&#x2F;&#x2F;有参构造的线程<br>THREAD2.start();</p>
+<p>Runnable TARGET&#x3D;new MyRunnable();&#x2F;&#x2F;多态的写法，前面写接口，后面写接口类名，这几个线程都是这么写<br>Thread THREAD3&#x3D; new Thread(TARGET,”三号线程”);<br><em>&#x2F;</em>*<br>*** Thread<strong>类中存在</strong>public Thread(Runnable target)<strong>和</strong>public Thread(Runnable target,String name)<em>*的构造方法<br>**** *所以要先创建**Runnable</em><em>的对象</em>*,**把线程任务对象包装成线程对象，且可以指定线程名称<br>***&#x2F;<br>*THREAD3.start();</p>
+<p>new Thread(new Runnable() {<br>@Override<br>public void run() {<br>for(int i&#x3D;0;i&lt;5;i++){<br>System.<em>out</em>.println(Thread.<em>currentThread</em>().getName()+”输出”+i);<br>}<br>System.<em>out</em>.println(Thread.<em>currentThread</em>().getName()+”输出完毕”);<br>}<br>}).start();&#x2F;&#x2F;匿名内部类写法</p>
+<p>Callable<String> CALL &#x3D;new MyCallable();&#x2F;&#x2F;创建Callable任务对象<br>FutureTask<String> TASK &#x3D;new FutureTask<String>(CALL);<br>*&#x2F;*<em><strong>把</strong>Callable</em><em>任务对象包装成一个未来任务对象<br>*** –public FutureTask(Callable</em><em><v></em> *callable)<br>**** *未来对象就是个<strong>Runnable</strong>线程对象，这样就可以被包装成线程对象<br>**** *未来任务对象可以再线程执行完毕后去得到线程执行结果<br>***&#x2F;<br>*Thread THREAD4 &#x3D;new Thread(TASK,”四号线程”);&#x2F;&#x2F;创建Thread线程对象<br>THREAD4.start();<br>&#x2F;&#x2F;下面的try是取线程执行的结果，如果没有跑完，就会让出CPU等线程执行结束再取结果<br>try {<br>String rs&#x3D; TASK.get();<br>System.<em>out</em>.println(rs);<br>}catch (Exception e){<br>e.printStackTrace();<br>}</p>
+<p>Thread m &#x3D;Thread.<em>currentThread</em>();&#x2F;&#x2F;currentThread获取当前线程，这个代码在哪个线程就是那个线程，这里是main线程<br><em>&#x2F;</em>*<br>**** <em>因为在<strong>Thread</strong>类中，<strong>currentThread</strong>的方法为<strong>static</strong>类型，所以可以直接用对象或类名调用<br>**** <em>原</em></em>:public static Thread currentThread(){…}<br>***&#x2F;<br>*m.setName(“最强线程”);&#x2F;&#x2F;默认为main<br>System.<em>out</em>.println(m.getName());<br>for(int i&#x3D;0;i&lt;10;i++){<br>System.<em>out</em>.println(“main线程输出”+i);<br>}</p>
+<p>&#x2F;&#x2F;sleep间隔方法<br>for (int i&#x3D;0;i&lt;5;i++){<br>System.<em>out</em>.println(i);<br>try {<br>Thread.<em>sleep</em>(1000);&#x2F;&#x2F;隔1000ms再输出数据,加上for就是每隔1s输出一个数据<br>} catch (InterruptedException e) {<br>e.printStackTrace();<br>}<br>}<br>}</p>
+<p>}</p>
+<p><strong>线程安全问题实战代码</strong></p>
+<p><em><strong>账户信息类</strong>+<strong>实现主类：</strong></em></p>
+<p>package xianchenganquan;</p>
+<p>public class zhanghu {<br>private String card;<br>private double money;</p>
+<p>public zhanghu() {</p>
+<p>}<br>public zhanghu(String card, double money) {<br>this.card &#x3D; card;<br>this.money &#x3D; money;<br>}<br>public void drawMoney(double money) {<br>String name &#x3D; Thread.<em>currentThread</em>().getName();<br>synchronized (“随便”) {<br>if (this.money &gt;&#x3D; money) {&#x2F;&#x2F;左边的money是账户的，右边的是取的钱<br>System.<em>out</em>.println(“余额足够，尊敬的” + name + “已为你取出” + money);<br>this.money -&#x3D; money;<br>System.<em>out</em>.println(name + “取完钱后，” + card + “卡还剩” + this.money);<br>} else {<br>System.<em>out</em>.println(name + “来取钱，余额不足”);<br>}<br>}<br>}<br>public String getCard() {<br>return card;<br>}</p>
+<p>public void setCard(String card) {<br>this.card &#x3D; card;<br>}</p>
+<p>public double getMoney() {<br>return money;<br>}</p>
+<p>public void setMoney(double money) {<br>this.money &#x3D; money;<br>}</p>
+<p>public static void main(String[] args) {<br>&#x2F;&#x2F;创建一个共享取钱账户<br>zhanghu people1 &#x3D;new zhanghu(“ICBC”,10000);<br>&#x2F;&#x2F;创建两个Thread对象模拟线程取钱<br>Thread HEPNGAN &#x3D; new xianchenganquan.DrawThread(“何平安”,people1);<br>HEPNGAN.start();<br>Thread HEHAO &#x3D;new xianchenganquan.DrawThread(“何浩”,people1);<br>HEHAO.start();<br>}<br>}</p>
+<p><em><strong>DrawThread类</strong>：</em></p>
+<p>package xianchenganquan;</p>
+<p>public class DrawThread extends Thread{<br>private zhanghu zh;<br>public DrawThread(){}<br>public DrawThread(String name,zhanghu zh){<br>super(name);&#x2F;&#x2F;调用Thread父类中的name<br>this.zh&#x3D;zh;<br>}</p>
+<p>@Override<br>public void run(){<br>zh.drawMoney(10000);<br>}<br>}</p>
+<p><strong>线程池学习代码</strong></p>
+<p>import java.util.concurrent.*;</p>
+<p>public class ThreadPools {<br>public static Object <em>ziyuan1</em>&#x3D;new Object();&#x2F;&#x2F;创建资源<br>public static Object <em>ziyuan2</em>&#x3D;new Object();</p>
+<p>public static void main(String[] args) {</p>
+<p>new Thread(new Runnable() {<br>@Override<br>public void run() {<br>synchronized (<em>ziyuan1</em>){&#x2F;&#x2F;死锁代码形式上通常要进行锁的嵌套访问<br>System.<em>out</em>.println(“线程1占用资源1，请求资源2”);<br>try {<br>Thread.<em>sleep</em>(1000);<br>} catch (InterruptedException e) {<br>throw new RuntimeException(e);<br>}<br>synchronized (<em>ziyuan2</em>){<br>System.<em>out</em>.println(“线程1成功占用资源2”);<br>}<br>}<br>}<br>}).start();</p>
+<p>new Thread(new Runnable() {<br>@Override<br>public void run() {<br>synchronized (<em>ziyuan2</em>){<br>System.<em>out</em>.println(“线程2占用资源2，请求资源1”);<br>try {<br>Thread.<em>sleep</em>(1000);&#x2F;&#x2F;先睡1s<br>} catch (InterruptedException e) {<br>throw new RuntimeException(e);<br>}<br>synchronized (<em>ziyuan1</em>){<br>System.<em>out</em>.println(“线程2成功占用资源1”);<br>}<br>}<br>}<br>}).start();<br>&#x2F;&#x2F;创建一个线程池，固定数量为3<br>ExecutorService pools &#x3D;Executors.<em>newFixedThreadPool</em>(3);<br>Runnable target&#x3D; new MyRunnable();<br>pools.submit(target);<br>pools.submit(target);<br>pools.submit(target);<br>pools.submit(target);</p>
+<p>pools.shutdown();&#x2F;&#x2F;等运行结束后关闭线程池<br>&#x2F;&#x2F;Callable的线程池<br>ExecutorService pools2 &#x3D;Executors.<em>newFixedThreadPool</em>(3);<br>Future<String> t1 &#x3D;pools2.submit(new MyCallable(100));<br>Future<String> t2 &#x3D;pools2.submit(new MyCallable(200));<br>Future<String> t3 &#x3D;pools2.submit(new MyCallable(300));<br>Future<String> t4 &#x3D;pools2.submit(new MyCallable(400));</p>
+<p>try {<br>String rs1&#x3D;t1.get();<br>String rs2&#x3D;t2.get();<br>String rs3&#x3D;t3.get();<br>String rs4&#x3D;t4.get();<br>System.<em>out</em>.println(rs1);<br>System.<em>out</em>.println(rs2);<br>System.<em>out</em>.println(rs3);<br>System.<em>out</em>.println(rs4);<br>}catch (Exception e){<br>e.printStackTrace();<br>}</p>
+<p>}<br>private static class MyRunnable implements Runnable{<br>@Override<br>public void run() {<br>for (int i &#x3D; 1; i &lt; 3; i++) {<br>System.*out*.println(Thread.*currentThread*().getName() + “–&gt;” + i);<br>}<br>}<br>}<br>static class MyCallable implements Callable{<br>private int n;<br>public MyCallable(int n){<br>this.n&#x3D;n;<br>}</p>
+<p>@Override<br>public Object call() throws Exception {<br>int sum&#x3D;0;<br>for (int i&#x3D;1;i&lt;n;i++){<br>sum&#x3D;sum+i;<br>}<br>return Thread.<em>currentThread</em>().getName()+”结果为”+sum;<br>}<br>}<br>}</p>
+<p><strong>volatile和原子类学习代码</strong></p>
+<p><code>import java.util.concurrent.atomic.AtomicInteger;</code></p>
+<p><code>//问题：多个线程访问共享变量是会出现一个线程修改变量值后其他线程看不到最新的线程值。</code><br><code>public class VolatileDemo extends Thread&#123;</code><br><code>private volatile boolean flag=false;</code></p>
+<p><code>public boolean isFlag()/*布尔变量的get方法为is*/ &#123;</code><br><code>return flag;</code><br><code>&#125;</code></p>
+<p><code>public void setFlag(boolean flag) &#123;</code><br><code>this.flag = flag;</code><br><code>&#125;</code><br><code>@Override</code><br><code>public void run()&#123;</code><br><code>try &#123;</code><br><code>Thread.*sleep*(1000);</code><br><code>&#125; catch (InterruptedException e) &#123;</code><br><code>throw new RuntimeException(e);</code><br><code>&#125;</code><br><code>flag=true;</code><br><code>System.*out*.println(“flag is become TRUE”);</code><br><code>&#125;</code></p>
+<p><code>public static void main(String[] args) &#123;</code><br><code>VolatileDemo v1=new VolatileDemo();</code><br><code>//子线程修改flag的值</code><br><code>v1.start();</code><br><code>//主线程</code><br><code>synchronized (VolatileDemo.class)&#123;</code><br><code>if(v1.isFlag())&#123;</code><br><code>System.*out*.println(“Going..”);</code><br><code>&#125;</code><br><code>&#125;</code><br><code>Runnable r1=new MyRunnable();</code><br><code>for(int i=1;i&lt;=100;i++)&#123;</code><br><code>//启动100个线程，执行100次任务</code><br><code>new Thread(r1).start();</code><br><code>&#125;</code></p>
+<p><code>//原子类的方法</code><br><code>Runnable r2=new MyRunnable2();</code><br><code>for(int i=1;i&lt;=100;i++)&#123;</code><br><code>new Thread(r2).start();</code><br><code>&#125;</code><br><code>&#125;</code><br><code>static class MyRunnable implements Runnable&#123;</code><br><code>private volatile int count;</code><br><code>@Override</code><br><code>public void run() &#123;</code><br><code>for(int i=1;i&lt;=100;i++)&#123;</code><br><code>count++;</code><br><code>System.*out*.println(“count==&gt;”+count);</code><br><code>&#125;</code><br><code>&#125;</code></p>
+<p><code>&#125;</code><br><code>static class MyRunnable2 implements Runnable&#123;</code><br><code>private AtomicInteger atomicInteger=new AtomicInteger();</code><br><code>@Override</code><br><code>public void run() &#123;</code><br><code>try &#123;</code><br><code>Thread.*sleep*(2000);</code><br><code>&#125; catch (InterruptedException e) &#123;</code><br><code>throw new RuntimeException(e);</code><br><code>&#125;</code><br><code>for (int i = 1; i &lt;= 100; i++) &#123;</code><br><code>System.*out*.println(“count===&gt;” + atomicInteger.incrementAndGet());</code><br><code>&#125;</code><br><code>&#125;</code><br><code>&#125;</code><br><code>&#125;</code></p>
+
   </div>
 
    <footer>
 
     <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-04 07:36:05" itemprop="dateModified" datetime="2024-02-04T07:36:05+08:00">2024-02-04</time>
+  </span>
 </div>
 
       
@@ -208,9 +307,9 @@
     <div class="item left">
       
 
-  <a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picss.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;2d5cecb0225cd054c125a4f77f5a49ec.jpeg" title="精通Java学习之路（二）">
+  <a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picdl.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;f664477b22900c4106a3896060123c46.jpeg" title="精通Java学习之路（二）">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> Java web</span>
   <h3>精通Java学习之路（二）</h3>
   </a>
 
@@ -218,9 +317,9 @@
     <div class="item right">
       
 
-  <a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;picss.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;1e86d9b5ab6a0f3c06aae5296f66dd67.jpeg" title="精通Java学习之路（四）">
+  <a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;picdl.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;9b1502552d0f9e3389645068570f950b.jpeg" title="精通Java学习之路（四）">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> Java基础</span>
   <h3>精通Java学习之路（四）</h3>
   </a>
 
@@ -242,6 +341,9 @@
       <div class="contents panel pjax" data-title="Contents">
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="精通Java学习之路（二）">精通Java学习之路（二）</a></li><li class="active"><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%89%EF%BC%89/" rel="bookmark" title="精通Java学习之路（三）">精通Java学习之路（三）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（一）">Javaweb学习笔记（一）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（三）">Javaweb学习笔记【项目实战】（三）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></li><li><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" rel="bookmark" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></li><li><a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" rel="bookmark" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -254,13 +356,13 @@
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">42</span>
+        <span class="count">43</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">8</span>
+        <span class="count">9</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -347,9 +449,12 @@
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/service/" title="In 微服务">微服务</a>
 </div>
 
-    <span><a href="/2024/02/04/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" title="说说nginx反向代理和Kong网关">说说nginx反向代理和Kong网关</a></span>
+    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" title="SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】">SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】</a></span>
   </li>
 
       
@@ -359,7 +464,17 @@
 <a href="/categories/mystory/" title="In 我的传奇">我的传奇</a>
 </div>
 
-    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%BA%8C%E4%B8%8A%EF%BC%89/" title="我的故事（大二上）">我的故事（大二上）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="In Python">Python</a>
+</div>
+
+    <span><a href="/2024/02/04/Python/Python%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E6%A0%A1%E5%9B%AD%E8%AF%BE%E8%A1%A8-%E5%BC%BA%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%B8%BE%E4%BE%8B/" title="Python爬虫获取校园课表(强制系统举例)">Python爬虫获取校园课表(强制系统举例)</a></span>
   </li>
 
       
@@ -368,7 +483,19 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" title="精通Java学习之路（二）">精通Java学习之路（二）</a></span>
+    <span><a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javase/" title="In Java基础">Java基础</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">精通Java学习之路（四）</a></span>
   </li>
 
       
@@ -377,17 +504,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/Python/Python%E8%B0%83%E7%94%A8ChatGPT%E6%8E%A5%E5%8F%A3-2023/" title="Python调用ChatGPT接口(2023)">Python调用ChatGPT接口(2023)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
-</div>
-
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%BA%8C%E3%80%91-%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/" title="企业级微服务大项目实战《学成在线》【二】(课程相关接口)">企业级微服务大项目实战《学成在线》【二】(课程相关接口)</a></span>
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
   </li>
 
       
@@ -396,13 +513,25 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/%E9%80%9A%E8%BF%87node-js%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/" title="通过node.js部署vue项目">通过node.js部署vue项目</a></span>
+    <span><a href="/2024/02/03/%E5%A4%A7%E4%B8%80%E4%B8%8Bjava%E6%9C%9F%E6%9C%AB%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E8%8D%A3%E8%8E%B7%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%B8%80%EF%BC%89/" title="大一下java期末设计：学生信息管理系统（荣获班上第一）">大一下java期末设计：学生信息管理系统（荣获班上第一）</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E9%98%BF%E9%87%8C%E4%BA%91%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%88%86%E4%BA%AB/" title="阿里云网站搭建分享">阿里云网站搭建分享</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
 </div>
 
     <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%89%EF%BC%89/" title="精通Java学习之路（三）">精通Java学习之路（三）</a></span>
@@ -414,28 +543,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/Axios%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%AE%9E%E4%BE%8B/" title="Axios前后端交互实例">Axios前后端交互实例</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/java/" title="In Java">Java</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/java/service/" title="In 微服务">微服务</a>
-</div>
-
-    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%90Feign-Gateway%E3%80%91/" title="SpringCloud微服务学习笔记（二）【Feign,Gateway】">SpringCloud微服务学习笔记（二）【Feign,Gateway】</a></span>
+    <span><a href="/2024/02/04/%E4%BF%AE%E5%A4%8D%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" title="修复域名访问问题">修复域名访问问题</a></span>
   </li>
 
   </ul>

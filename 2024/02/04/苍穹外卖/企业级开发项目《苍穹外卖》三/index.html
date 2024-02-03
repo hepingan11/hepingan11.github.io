@@ -1,0 +1,572 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="何平安" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="何平安" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="何平安" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/">
+
+
+
+  <title>
+企业级开发项目《苍穹外卖》（二） - 苍穹外卖 |
+练竹园 = 何平安 = 世界很大，代码连接世界</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">企业级开发项目《苍穹外卖》（二）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-02-04 03:55:54">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-04T03:55:54+08:00">2024-02-04</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">练竹园</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/1e86d9b5ab6a0f3c06aae5296f66dd67.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/yfhC5wAf.jpg"></li>
+          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/44f2908163495c658625702d9cc71f00.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/WZeVsA0P.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/zGtbnCj2.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/HGwO3du5.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" itemprop="item" rel="index" title="In 苍穹外卖"><span itemprop="name">苍穹外卖</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/a.jpg">
+    <meta itemprop="name" content="Hepingan">
+    <meta itemprop="description" content="世界很大，代码连接世界, 欢迎来到何平安的个人博客~欢迎您的浏览">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="何平安">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="设置店铺营业状态"><a href="#设置店铺营业状态" class="headerlink" title="设置店铺营业状态"></a>设置店铺营业状态</h2><p>先去我之前写的博客“Redis数据库学习笔记”学习Redis的基本操作。</p>
+<p>在config层下创建Redis的配置类，里面编写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory redisConnectionFactory)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;开始创建redis对象:&#123;&#125;&quot;</span>,redisConnectionFactory);</span><br><span class="line">        <span class="type">RedisTemplate</span> <span class="variable">redisTemplate</span>  <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>();</span><br><span class="line">        <span class="comment">//设置redis工厂对象</span></span><br><span class="line">        redisTemplate.setConnectionFactory(redisConnectionFactory);</span><br><span class="line">        <span class="comment">//设置redis序列化器</span></span><br><span class="line">        redisTemplate.setKeySerializer(<span class="keyword">new</span> <span class="title class_">StringRedisSerializer</span>());</span><br><span class="line">        <span class="keyword">return</span> redisTemplate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 然后再在controller层里面创建shop店铺管理的类，里面编写设置店铺状态和查询店铺状态的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController(&quot;adminShopController&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;店铺管理&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/admin/shop&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShopController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PutMapping(&quot;/&#123;status&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@ApiOperation(&quot;设置店铺营业状态&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">setStaus</span><span class="params">(<span class="meta">@PathVariable</span> Integer status)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;设置店铺营业状态：&#123;&#125;&quot;</span>,status ==<span class="number">1</span> ?<span class="string">&quot;营业中&quot;</span>: <span class="string">&quot;打烊中&quot;</span>);</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;SHOP_STATUS&quot;</span>,status);</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/status&quot;)</span></span><br><span class="line">    <span class="meta">@ApiOperation(&quot;获取店铺营业状态&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;Integer&gt; <span class="title function_">getStatus</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">shopStatus</span> <span class="operator">=</span> (Integer) redisTemplate.opsForValue().get(<span class="string">&quot;SHOP_STATUS&quot;</span>);</span><br><span class="line">        log.info(<span class="string">&quot;获取店铺营业状态：&#123;&#125;&quot;</span>,shopStatus ==<span class="number">1</span> ?<span class="string">&quot;营业中&quot;</span>: <span class="string">&quot;打烊中&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> Result.success(shopStatus);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>记得在yml和的-dev yml里面配置redis的用户连接信息：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">redis:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">localhost</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">database:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="接口管理分开管理端和用户端"><a href="#接口管理分开管理端和用户端" class="headerlink" title="接口管理分开管理端和用户端"></a>接口管理分开管理端和用户端</h2><p>·  在WebMvcConfiguration里面复制一个bean注解下的代码，并在new Docket下编写.groupName(“管理端接口&#x2F;用户端接口”)，具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过knife4j生成接口文档</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> Docket <span class="title function_">docket1</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;准备生成接口文档...&quot;</span>);</span><br><span class="line">        <span class="type">ApiInfo</span> <span class="variable">apiInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ApiInfoBuilder</span>()</span><br><span class="line">                .title(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">                .version(<span class="string">&quot;2.0&quot;</span>)</span><br><span class="line">                .description(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="type">Docket</span> <span class="variable">docket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Docket</span>(DocumentationType.SWAGGER_2)</span><br><span class="line">                .groupName(<span class="string">&quot;管理端接口&quot;</span>)</span><br><span class="line">                .apiInfo(apiInfo)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">&quot;com.sky.controller.admin&quot;</span>))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">return</span> docket;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> Docket <span class="title function_">docket2</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;准备生成接口文档...&quot;</span>);</span><br><span class="line">        <span class="type">ApiInfo</span> <span class="variable">apiInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ApiInfoBuilder</span>()</span><br><span class="line">                .title(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">                .version(<span class="string">&quot;2.0&quot;</span>)</span><br><span class="line">                .description(<span class="string">&quot;苍穹外卖项目接口文档&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="type">Docket</span> <span class="variable">docket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Docket</span>(DocumentationType.SWAGGER_2)</span><br><span class="line">                .groupName(<span class="string">&quot;用户端接口&quot;</span>)</span><br><span class="line">                .apiInfo(apiInfo)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">&quot;com.sky.controller.user&quot;</span>))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">return</span> docket;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样在项目接口文档里面就可以区分开这两个端了。</p>
+<h2 id="微信小程序开发"><a href="#微信小程序开发" class="headerlink" title="微信小程序开发"></a>微信小程序开发</h2><p>下载微信开发者工具，然后将资料里面的前端文件导入进来，输入自己的openid（openid和小程序appid和secret自己去网上搜），微信小程序开发我博客之前也写过。</p>
+<p>将资料里面的用户端文件导入进对应server文件夹里</p>
+<h2 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h2><p>maven坐标：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>常用注解：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230921112026071-326743100.png" alt="img"></p>
+<p> 在苍穹外卖项目中的应用：用于缓存套餐数据，只需在启动类上加入@EnableCaching注解，在admin的SetmealController里面的删改和启动禁用上加上@CacheEvict(cacheNames &#x3D; “setmealCache”,allEntries &#x3D; true)注解，增加套餐上添加@CacheEvict(cacheNames &#x3D; “setmealCache”,key&#x3D;”#setmealDTO.categoryId”)注解。在user的SetmealController的根据id查询套餐上添加@Cacheable(cacheNames &#x3D;”setmealCache”,key&#x3D;”#categoryId”)</p>
+<h2 id="购物车管理"><a href="#购物车管理" class="headerlink" title="购物车管理"></a>购物车管理</h2><p>后面的购物车管理就跟之前的差不多了，直接上impl的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> ShoppingCartMapper shoppingCartMapper;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> SetmealMapper setmealMapper;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> DishMapper dishMapper;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加物品</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> shoppingCartDTO</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addShoppingCart</span><span class="params">(ShoppingCartDTO shoppingCartDTO)</span> &#123;</span><br><span class="line">    <span class="comment">//判断当前加入购物车的商品是否存在</span></span><br><span class="line">    ShoppingCart shoppingCart=<span class="keyword">new</span> <span class="title class_">ShoppingCart</span>();</span><br><span class="line">    BeanUtils.copyProperties(shoppingCartDTO,shoppingCart);</span><br><span class="line">    Long userId= BaseContext.getCurrentId();</span><br><span class="line">    shoppingCart.setUserId(userId);</span><br><span class="line"></span><br><span class="line">    List&lt;ShoppingCart&gt; list =shoppingCartMapper.list(shoppingCart);</span><br><span class="line">    <span class="comment">//如果已经存在了，只需要将数量增加</span></span><br><span class="line">    <span class="keyword">if</span> (list !=<span class="literal">null</span>&amp;&amp; list.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        ShoppingCart cart=list.get(<span class="number">0</span>);</span><br><span class="line">        cart.setNumber(cart.getNumber()+<span class="number">1</span>);</span><br><span class="line">        shoppingCartMapper.updateById(cart);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//判断是为菜品还是套餐</span></span><br><span class="line">        <span class="type">Long</span> <span class="variable">dishId</span> <span class="operator">=</span> shoppingCart.getDishId();</span><br><span class="line">        <span class="keyword">if</span> (dishId !=<span class="literal">null</span>)&#123;</span><br><span class="line">            Dish dish=dishMapper.getById(dishId);</span><br><span class="line">            shoppingCart.setName(dish.getName());</span><br><span class="line">            shoppingCart.setImage(dish.getImage());</span><br><span class="line">            shoppingCart.setAmount(dish.getPrice());</span><br><span class="line"></span><br><span class="line">            shoppingCart.setNumber(<span class="number">1</span>);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//为套餐</span></span><br><span class="line">            Long setmealId=shoppingCart.getSetmealId();</span><br><span class="line">            Setmeal setmeal=setmealMapper.pageById(setmealId);</span><br><span class="line">            shoppingCart.setName(setmeal.getName());</span><br><span class="line">            shoppingCart.setImage(setmeal.getImage());</span><br><span class="line">            shoppingCart.setAmount(setmeal.getPrice());</span><br><span class="line"></span><br><span class="line">            shoppingCart.setNumber(<span class="number">1</span>);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        shoppingCartMapper.insert(shoppingCart);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>导入收货地址接口（AdressBook）和用户下单接口代码（Order），代码的话就自己去下载看看吧，没啥新技术。</strong></p>
+<p>除了用户下单的 ServiceImpl的代码有点难：其他的还将就 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户下单</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ordersSubmitDTO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="keyword">public</span> OrderSubmitVO <span class="title function_">submitOrder</span><span class="params">(OrdersSubmitDTO ordersSubmitDTO)</span> &#123;</span><br><span class="line">        <span class="comment">//异常情况的处理（收货地址为空、购物车为空）</span></span><br><span class="line">        <span class="type">AddressBook</span> <span class="variable">addressBook</span> <span class="operator">=</span> addressBookMapper.getById(ordersSubmitDTO.getAddressBookId());</span><br><span class="line">        <span class="keyword">if</span> (addressBook == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">AddressBookBusinessException</span>(MessageConstant.ADDRESS_BOOK_IS_NULL);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Long</span> <span class="variable">userId</span> <span class="operator">=</span> BaseContext.getCurrentId();</span><br><span class="line">        <span class="type">ShoppingCart</span> <span class="variable">shoppingCart</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShoppingCart</span>();</span><br><span class="line">        shoppingCart.setUserId(userId);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//查询当前用户的购物车数据</span></span><br><span class="line">        List&lt;ShoppingCart&gt; shoppingCartList = shoppingCartMapper.list(shoppingCart);</span><br><span class="line">        <span class="keyword">if</span> (shoppingCartList == <span class="literal">null</span> || shoppingCartList.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ShoppingCartBusinessException</span>(MessageConstant.SHOPPING_CART_IS_NULL);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//构造订单数据</span></span><br><span class="line">        <span class="type">Orders</span> <span class="variable">order</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Orders</span>();</span><br><span class="line">        BeanUtils.copyProperties(ordersSubmitDTO,order);</span><br><span class="line">        order.setPhone(addressBook.getPhone());</span><br><span class="line">        order.setAddress(addressBook.getDetail());</span><br><span class="line">        order.setConsignee(addressBook.getConsignee());</span><br><span class="line">        order.setNumber(String.valueOf(System.currentTimeMillis()));</span><br><span class="line">        order.setUserId(userId);</span><br><span class="line">        order.setStatus(Orders.PENDING_PAYMENT);</span><br><span class="line">        order.setPayStatus(Orders.UN_PAID);</span><br><span class="line">        order.setOrderTime(LocalDateTime.now());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//向订单表插入1条数据</span></span><br><span class="line">        orderMapper.insert(order);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//订单明细数据</span></span><br><span class="line">        List&lt;OrderDetail&gt; orderDetailList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (ShoppingCart cart : shoppingCartList) &#123;</span><br><span class="line">            <span class="type">OrderDetail</span> <span class="variable">orderDetail</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OrderDetail</span>();</span><br><span class="line">            BeanUtils.copyProperties(cart, orderDetail);</span><br><span class="line">            orderDetail.setOrderId(order.getId());</span><br><span class="line">            orderDetailList.add(orderDetail);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//向明细表插入n条数据</span></span><br><span class="line">        orderDetailMapper.insertBatch(orderDetailList);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//清理购物车中的数据</span></span><br><span class="line">        shoppingCartMapper.deleteByUserId(userId);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//封装返回结果</span></span><br><span class="line">        <span class="type">OrderSubmitVO</span> <span class="variable">orderSubmitVO</span> <span class="operator">=</span> OrderSubmitVO.builder()</span><br><span class="line">                .id(order.getId())</span><br><span class="line">                .orderNumber(order.getNumber())</span><br><span class="line">                .orderAmount(order.getAmount())</span><br><span class="line">                .orderTime(order.getOrderTime())</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> orderSubmitVO;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里就顺便补充下@Transactional注解：</p>
+<p>事务处理translational<br>概念：指一组原子性的操作序列，这些操作要么全部执行，要么全部不执行</p>
+<p>特性：原子性、一致性、隔离性和持久性</p>
+<p>应用场景：当一组操作需要同时执行时。–金融行业、电商平台、物流行业</p>
+<p>开发流程：在需要事务管理的方法上加注解：@Transactional（）</p>
+<p>rollbackFor属性:回滚指定类型的异常：@Transactional(rollbackFor &#x3D;<br>Exception.class)</p>
+<p>Propagation属性 ：</p>
+<p>事务传播：当一个事务方法被另一个事务方法调用时，这个事务方法应该如何进行事务控制。</p>
+<p>REQUIRED – 【默认值】需要事务，有则加入，无则创建新事务</p>
+<p>REQUIRES_NEW –总是创建新事务</p>
+<h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><p>封面图就是内网穿透的原理图：</p>
+<p><img data-src="https://pic3.zhimg.com/v2-7d80e958968f0e1463e6df3eec48921f_r.jpg" alt="img"></p>
+<p>进入临时域名的使用网站：<span class="exturl" data-url="aHR0cHM6Ly9kYXNoYm9hcmQuY3BvbGFyLmNvbS8sJUU2JUIzJUE4JUU1JTg2JThDJUU0JUI4JTgwJUU0JUI4JUFBJUU4JUI0JUE2JUU2JTg4JUI3JUU3JTk5JUJCJUU4JUJGJTlCJUU1JThFJUJCJUU5JTgwJTg5JUU2JThCJUE5JUU1JTg1JThEJUU4JUI0JUI5JUU3JTlBJTg0JUU0JUI4JUI0JUU2JTk3JUI2JUU1JTlGJTlGJUU1JTkwJThEJUVGJUJDJThDJUU0JUI4JThCJUU4JUJEJUJEY3BvbGFyJUU3JTlBJTg0JUU1JUFFJTg5JUU4JUEzJTg1ZXhlJUVGJUJDJThDJUU2JThDJTg5JUU3JTg1JUE3JUU2JUFEJUE1JUU5JUFBJUE0JUU1JUFFJTg5JUU4JUEzJTg1JUU1JUE1JUJEJUU1JUIwJUIxJUU4JUExJThDJUUzJTgwJTgyJUU3JTg0JUI2JUU1JTkwJThFJUU1JTlCJTlFJUU1JTg4JUIwY3BvbGFyJUU3JUJEJTkxJUU3JUFCJTk5JUU5JTgwJTg5JUU2JThCJUE5JUU5JUFBJThDJUU4JUFGJTgxJUVGJUJDJThDJUU1JUE0JThEJUU1JTg4JUI2JUU0JUJEJUEwJUU3JTlBJTg0QXV0aHRva2VuJUVGJUJDJThDJUU3JTg0JUI2JUU1JTkwJThFJUU4JUJGJTkwJUU4JUExJThDJUU1JTg4JTlBJUU1JTg4JTlBJUU1JUFFJTg5JUU4JUEzJTg1JUU1JUE1JUJEJUU3JTlBJTg0Y3BvbGFyLmV4ZSVFRiVCQyU4QyVFOCVCRSU5MyVFNSU4NSVBNWNwb2xhci5leGU=">https://dashboard.cpolar.com/,注册一个账户登进去选择免费的临时域名，下载cpolar的安装exe，按照步骤安装好就行。然后回到cpolar网站选择验证，复制你的Authtoken，然后运行刚刚安装好的cpolar.exe，输入cpolar.exe</span> authtoken 【刚刚复制的】 ，再输入cpolar.exe http 8080然后回车，这时您的公网域名就创建好了，别人的电脑和手机就可以访问你的苍穹外卖了。可以输入<span class="exturl" data-url="aHR0cHM6Ly94eHh4L2RvYy5odG1sJUU4JUFFJUJGJUU5JTk3JUFFJUU0JUJEJUEwJUU3JTlBJTg0JUU2JThFJUE1JUU1JThGJUEzJUU2JTk2JTg3JUU2JUExJUEzJUUzJTgwJTgy">https://xxxx/doc.html访问你的接口文档。</span></p>
+<p>其他的接口就参考day9的资料吧：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230923235504713-858745844.png" alt="img"></p>
+<h2 id="微信小程序备案上线"><a href="#微信小程序备案上线" class="headerlink" title="微信小程序备案上线"></a>微信小程序备案上线</h2><p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230923233152894-1988041911.png" alt="img"></p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230923233227839-5604758.png" alt="img"></p>
+<p>剩下的催单接口和表格输出就自己去看黑马的吧~</p>
+<p><strong>苍穹外卖，完结！</strong></p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-04 07:28:40" itemprop="dateModified" datetime="2024-02-04T07:28:40+08:00">2024-02-04</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/we.png" alt="Hepingan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/qq2.png" alt="Hepingan Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="Hepingan PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Hepingan <i class="ic i-at"><em>@</em></i>何平安
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/" title="企业级开发项目《苍穹外卖》（二）">http://example.com/2024/02/04/苍穹外卖/企业级开发项目《苍穹外卖》三/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picss.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;75280808746b3a76c93c0e193acbe37b.jpeg" title="企业级开发项目＂苍穹外卖＂（二）">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 苍穹外卖</span>
+  <h3>企业级开发项目＂苍穹外卖＂（二）</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;UBWtnixc.jpg" title="SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> 微服务</span>
+  <h3>SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%BA%97%E9%93%BA%E8%90%A5%E4%B8%9A%E7%8A%B6%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">设置店铺营业状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E5%88%86%E5%BC%80%E7%AE%A1%E7%90%86%E7%AB%AF%E5%92%8C%E7%94%A8%E6%88%B7%E7%AB%AF"><span class="toc-number">2.</span> <span class="toc-text">接口管理分开管理端和用户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">微信小程序开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Cache"><span class="toc-number">4.</span> <span class="toc-text">Spring Cache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">购物车管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="toc-number">6.</span> <span class="toc-text">内网穿透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%A4%87%E6%A1%88%E4%B8%8A%E7%BA%BF"><span class="toc-number">7.</span> <span class="toc-text">微信小程序备案上线</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%80/" rel="bookmark" title="企业级开发项目《苍穹外卖》(一)">企业级开发项目《苍穹外卖》(一)</a></li><li><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" rel="bookmark" title="企业级开发项目＂苍穹外卖＂（二）">企业级开发项目＂苍穹外卖＂（二）</a></li><li class="active"><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/" rel="bookmark" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Hepingan"
+      data-src="/images/a.jpg">
+  <p class="name" itemprop="name">Hepingan</p>
+  <div class="description" itemprop="description">欢迎来到何平安的个人博客~欢迎您的浏览</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">43</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">9</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlcGluZ2FuMTE=" title="https:&#x2F;&#x2F;github.com&#x2F;hepingan11"><i class="ic i-github"></i></span>
+      <span class="exturl item google" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20v" title="https:&#x2F;&#x2F;plus.google.com&#x2F;"><i class="ic i-google"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTM0MzI3MDEyNA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;343270124"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjE2NDE2NDM2NTY2QHFxLmNvbQ==" title="mailto:16416436566@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>链接</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" title="精通Java学习之路（二）">精通Java学习之路（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="In Python">Python</a>
+</div>
+
+    <span><a href="/2024/02/04/Python/Python%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E6%A0%A1%E5%9B%AD%E8%AF%BE%E8%A1%A8-%E5%BC%BA%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%B8%BE%E4%BE%8B/" title="Python爬虫获取校园课表(强制系统举例)">Python爬虫获取校园课表(强制系统举例)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/03/html-css%E5%9F%BA%E7%A1%80/" title="html,css基础">html,css基础</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javase/" title="In Java基础">Java基础</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">精通Java学习之路（四）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" title="说说nginx反向代理和Kong网关">说说nginx反向代理和Kong网关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mystory/" title="In 我的传奇">我的传奇</a>
+</div>
+
+    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8A%EF%BC%89/" title="我的故事（大一上）">我的故事（大一上）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mystory/" title="In 我的传奇">我的传奇</a>
+</div>
+
+    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%BA%8C%E3%80%91-%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/" title="企业级微服务大项目实战《学成在线》【二】(课程相关接口)">企业级微服务大项目实战《学成在线》【二】(课程相关接口)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" title="企业级开发项目＂苍穹外卖＂（二）">企业级开发项目＂苍穹外卖＂（二）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Hepingan @ 练竹园</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/02/04/苍穹外卖/企业级开发项目《苍穹外卖》三/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -30,7 +30,7 @@
 
 
   <title>
-通过Maven将文件上传到阿里云对象存储OSS |
+通过Maven将文件上传到阿里云对象存储OSS - Java web - Java |
 练竹园 = 何平安 = 世界很大，代码连接世界</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -100,12 +100,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/0Gclhvmj.jpg"></li>
-          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/7b63011683b8fbe48aeb454069754742.jpeg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/aqpk7vZD.webp"></li>
-          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlmWOe.jpg"></li>
-          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlm5TA.jpg"></li>
-          <li class="item" data-background-image="https://picdm.sunbangyan.cn/2024/02/04/fe7f931670885b70e43bedd53a975e53.jpeg"></li>
+          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlmoFI.jpg"></li>
+          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/1e86d9b5ab6a0f3c06aae5296f66dd67.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/7pc8xvat.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/HGwO3du5.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/yfhC5wAf.jpg"></li>
+          <li class="item" data-background-image="https://picdm.sunbangyan.cn/2024/02/04/641422acbb61718b3b3fa67c910c1a64.jpeg"></li>
         </ul>
       </div>
     </header>
@@ -130,7 +130,12 @@
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/java/" itemprop="item" rel="index" title="In Java"><span itemprop="name">Java</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/java/javaweb/" itemprop="item" rel="index" title="In Java web"><span itemprop="name">Java web</span></a>
+<meta itemprop="position" content="2" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
@@ -149,12 +154,45 @@
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <p>首先在阿里云开通对象存储OSS功能（免费的），然后在Bucket列表中创建一个Bucket，地域建议选择华东1（杭州），因为这样后面就不用修改Endpoint,或者你直接记住Endpoint也行，读写仅限为公共读，其他的选项就默认的就行了。</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/08/80LPWR0A4B1F219GE9-1024x665.png" alt="img"></p>
+<p>然后在右上角的头像初点击AccessKey管理，选择继续使用AccessKey，点击创建AccessKey，然后<strong>务必记住你的id和serice</strong>t，复制到你的电脑上最好，因为阿里云现在不支持查询密钥了。</p>
+<p>阿里云官方的上传文件教程：<span class="exturl" data-url="aHR0cHM6Ly9oZWxwLmFsaXl1bi5jb20vemgvb3NzL2RldmVsb3Blci1yZWZlcmVuY2Uvc2ltcGxlLXVwbG9hZC0xMT9zcG09YTJjNGcuMTExODY2MjMuMC4wLjdkZTQ3YTAzenhFeEhB">如何使用JavaSDK上传文件_对象存储 OSS-阿里云帮助中心 (aliyun.com)</span></p>
+<p>但是我搞了半天都配置不来环境变量，所以我推荐一个比较通俗易懂的方法，就是直接定义ID和密码然后传递给OSS对象就行了。</p>
+<p>先下载阿里云的SDK:<span class="exturl" data-url="aHR0cHM6Ly9nb3NzcHVibGljLmFsaWNkbi5jb20vc2Rrcy9qYXZhL2FsaXl1bl9qYXZhX3Nka18zLjE1LjAuemlw">SDK安装包</span>，解压后将首目录下的jar文件和lib里面的所有文件添加到项目模块里面去。</p>
+<p>在Maven工程中使用OSS Java SDK，只需在pom.xml中加入相应依赖即可。以3.15.1版本为例，在<dependencies>中加入如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.aliyun.oss&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;aliyun-sdk-oss&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.15.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用的是Java 9及以上的版本，则需要添加jaxb相关依赖。添加jaxb相关依赖示例代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;javax.xml.bind&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jaxb-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.3.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;javax.activation&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;activation&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- no more than 2.3.3--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.glassfish.jaxb&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jaxb-runtime&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.3.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>测试上传文件：在test测试里面的软件包直接粘贴下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import com.aliyun.oss.*;</span><br><span class="line">import com.aliyun.oss.common.auth.*;</span><br><span class="line">import com.aliyun.oss.model.PutObjectRequest;</span><br><span class="line">import com.aliyun.oss.model.PutObjectResult;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class Demo &#123;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">// Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。</span><br><span class="line"> String endpoint = &quot;https://oss-cn-hangzhou.aliyuncs.com&quot;;</span><br><span class="line">// 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。</span><br><span class="line"> String accessKeyId=&quot;yourid&quot;;</span><br><span class="line">String accessKeySecret=&quot;yoursecret&quot;;</span><br><span class="line"> // 填写Bucket名称，例如examplebucket。</span><br><span class="line"> String bucketName = &quot;picture-hepingan&quot;;</span><br><span class="line">// 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。</span><br><span class="line"> String objectName = &quot;1.jpg&quot;;</span><br><span class="line">// 填写本地文件的完整路径，例如D:\\localpath\\examplefile.txt。</span><br><span class="line"> // 如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。</span><br><span class="line"> String filePath= &quot;D:\\My photos\\图片5\\1.jpg&quot;;</span><br><span class="line"></span><br><span class="line">// 创建OSSClient实例。</span><br><span class="line"> OSSClient ossClient = new OSSClient(endpoint,accessKeyId,accessKeySecret);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">InputStream inputStream = new FileInputStream(filePath);</span><br><span class="line">// 创建PutObjectRequest对象。</span><br><span class="line"> PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, objectName, inputStream);</span><br><span class="line">// 创建PutObject请求。</span><br><span class="line"> PutObjectResult result = ossClient.putObject(putObjectRequest);</span><br><span class="line">&#125; catch (OSSException oe) &#123;</span><br><span class="line">System.out.println(&quot;Caught an OSSException, which means your request made it to OSS, &quot;</span><br><span class="line">+ &quot;but was rejected with an error response for some reason.&quot;);</span><br><span class="line">System.out.println(&quot;Error Message:&quot; + oe.getErrorMessage());</span><br><span class="line">System.out.println(&quot;Error Code:&quot; + oe.getErrorCode());</span><br><span class="line">System.out.println(&quot;Request ID:&quot; + oe.getRequestId());</span><br><span class="line">System.out.println(&quot;Host ID:&quot; + oe.getHostId());</span><br><span class="line">&#125; catch (ClientException ce) &#123;</span><br><span class="line">System.out.println(&quot;Caught an ClientException, which means the client encountered &quot;</span><br><span class="line">+ &quot;a serious internal problem while trying to communicate with OSS, &quot;</span><br><span class="line">+ &quot;such as not being able to access the network.&quot;);</span><br><span class="line">System.out.println(&quot;Error Message:&quot; + ce.getMessage());</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">if (ossClient != null) &#123;</span><br><span class="line">ossClient.shutdown();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该修改的参数还是要修改下，比如accessid,accesssecret,buketName,filePath，都有注释，看注释就行。这是不配置环境变量的方法，阿里云官方的教程是要配置环境变量的。然后运行就可以在阿里云OSS里面的bucket列表对应的bucket里面看到你上传的文件。参考文章：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vMTgxMDczOTEzN3FxL2FydGljbGVzLzE2MzcwNjkzLmh0bWw=">oss文件上传时报错：Exception in thread “main” com.aliyun.oss.OSSException: You have no right to – 恶霸李士士 – 博客园 (cnblogs.com)</span></p>
+<p>通过Java代码上传文件到阿里云OSS：</p>
+<p>在top.hepingan下创建一个软件包utils，然后直接粘贴下面的代码：注意修改那几个参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import com.aliyun.oss.OSS;</span><br><span class="line">import com.aliyun.oss.OSSClientBuilder;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line">import java.io.*;</span><br><span class="line">import java.util.UUID;</span><br><span class="line">/**</span><br><span class="line"> * 阿里云 OSS 工具类</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">public class AliOSSUtils &#123;</span><br><span class="line"></span><br><span class="line">private String endpoint = &quot;https://oss-cn-hangzhou.aliyuncs.com&quot;;</span><br><span class="line">private String accessKeyId = &quot;LTAI5tLfTLzZSwnWjgi5m3C5&quot;;</span><br><span class="line">private String accessKeySecret = &quot;es0pyJIFLFCPBwGuwZnqd7Ct7JWp7j&quot;;</span><br><span class="line">private String bucketName = &quot;picture-hepingan&quot;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 实现上传图片到OSS</span><br><span class="line"> */</span><br><span class="line"> public String upload(MultipartFile file) throws IOException &#123;</span><br><span class="line">// 获取上传的文件的输入流</span><br><span class="line"> InputStream inputStream = file.getInputStream();</span><br><span class="line"></span><br><span class="line">// 避免文件覆盖</span><br><span class="line"> String originalFilename = file.getOriginalFilename();</span><br><span class="line">String fileName = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf(&quot;.&quot;));</span><br><span class="line"></span><br><span class="line">//上传文件到 OSS</span><br><span class="line"> OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line">ossClient.putObject(bucketName, fileName, inputStream);</span><br><span class="line"></span><br><span class="line">//文件访问路径</span><br><span class="line"> String url = endpoint.split(&quot;//&quot;)[0] + &quot;//&quot; + bucketName + &quot;.&quot; + endpoint.split(&quot;//&quot;)[1] + &quot;/&quot; + fileName;</span><br><span class="line">// 关闭ossClient</span><br><span class="line"> ossClient.shutdown();</span><br><span class="line">return url;// 把上传到oss的路径返回</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后再在UploadController里面编写方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">private AliOSSUtils aliOSSUtils;</span><br><span class="line"></span><br><span class="line">@PostMapping(&quot;/upload&quot;)</span><br><span class="line">public Result upload(MultipartFile image) throws IOException &#123;</span><br><span class="line">log.info(&quot;文件上传:&#123;&#125;&quot;,image.getOriginalFilename());</span><br><span class="line">//请求阿里云OSS</span><br><span class="line"> String url =aliOSSUtils.upload(image);</span><br><span class="line">log.info(&quot;文件上传完成,url:&#123;&#125;&quot;,url);</span><br><span class="line">return Result.success();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在postman 请求upload，POST的请求方式，选择Body中的from-date:</p>
+<p><img data-src="https://www.hepingan.top/wp-content/uploads/2023/08/image.png" alt="img"></p>
+<p>最后在阿里云OSS的对应Bucket里就可以看到上传的文件了</p>
+
   </div>
 
    <footer>
 
     <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-04 07:32:37" itemprop="dateModified" datetime="2024-02-04T07:32:37+08:00">2024-02-04</time>
+  </span>
 </div>
 
       
@@ -208,9 +246,9 @@
     <div class="item left">
       
 
-  <a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;UBWtnixc.jpg" title="Javaweb学习笔记【项目实战】（四）">
+  <a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picdl.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;6f4e1c010336fd60947972ab6b6f1c94.jpeg" title="Javaweb学习笔记【项目实战】（四）">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> Java web</span>
   <h3>Javaweb学习笔记【项目实战】（四）</h3>
   </a>
 
@@ -218,9 +256,9 @@
     <div class="item right">
       
 
-  <a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;oEZ1zKNX.jpg" title="事务管理+AOP记录技术">
+  <a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;picss.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;f6fa668d872e85ca35ba594d1cc31942.jpeg" title="事务管理+AOP记录技术">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> Java web</span>
   <h3>事务管理+AOP记录技术</h3>
   </a>
 
@@ -242,6 +280,9 @@
       <div class="contents panel pjax" data-title="Contents">
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="精通Java学习之路（二）">精通Java学习之路（二）</a></li><li><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%89%EF%BC%89/" rel="bookmark" title="精通Java学习之路（三）">精通Java学习之路（三）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（一）">Javaweb学习笔记（一）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（三）">Javaweb学习笔记【项目实战】（三）</a></li><li><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></li><li class="active"><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" rel="bookmark" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></li><li><a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" rel="bookmark" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -254,13 +295,13 @@
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">42</span>
+        <span class="count">43</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">8</span>
+        <span class="count">9</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -349,7 +390,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">精通Java学习之路（四）</a></span>
+    <span><a href="/2024/02/04/hello-world/" title="Hello World">Hello World</a></span>
   </li>
 
       
@@ -358,10 +399,22 @@
 <div class="breadcrumb">
 <a href="/categories/java/" title="In Java">Java</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/java/service/" title="In 微服务">微服务</a>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
 </div>
 
-    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%90Feign-Gateway%E3%80%91/" title="SpringCloud微服务学习笔记（二）【Feign,Gateway】">SpringCloud微服务学习笔记（二）【Feign,Gateway】</a></span>
+    <span><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></span>
   </li>
 
       
@@ -370,16 +423,17 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" title="精通Java学习之路（二）">精通Java学习之路（二）</a></span>
+    <span><a href="/2024/02/03/%E3%80%90%E7%BD%AE%E9%A1%B6%E3%80%91%E4%BB%8B%E7%BB%8D%E4%B8%8E%E6%94%AF%E6%8C%81%E6%88%91/" title="【置顶】介绍与支持我">【置顶】介绍与支持我</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
 </div>
 
-    <span><a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a></span>
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Hadoop大数据基础学习笔记">Hadoop大数据基础学习笔记</a></span>
   </li>
 
       
@@ -395,10 +449,9 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
 </div>
 
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%BA%8C%E3%80%91-%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/" title="企业级微服务大项目实战《学成在线》【二】(课程相关接口)">企业级微服务大项目实战《学成在线》【二】(课程相关接口)</a></span>
+    <span><a href="/2023/05/12/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" title="MySQL数据库学习（一）">MySQL数据库学习（一）</a></span>
   </li>
 
       
@@ -407,7 +460,19 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2024/02/03/swing%E7%95%8C%E9%9D%A2UI/" title="swing界面UI">swing界面UI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></span>
   </li>
 
       
@@ -418,25 +483,6 @@
 </div>
 
     <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%BA%8C%E4%B8%8A%EF%BC%89/" title="我的故事（大二上）">我的故事（大二上）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/%E4%BF%AE%E5%A4%8D%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" title="修复域名访问问题">修复域名访问问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
-</div>
-
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%89%E3%80%91%EF%BC%88Nacos-Gateway-Minio%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）">企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）</a></span>
   </li>
 
   </ul>

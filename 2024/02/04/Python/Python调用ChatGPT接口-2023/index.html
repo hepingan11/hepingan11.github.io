@@ -30,7 +30,7 @@
 
 
   <title>
-Python调用ChatGPT接口(2023) |
+Python调用ChatGPT接口(2023) - Python |
 练竹园 = 何平安 = 世界很大，代码连接世界</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -100,12 +100,12 @@ Python调用ChatGPT接口(2023) |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/rsbTT6M3.jpg"></li>
-          <li class="item" data-background-image="https://picdm.sunbangyan.cn/2024/02/04/fe7f931670885b70e43bedd53a975e53.jpeg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/E1XT8m6p.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/3pxOT2mR.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/oIJGpXii.jpg"></li>
           <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/7b63011683b8fbe48aeb454069754742.jpeg"></li>
-          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/75280808746b3a76c93c0e193acbe37b.jpeg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/I1e3e5ui.webp"></li>
+          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlm4wd.jpg"></li>
+          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlm5TA.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2023/10/04/7nh1HUTd.png"></li>
         </ul>
       </div>
     </header>
@@ -130,7 +130,9 @@ Python调用ChatGPT接口(2023) |
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/python/" itemprop="item" rel="index" title="In Python"><span itemprop="name">Python</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
@@ -149,12 +151,41 @@ Python调用ChatGPT接口(2023) |
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <p>本篇将使用 python调用chatgpt接口</p>
+<h2 id="注册OpenAi账号"><a href="#注册OpenAi账号" class="headerlink" title="注册OpenAi账号#"></a>注册OpenAi账号<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVwaW5nYW4vcC8xNzY4Mzc2OC5odG1sIzEyOTQ4MzA0NDU=">#</span></h2><p>随便找一个魔法软件登录OpenAi。地址就算漂亮国或新加坡吧，进入OpenAi官网：<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Byb2R1Y3Q=">Product (openai.com)</span>，点击右上方的log in</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230907002932704-1898250926.png" alt="img"></p>
+<p>进入后便可以注册你的 openai账号了，使用下面的Goodgle账号登录，再注册一个谷歌账号，然后按要求写就行。</p>
+<p><strong>注意最重要的来了！</strong></p>
+<p>电话号码由于国内的号码openai不支持，这时就需要使用外网的虚拟电话号进行接收短信验证码了。使用SMS网站：<span class="exturl" data-url="aHR0cHM6Ly9zbXMtYWN0aXZhdGUub3JnL2Nu">SMS-Activate是在线接受短信的虚拟号码服务</span>，然后在左边的侧边栏里的搜索框输入openai，再选着一个号码，我选的是印度尼西亚的，只需要10p（0.1美元），但是初始是没有钱的，先注册登录这个网站，然后右上方账户下面有个加号，这里就是充值的地方。<img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230907003552244-163135568.png" alt="img"></p>
+<p> 最新的SMS仅支持最低充值2美元，也就是14RMB的样子，准备好钱钱哦~，里面的支付方式比较熟悉的有支付宝。</p>
+<p>充值完成后购买一个外网的号码，这时会自动给你跳转到接收短信的页面。</p>
+<p>返回刚刚的Openai官网登录界面，这时将过程中不支持国内的号码改成刚刚买的外网号码就可以了。</p>
+<h2 id="获取OpenAi密钥（key）"><a href="#获取OpenAi密钥（key）" class="headerlink" title="获取OpenAi密钥（key）#"></a>获取OpenAi密钥（key）<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVwaW5nYW4vcC8xNzY4Mzc2OC5odG1sIzM5NjU2NTgwMjY=">#</span></h2><p>登录openai后会出现下面的界面，选择API即可</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230907004436220-1043641621.png" alt="img"></p>
+<p>然后再点击右上角头像选择查看API key：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230907004720758-1498191959.png" alt="img"></p>
+<p>然后再点击Create new sercet key就可以查看你的key了</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230907005353446-1374399849.png" alt="img"></p>
+<h2 id="在Python中实现chatgpt对话窗"><a href="#在Python中实现chatgpt对话窗" class="headerlink" title="在Python中实现chatgpt对话窗#"></a>在Python中实现chatgpt对话窗<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVwaW5nYW4vcC8xNzY4Mzc2OC5odG1sIzE0NjM3NzEyMTQ=">#</span></h2><p>直接复制下面的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment"># 用于存储API返回的上下文</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">gpt</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">send_request</span>(<span class="params">self,messages</span>):</span><br><span class="line">        <span class="comment"># 设置代理服务器的地址和端口</span></span><br><span class="line">        proxies = &#123;</span><br><span class="line">            <span class="string">&quot;http&quot;</span>: <span class="string">&quot;http://127.0.0.1:7890&quot;</span>,</span><br><span class="line">            <span class="string">&quot;https&quot;</span>: <span class="string">&quot;http://127.0.0.1:7890&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># ChatGPT API的URL</span></span><br><span class="line">        url = <span class="string">&quot;https://api.openai.com/v1/chat/completions&quot;</span></span><br><span class="line">        <span class="comment"># ChatGPT API的访问密钥</span></span><br><span class="line">        api_key = <span class="string">&quot;【在这输入 ChatGPT API的访问密钥】&quot;</span></span><br><span class="line">        <span class="comment"># 请求参数</span></span><br><span class="line">        parameters = &#123;</span><br><span class="line">                      <span class="string">&quot;model&quot;</span>: <span class="string">&quot;gpt-3.5-turbo-0301&quot;</span>, <span class="comment">#gpt-3.5-turbo-0301</span></span><br><span class="line">                      <span class="string">&quot;messages&quot;</span>:messages<span class="comment"># [&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: context&#125;]</span></span><br><span class="line">                    &#125;</span><br><span class="line">        <span class="comment"># 请求头</span></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Authorization&quot;</span>: <span class="string">f&quot;Bearer <span class="subst">&#123;api_key&#125;</span>&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># 发送请求</span></span><br><span class="line">        response = requests.post(url, headers=headers, json=parameters, proxies=proxies)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 解析响应</span></span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            data = response.json()</span><br><span class="line">            text = data[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> text</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(response)</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Sorry, something went wrong.&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start_conversation</span>(<span class="params">self,messages</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Welcome to ChatGPT! How can I help you today?&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进入对话循环</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># 获取用户输入</span></span><br><span class="line">            user_input = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">            user_message=&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: user_input&#125;</span><br><span class="line">            <span class="comment"># 将用户输入添加到messages中</span></span><br><span class="line">            messages.append(user_message)</span><br><span class="line">            <span class="comment"># 发送API请求</span></span><br><span class="line">            response = self.send_request(messages)</span><br><span class="line">            <span class="comment"># 输出API返回内容</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;ChatBot：&quot;</span>,response[<span class="string">&quot;content&quot;</span>])</span><br><span class="line">            </span><br><span class="line">            <span class="comment">#将API接口返回的内容添加至messages，以用作多轮对话</span></span><br><span class="line">            messages.append(response)</span><br><span class="line">            <span class="comment"># 如果API返回的内容包含&quot;goodbye&quot;，则结束对话循环</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;goodbye&quot;</span> <span class="keyword">in</span> user_input:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Goodbye!&quot;</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    messages=[&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;你是一个助手&quot;</span>&#125;] <span class="comment">#初始化prompt</span></span><br><span class="line">    gpt().start_conversation(messages)</span><br></pre></td></tr></table></figure>
+
+<p>记得修改你的openai key</p>
+<p><strong>查看你的剩余额度：</strong></p>
+<p> <img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230907005649289-456792170.png" alt="img"></p>
+<p>返回刚刚的openai网站，点击这个Upgrade就可以查看了。</p>
+
   </div>
 
    <footer>
 
     <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-04 07:23:30" itemprop="dateModified" datetime="2024-02-04T07:23:30+08:00">2024-02-04</time>
+  </span>
 </div>
 
       
@@ -208,7 +239,7 @@ Python调用ChatGPT接口(2023) |
     <div class="item left">
       
 
-  <a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;cHt7zXWV.jpg" title="Redis数据库学习">
+  <a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;oEZ1zKNX.jpg" title="Redis数据库学习">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Redis数据库学习</h3>
@@ -218,9 +249,9 @@ Python调用ChatGPT接口(2023) |
     <div class="item right">
       
 
-  <a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%EF%BC%82%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%EF%BC%82%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;picdl.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;44f2908163495c658625702d9cc71f00.jpeg" title="企业级开发项目＂苍穹外卖＂（二）">
+  <a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s11.ax1x.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;pFlmRyD.jpg" title="企业级开发项目＂苍穹外卖＂（二）">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> 苍穹外卖</span>
   <h3>企业级开发项目＂苍穹外卖＂（二）</h3>
   </a>
 
@@ -240,8 +271,12 @@ Python调用ChatGPT接口(2023) |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8COpenAi%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">注册OpenAi账号#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96OpenAi%E5%AF%86%E9%92%A5%EF%BC%88key%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">获取OpenAi密钥（key）#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Python%E4%B8%AD%E5%AE%9E%E7%8E%B0chatgpt%E5%AF%B9%E8%AF%9D%E7%AA%97"><span class="toc-number">3.</span> <span class="toc-text">在Python中实现chatgpt对话窗#</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/04/Python/%E6%9C%89C%E5%92%8CJava%E7%9A%84%E5%BA%95%E5%AD%90%E5%A6%82%E4%BD%95%E9%80%9F%E9%80%9APython%E8%AF%AD%E6%B3%95/" rel="bookmark" title="有C和Java的底子如何速通Python语法">有C和Java的底子如何速通Python语法</a></li><li class="active"><a href="/2024/02/04/Python/Python%E8%B0%83%E7%94%A8ChatGPT%E6%8E%A5%E5%8F%A3-2023/" rel="bookmark" title="Python调用ChatGPT接口(2023)">Python调用ChatGPT接口(2023)</a></li><li><a href="/2024/02/04/Python/Python%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E6%A0%A1%E5%9B%AD%E8%AF%BE%E8%A1%A8-%E5%BC%BA%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%B8%BE%E4%BE%8B/" rel="bookmark" title="Python爬虫获取校园课表(强制系统举例)">Python爬虫获取校园课表(强制系统举例)</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -254,13 +289,13 @@ Python调用ChatGPT接口(2023) |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">42</span>
+        <span class="count">43</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">8</span>
+        <span class="count">9</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -325,7 +360,7 @@ Python调用ChatGPT接口(2023) |
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%EF%BC%82%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%EF%BC%82%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -347,9 +382,19 @@ Python调用ChatGPT接口(2023) |
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
 </div>
 
-    <span><a href="/2024/02/04/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%BA%8C%E3%80%91-%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/" title="企业级微服务大项目实战《学成在线》【二】(课程相关接口)">企业级微服务大项目实战《学成在线》【二】(课程相关接口)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/Axios%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%AE%9E%E4%BE%8B/" title="Axios前后端交互实例">Axios前后端交互实例</a></span>
   </li>
 
       
@@ -359,53 +404,7 @@ Python调用ChatGPT接口(2023) |
 <a href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
 </div>
 
-    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B-%E4%B8%80/" title="企业级开发项目《苍穹外卖》(一)">企业级开发项目《苍穹外卖》(一)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/%E9%98%BF%E9%87%8C%E4%BA%91%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%88%86%E4%BA%AB/" title="阿里云网站搭建分享">阿里云网站搭建分享</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/03/%E3%80%90%E7%BD%AE%E9%A1%B6%E3%80%91%E4%BB%8B%E7%BB%8D%E4%B8%8E%E6%94%AF%E6%8C%81%E6%88%91/" title="【置顶】介绍与支持我">【置顶】介绍与支持我</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/python/" title="In Python">Python</a>
-</div>
-
-    <span><a href="/2024/02/04/Python/%E6%9C%89C%E5%92%8CJava%E7%9A%84%E5%BA%95%E5%AD%90%E5%A6%82%E4%BD%95%E9%80%9F%E9%80%9APython%E8%AF%AD%E6%B3%95/" title="有C和Java的底子如何速通Python语法">有C和Java的底子如何速通Python语法</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/%E4%BF%AE%E5%A4%8D%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" title="修复域名访问问题">修复域名访问问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">精通Java学习之路（四）</a></span>
+    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" title="企业级开发项目＂苍穹外卖＂（二）">企业级开发项目＂苍穹外卖＂（二）</a></span>
   </li>
 
       
@@ -426,7 +425,16 @@ Python调用ChatGPT接口(2023) |
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a></span>
+    <span><a href="/2024/02/03/html-css%E5%9F%BA%E7%A1%80/" title="html,css基础">html,css基础</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/03/%E5%A4%A7%E4%B8%80%E4%B8%8Bjava%E6%9C%9F%E6%9C%AB%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E8%8D%A3%E8%8E%B7%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%B8%80%EF%BC%89/" title="大一下java期末设计：学生信息管理系统（荣获班上第一）">大一下java期末设计：学生信息管理系统（荣获班上第一）</a></span>
   </li>
 
       
@@ -436,7 +444,34 @@ Python调用ChatGPT接口(2023) |
 <a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
 </div>
 
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E5%9B%9B%E3%80%91%EF%BC%88%E5%AA%92%E8%B5%84%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【四】（媒资管理模块）">企业级微服务大项目实战《学成在线》【四】（媒资管理模块）</a></span>
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%80%E3%80%91-%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="企业级微服务大项目实战《学成在线》【一】(项目环境搭建)">企业级微服务大项目实战《学成在线》【一】(项目环境搭建)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="微信小程序开发学习笔记">微信小程序开发学习笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a></span>
   </li>
 
   </ul>

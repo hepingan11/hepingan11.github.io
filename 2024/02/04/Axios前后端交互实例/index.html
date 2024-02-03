@@ -100,12 +100,12 @@ Axios前后端交互实例 |
       </div>
       <div id="imgs" class="pjax">
         <ul>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/UdwXvHnV.jpg"></li>
           <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/6f4e1c010336fd60947972ab6b6f1c94.jpeg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/bcl7RN7F.webp"></li>
+          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/f6fa668d872e85ca35ba594d1cc31942.jpeg"></li>
           <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/GraBbJCq.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/gfFcjdmT.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/aqpk7vZD.webp"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/rsbTT6M3.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/oEZ1zKNX.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/7pc8xvat.jpg"></li>
         </ul>
       </div>
     </header>
@@ -149,12 +149,87 @@ Axios前后端交互实例 |
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <p><strong>什么是前后端联调？</strong></p>
+<p>在我们开发的过程中，发送请求的ajax数据都不是后端返回的真数据，而是我们自己通过接口mock模拟的假数据，当前端的代码编写完成后，后端的接口也写好后，我们就需要把mock数据换点，尝试使用后端提供的数据，进行一个前后端的调试，我们会把这个过程叫做前后端接口联调。</p>
+<p> <strong>真正的零基础都是从安装开始的AwA</strong></p>
+<p>编译器选择IDEA：附赠激活码：<span class="exturl" data-url="aHR0cHM6Ly9haWppaHVvLmNuL3Bvc3QvNDUuaHRtbA==">IntelliJ IDEA2023.2 破解 永久激活 最新版IDEA激活 亲测可用！ - 爱激活网 (aijihuo.cn)</span></p>
+<p>Node.js: <span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMuY24vZG93bmxvYWQv">下载 | Node.js 中文网 (nodejs.cn)</span>选择对应版本，安装程序除了安装地址以外其它都是默认就行</p>
+<p>nginx：<span class="exturl" data-url="aHR0cDovL25naW54Lm9yZy9lbi9kb3dubG9hZC5odG1s">nginx: download</span></p>
+<p>MySQL：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zMzgxNDk3NDc=">超详细MySQL安装及基本使用教程 - 知乎 (zhihu.com)</span></p>
+<p>先来介绍下前后端是怎么连接交互的：</p>
+<p>一般是前端设计界面，向后端发送一些请求，而发送请求的技术选用的是Ajax，但现在流行的一般都是先转换成Json格式来交互数据的，</p>
+<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><p><strong>先来说说什么是Ajax</strong></p>
+<p>异步 JavaScript 和 XML，或 <span class="exturl" data-url="aHR0cHM6Ly93d3cuc2VtYW50aWNzY2hvbGFyLm9yZy9wYXBlci9BamF4JTNBLUEtTmV3LUFwcHJvYWNoLXRvLVdlYi1BcHBsaWNhdGlvbnMtR2FycmV0dC9jNDQwYWU3NjVmZjE5ZGRkM2RlZGEyNGE5MmFjMzljZWY5NTcwZjFlP3AyZGY=">Ajax</span> 本身不是一种技术，而是一种将一些现有技术结合起来使用的方法，包括：<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSFRNTA==">HTML</span> 或 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9HbG9zc2FyeS9YSFRNTA==">XHTML</span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQ1NT">CSS</span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSmF2YVNjcmlwdA==">JavaScript</span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL0RvY3VtZW50X09iamVjdF9Nb2RlbA==">DOM</span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvWE1M">XML</span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvWFNMVA==">XSLT</span>、以及最重要的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest"><code>XMLHttpRequest</code></a> 对象。当使用结合了这些技术的 Ajax 模型以后，网页应用能够快速地将增量更新呈现在用户界面上，而不需要重载（刷新）整个页面。这使得程序能够更快地回应用户的操作。Ajax 最吸引人的特性是它的“异步”性质，这意味着它可以与服务器通信、交换数据并更新页面，而无需刷新页面。</p>
+<p>尽管 Ajax 中的 X 代表 XML，但是 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9HbG9zc2FyeS9KU09O">JSON</span> 才是首选，因为它更加轻量，而且是用 JavaScript 编写的。在 Ajax 模型中，JSON 和 XML 都被用来包装信息</p>
+<p><strong>HTTP请求报文格式与参数</strong></p>
+<p>行:     POST &#x2F;s?ie&#x3D;utf-8 HTTP&#x2F;1.1</p>
+<p>头:     Host: hepingan.top</p>
+<p>    Cookie: a&#x3D;name&#x3D;hepingan</p>
+<p>    Content-type: application&#x2F;x-www-form-urlencoded</p>
+<p>    User-Agent: chrome 83</p>
+<p>空行</p>
+<p>体   username&#x3D;admin&amp;password&#x3D;admin</p>
+<p>上面的就是一个http请求的例子，下面就是响应报文的例子</p>
+<p>行  HTTP&#x2F;1.1 200 OK</p>
+<p>头  Content-Type: text&#x2F;html;charset&#x3D;utf-8</p>
+<p>   Content-length: 2048</p>
+<p>   Content-encoding: gzip</p>
+<p>空行</p>
+<p>体  <html></p>
+<p>     ….</p>
+<p>   </html></p>
+<p>首先先搞后端，我用的是java 的springboot框架，创建时选择如下配置：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202310/3018339-20231018223004705-1773165267.png" alt="img"></p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202310/3018339-20231018223011635-2031942681.png" alt="img"></p>
+<p>springboot的版本尽量选低点，不然不兼容出问题。jdk版本我选的是11.</p>
+<p>打开pom.xml并在denpendences里引入mybatis的坐标：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后将application的文件格式给成yml，并输入：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9090</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">1234</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/hh?useUnicode=true&amp;characterEncoding=utf-8&amp;</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>password 和url的数据库名记得换成自己的！</strong>我这里写的后端端口为9090;</p>
+<p>引入数据库：</p>
+<p>右边选择数据库并添加数据源，选择mysql。</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202310/3018339-20231018224312725-360146685.png" alt="img"></p>
+<p>username输入root，password就是你的密码。</p>
+<p>然后创建一个表，mysql创建语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher</span><br><span class="line">(</span><br><span class="line">    id <span class="type">int</span> unsigned <span class="keyword">primary</span> key auto_increment comment <span class="string">&#x27;主键ID&#x27;</span>,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">20</span>) ,</span><br><span class="line">    age  <span class="type">int</span>         </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>然后再在idea自带的数据库表格编辑里添加几个数据方便测试。</p>
+<p>然后创建下面的包：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202310/3018339-20231018225814630-1272756620.png" alt="img"></p>
+<p>先编辑TeacherController：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/teacher&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TeacherController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TeacherMapper teacherMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Teacher&gt; <span class="title function_">ListTeacher</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Teacher&gt; list = teacherMapper.ListTeacher();</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Teacher <span class="title function_">getTeacher</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> teacherMapper.getTeacher(id);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>大概意思就是一个&#x2F;teacher的接口里有get形式查询teacher表的请求和根据id查询的接口。</p>
+<p>然后再在TeacherMapper里编写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">TeacherMapper</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select(&quot;select * from teacher&quot;)</span></span><br><span class="line">    List&lt;Teacher&gt; <span class="title function_">ListTeacher</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select(&quot;select *from teacher where id=#&#123;id&#125;&quot;)</span></span><br><span class="line">    Teacher <span class="title function_">getTeacher</span><span class="params">(Long id)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后启动项目：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202310/3018339-20231018231935751-240831230.png" alt="img"></p>
+<p>然后在浏览器输入localhost:9090&#x2F;teacher&#x2F;和localhost:9090&#x2F;teacher&#x2F;1，如果有结果就说明成功了。</p>
+<p>接下来是前端：</p>
+<p>直接随便创建个html文件，里面就编写：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>ajax<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;dataContainer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">			<span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span></span><br><span class="line"><span class="language-javascript">			<span class="keyword">var</span> dataContainer = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;dataContainer&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">			</span></span><br><span class="line"><span class="language-javascript">			xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">			  <span class="keyword">if</span>(xhr.<span class="property">readyState</span> === <span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">			    <span class="keyword">if</span>(xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">			      <span class="comment">// 请求成功，处理返回的数据</span></span></span><br><span class="line"><span class="language-javascript">			      dataContainer.<span class="property">innerHTML</span> = xhr.<span class="property">responseText</span>;</span></span><br><span class="line"><span class="language-javascript">			    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">			      <span class="comment">// 请求失败，处理错误</span></span></span><br><span class="line"><span class="language-javascript">			      <span class="variable language_">console</span>.<span class="title function_">error</span>(xhr.<span class="property">statusText</span>);</span></span><br><span class="line"><span class="language-javascript">			    &#125;</span></span><br><span class="line"><span class="language-javascript">			  &#125;</span></span><br><span class="line"><span class="language-javascript">			&#125;;</span></span><br><span class="line"><span class="language-javascript">			</span></span><br><span class="line"><span class="language-javascript">			xhr.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;http://localhost:9090/teacher/&#x27;</span>, <span class="literal">true</span>);</span></span><br><span class="line"><span class="language-javascript">			xhr.<span class="title function_">send</span>();</span></span><br><span class="line"><span class="language-javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>记得引入axios的依赖，使用node的指令（node安装教程：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTU2MTk2L2FydGljbGUvZGV0YWlscy8xMjc1NzkxMTY=">【精选】Node.js和Vue的安装与配置（超详细步骤）_nodejs安装vue-CSDN博客</span>或者我后面的文章：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVwaW5nYW4vcC8xNzc3NjkwNS5odG1s">通过node.js部署vue项目 - 何平安 - 博客园 (cnblogs.com)</span>）在当前项目下输入npm install axios或者直接在html中输入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后再运行浏览器打开就可以看到成果了。</p>
+
   </div>
 
    <footer>
 
     <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-04 07:24:33" itemprop="dateModified" datetime="2024-02-04T07:24:33+08:00">2024-02-04</time>
+  </span>
 </div>
 
       
@@ -208,7 +283,7 @@ Axios前后端交互实例 |
     <div class="item left">
       
 
-  <a href="/2024/02/04/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;zGtbnCj2.jpg" title="说说nginx反向代理和Kong网关">
+  <a href="/2024/02/04/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2023&#x2F;10&#x2F;04&#x2F;IskM26R0.png" title="说说nginx反向代理和Kong网关">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>说说nginx反向代理和Kong网关</h3>
@@ -218,7 +293,7 @@ Axios前后端交互实例 |
     <div class="item right">
       
 
-  <a href="/2024/02/04/%E9%80%9A%E8%BF%87node-js%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;bcl7RN7F.webp" title="通过node.js部署vue项目">
+  <a href="/2024/02/04/%E9%80%9A%E8%BF%87node-js%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;0Gclhvmj.jpg" title="通过node.js部署vue项目">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>通过node.js部署vue项目</h3>
@@ -240,6 +315,7 @@ Axios前后端交互实例 |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ajax"><span class="toc-number">1.</span> <span class="toc-text">Ajax</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -254,13 +330,13 @@ Axios前后端交互实例 |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">42</span>
+        <span class="count">43</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">8</span>
+        <span class="count">9</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -347,9 +423,42 @@ Axios前后端交互实例 |
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
 </div>
 
-    <span><a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></span>
+    <span><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/" title="Javaweb学习笔记【项目实战】（三）">Javaweb学习笔记【项目实战】（三）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mystory/" title="In 我的传奇">我的传奇</a>
+</div>
+
+    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8A%EF%BC%89/" title="我的故事（大一上）">我的故事（大一上）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="In Python">Python</a>
+</div>
+
+    <span><a href="/2024/02/04/Python/Python%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E6%A0%A1%E5%9B%AD%E8%AF%BE%E8%A1%A8-%E5%BC%BA%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%B8%BE%E4%BE%8B/" title="Python爬虫获取校园课表(强制系统举例)">Python爬虫获取校园课表(强制系统举例)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E5%9B%9B%E3%80%91%EF%BC%88%E5%AA%92%E8%B5%84%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【四】（媒资管理模块）">企业级微服务大项目实战《学成在线》【四】（媒资管理模块）</a></span>
   </li>
 
       
@@ -358,7 +467,7 @@ Axios前后端交互实例 |
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/03/%E5%A4%A7%E4%B8%80%E4%B8%8Bjava%E6%9C%9F%E6%9C%AB%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E8%8D%A3%E8%8E%B7%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%B8%80%EF%BC%89/" title="大一下java期末设计：学生信息管理系统（荣获班上第一）">大一下java期末设计：学生信息管理系统（荣获班上第一）</a></span>
+    <span><a href="/2024/02/04/%E9%80%9A%E8%BF%87node-js%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/" title="通过node.js部署vue项目">通过node.js部署vue项目</a></span>
   </li>
 
       
@@ -367,7 +476,7 @@ Axios前后端交互实例 |
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/%E9%98%BF%E9%87%8C%E4%BA%91%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%88%86%E4%BA%AB/" title="阿里云网站搭建分享">阿里云网站搭建分享</a></span>
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
   </li>
 
       
@@ -385,7 +494,19 @@ Axios前后端交互实例 |
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%EF%BC%82%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%EF%BC%82%EF%BC%88%E4%BA%8C%EF%BC%89/" title="企业级开发项目＂苍穹外卖＂（二）">企业级开发项目＂苍穹外卖＂（二）</a></span>
+    <span><a href="/2024/02/03/swing%E7%95%8C%E9%9D%A2UI/" title="swing界面UI">swing界面UI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></span>
   </li>
 
       
@@ -395,44 +516,7 @@ Axios前后端交互实例 |
 <a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
 </div>
 
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%80%E3%80%91-%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="企业级微服务大项目实战《学成在线》【一】(项目环境搭建)">企业级微服务大项目实战《学成在线》【一】(项目环境搭建)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/mystory/" title="In 我的传奇">我的传奇</a>
-</div>
-
-    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%BA%8C%E4%B8%8A%EF%BC%89/" title="我的故事（大二上）">我的故事（大二上）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%89%E3%80%91%EF%BC%88Nacos-Gateway-Minio%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）">企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）</a></span>
   </li>
 
   </ul>

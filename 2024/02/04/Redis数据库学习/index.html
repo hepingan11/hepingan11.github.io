@@ -100,12 +100,12 @@ Redis数据库学习 |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/E1XT8m6p.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/cHt7zXWV.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/se1ylCIc.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/AIfisT2e.jpg"></li>
-          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/44f2908163495c658625702d9cc71f00.jpeg"></li>
-          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/9b1502552d0f9e3389645068570f950b.jpeg"></li>
+          <li class="item" data-background-image="https://picst.sunbangyan.cn/2024/02/04/0a1fd33f2dc6a6b511ab77d7b39ba996.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/oW9n6dBf.jpg"></li>
+          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlm4wd.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/rsbTT6M3.jpg"></li>
+          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlmheH.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2023/10/04/IskM26R0.png"></li>
         </ul>
       </div>
     </header>
@@ -149,12 +149,65 @@ Redis数据库学习 |
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <p>Redis 数据库的存储格式就有点像Map集合，有key-value，一个key指向一个value。</p>
+<p>Redis 在 Java Web 主要有两个应用场景：</p>
+<ul>
+<li>存储 缓存 用的数据；</li>
+<li>需要高速读&#x2F;写的场合使用它快速读&#x2F;写；</li>
+</ul>
+<h2 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h2><p>链接: <span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMTc0dkdteUFjVXdhSXZsNEZnWFJmbkE/cHdkPTEyMzQ=">https://pan.baidu.com/s/174vGmyAcUwaIvl4FgXRfnA?pwd=1234</span> 提取码: 1234 </p>
+<p>解压后文件夹的内容：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230906133134044-61353266.png" alt="img"></p>
+<p>然后在当前目录下运行cmd，并输入redis-server.conf redis-windows.conf,就会出现下面的画面</p>
+<p> <img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230906133857648-1743803675.png" alt="img"></p>
+<p>结束redis服务按下 快捷键ctrl+c</p>
+<p>**连接redis:**在当前目录再运行一个cmd命令窗，并输入redis-cli.exe -h localhost -p 6379,意思就在在当前计算机ip下运行端口号为6379的redis服务。</p>
+<p><strong>更改redis连接密码：</strong>此时的redis连接是不需要密码的，这时就需要进入redis.windows.conf文件配置密码，在第443行将requirepass foobared注释去掉并将foobared更改为您的密码。</p>
+<p>这时再去连接就会出现下面的错误：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230906140550277-210793071.png" alt="img"></p>
+<p>或者另一种方式设置密码：</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQwMjYwODQvYXJ0aWNsZS9kZXRhaWxzLzEwNTc2NzkwNw==">Redis连接报错：ERR Client sent AUTH, but no password is set_rediscommandexecutionexception: err client sent au_锦书难托的博客-CSDN博客</span></p>
+<p>这时再ctrl+c退出再输入redis-cli.exe -h localhost -p 6379 -a 密码。这时就可以了。</p>
+<h3 id="使用图形化管理器运行连接redis"><a href="#使用图形化管理器运行连接redis" class="headerlink" title="使用图形化管理器运行连接redis"></a>使用图形化管理器运行连接redis</h3><p>下载：链接: <span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMUZUeEg3bG1zSnkybUI4QlI0X0lxU3c/cHdkPTEyMzQ=">https://pan.baidu.com/s/1FTxH7lmsJy2mB8BR4_IqSw?pwd&#x3D;1234</span> 提取码: 1234 ，然后点击左上角的新建连接。地址输入localhost，密码就是你的密码。</p>
+<h2 id="Redis常用数据类型"><a href="#Redis常用数据类型" class="headerlink" title="Redis常用数据类型"></a>Redis常用数据类型</h2><p>基础的5种value：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230906141811057-297994851.png" alt="img"></p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230906141947966-1777001366.png" alt="img"></p>
+<h2 id="Redis常用命令"><a href="#Redis常用命令" class="headerlink" title="Redis常用命令"></a>Redis常用命令</h2><p> 在Another Redis Desktop Manager图形化操作软件里面操作redis：新建连接：地址输入localhost，密码就是你的redis密码，然后是名字，记得先开启redis服务。然后点击redis console，就可以输入命令了。</p>
+<h4 id="字符串命令"><a href="#字符串命令" class="headerlink" title="字符串命令"></a>字符串命令</h4><p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917114046484-1098819874.png" alt="img"></p>
+<h4 id="哈希命令"><a href="#哈希命令" class="headerlink" title="哈希命令"></a>哈希命令</h4><p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917114005858-1604787660.png" alt="img"></p>
+<h4 id="列表命令"><a href="#列表命令" class="headerlink" title="列表命令"></a>列表命令</h4><p>有序</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917115957619-1141054209.png" alt="img"></p>
+<h4 id="集合命令"><a href="#集合命令" class="headerlink" title="集合命令"></a>集合命令</h4><p>无序</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917132323881-971699888.png" alt="img"></p>
+<h4 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h4><p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917132551134-2115034583.png" alt="img"></p>
+<h4 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h4><p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917133240357-1983959648.png" alt="img"></p>
+<p>keys *：查看所有key；</p>
+<p>keys 10*：查看名字包含10的所有key</p>
+<h2 id="Java中操作Redis"><a href="#Java中操作Redis" class="headerlink" title="Java中操作Redis"></a>Java中操作Redis</h2><p>使用客户端操作：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917133815151-1973854951.png" alt="img"></p>
+<p>这里选用的是spring框架的spring data redis</p>
+<p>方法：</p>
+<p><img data-src="https://img2023.cnblogs.com/blog/3018339/202309/3018339-20230917134200101-1195312880.png" alt="img"></p>
+<p>在config软件包下创建一个redis配置类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory redisConnectionFactory)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;开始创建redis对象:&#123;&#125;&quot;</span>,redisConnectionFactory);</span><br><span class="line">        <span class="type">RedisTemplate</span> <span class="variable">redisTemplate</span>  <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>();</span><br><span class="line">        <span class="comment">//设置redis工厂对象</span></span><br><span class="line">        redisTemplate.setConnectionFactory(redisConnectionFactory);</span><br><span class="line">        redisTemplate.setKeySerializer(<span class="keyword">new</span> <span class="title class_">StringRedisSerializer</span>());</span><br><span class="line">        <span class="keyword">return</span> redisTemplate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后再创建一个测试类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testRedis</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(redisTemplate);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行如果控制台输出org.springframework.data.redis.core.RedisTemplate@xxxxxx就成功了</p>
+
   </div>
 
    <footer>
 
     <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-04 07:29:08" itemprop="dateModified" datetime="2024-02-04T07:29:08+08:00">2024-02-04</time>
+  </span>
 </div>
 
       
@@ -208,7 +261,7 @@ Redis数据库学习 |
     <div class="item left">
       
 
-  <a href="/2024/02/04/%E4%BD%BF%E7%94%A8OneDrive%E5%9C%A8%E7%BD%91%E7%AB%99%E5%9C%A8%E7%BA%BF%E6%92%AD%E6%94%BE%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s11.ax1x.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;pFlm5TA.jpg" title="使用OneDrive在网站在线播放音视频">
+  <a href="/2024/02/04/%E4%BD%BF%E7%94%A8OneDrive%E5%9C%A8%E7%BD%91%E7%AB%99%E5%9C%A8%E7%BA%BF%E6%92%AD%E6%94%BE%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picss.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;f6fa668d872e85ca35ba594d1cc31942.jpeg" title="使用OneDrive在网站在线播放音视频">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>使用OneDrive在网站在线播放音视频</h3>
@@ -218,9 +271,9 @@ Redis数据库学习 |
     <div class="item right">
       
 
-  <a href="/2024/02/04/Python/Python%E8%B0%83%E7%94%A8ChatGPT%E6%8E%A5%E5%8F%A3-2023/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2023&#x2F;10&#x2F;04&#x2F;IskM26R0.png" title="Python调用ChatGPT接口(2023)">
+  <a href="/2024/02/04/Python/Python%E8%B0%83%E7%94%A8ChatGPT%E6%8E%A5%E5%8F%A3-2023/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;picst.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;b50bdaf25d53a7c1806e709634078b5c.jpeg" title="Python调用ChatGPT接口(2023)">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> Python</span>
   <h3>Python调用ChatGPT接口(2023)</h3>
   </a>
 
@@ -240,6 +293,7 @@ Redis数据库学习 |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">下载和安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%AE%A1%E7%90%86%E5%99%A8%E8%BF%90%E8%A1%8C%E8%BF%9E%E6%8E%A5redis"><span class="toc-number">1.1.</span> <span class="toc-text">使用图形化管理器运行连接redis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">Redis常用数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">Redis常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%91%BD%E4%BB%A4"><span class="toc-number">3.0.1.</span> <span class="toc-text">字符串命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">3.0.2.</span> <span class="toc-text">哈希命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.0.3.</span> <span class="toc-text">列表命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%91%BD%E4%BB%A4"><span class="toc-number">3.0.4.</span> <span class="toc-text">集合命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="toc-number">3.0.5.</span> <span class="toc-text">有序集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.0.6.</span> <span class="toc-text">通用命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%AD%E6%93%8D%E4%BD%9CRedis"><span class="toc-number">4.</span> <span class="toc-text">Java中操作Redis</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -254,13 +308,13 @@ Redis数据库学习 |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">42</span>
+        <span class="count">43</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">8</span>
+        <span class="count">9</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -347,73 +401,88 @@ Redis数据库学习 |
   <li class="item">
     
 <div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/05/12/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" title="MySQL数据库学习（一）">MySQL数据库学习（一）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E9%98%BF%E9%87%8C%E4%BA%91%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%88%86%E4%BA%AB/" title="阿里云网站搭建分享">阿里云网站搭建分享</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%80/" title="企业级开发项目《苍穹外卖》(一)">企业级开发项目《苍穹外卖》(一)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/git%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" title="git从入门到入土">git从入门到入土</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mystory/" title="In 我的传奇">我的传奇</a>
+</div>
+
+    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
 </div>
 
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%80%E3%80%91-%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="企业级微服务大项目实战《学成在线》【一】(项目环境搭建)">企业级微服务大项目实战《学成在线》【一】(项目环境搭建)</a></span>
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%89%E3%80%91%EF%BC%88Nacos-Gateway-Minio%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）">企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/service/" title="In 微服务">微服务</a>
 </div>
 
-    <span><a href="/2024/02/04/Python/Python%E8%B0%83%E7%94%A8ChatGPT%E6%8E%A5%E5%8F%A3-2023/" title="Python调用ChatGPT接口(2023)">Python调用ChatGPT接口(2023)</a></span>
+    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" title="SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】">SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/python/" title="In Python">Python</a>
 </div>
 
-    <span><a href="/2024/02/04/%E4%BF%AE%E5%A4%8D%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" title="修复域名访问问题">修复域名访问问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/Axios%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%AE%9E%E4%BE%8B/" title="Axios前后端交互实例">Axios前后端交互实例</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/03/swing%E7%95%8C%E9%9D%A2UI/" title="swing界面UI">swing界面UI</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/Hadoop%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Hadoop大数据基础学习笔记">Hadoop大数据基础学习笔记</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/%E4%BD%BF%E7%94%A8OneDrive%E5%9C%A8%E7%BD%91%E7%AB%99%E5%9C%A8%E7%BA%BF%E6%92%AD%E6%94%BE%E9%9F%B3%E8%A7%86%E9%A2%91/" title="使用OneDrive在网站在线播放音视频">使用OneDrive在网站在线播放音视频</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
+    <span><a href="/2024/02/04/Python/%E6%9C%89C%E5%92%8CJava%E7%9A%84%E5%BA%95%E5%AD%90%E5%A6%82%E4%BD%95%E9%80%9F%E9%80%9APython%E8%AF%AD%E6%B3%95/" title="有C和Java的底子如何速通Python语法">有C和Java的底子如何速通Python语法</a></span>
   </li>
 
       
@@ -423,15 +492,6 @@ Redis数据库学习 |
 </div>
 
     <span><a href="/2024/02/03/%E3%80%90%E7%BD%AE%E9%A1%B6%E3%80%91%E4%BB%8B%E7%BB%8D%E4%B8%8E%E6%94%AF%E6%8C%81%E6%88%91/" title="【置顶】介绍与支持我">【置顶】介绍与支持我</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">精通Java学习之路（四）</a></span>
   </li>
 
   </ul>
