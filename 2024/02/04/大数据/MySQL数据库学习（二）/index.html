@@ -30,7 +30,7 @@
 
 
   <title>
-MySQL数据库学习（二） |
+MySQL数据库学习（二） - 大数据 |
 练竹园 = 何平安 = 世界很大，代码连接世界</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -100,12 +100,12 @@ MySQL数据库学习（二） |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/faf2a366c22728f1462c3f4d4a08d542.jpeg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/bcl7RN7F.webp"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/se1ylCIc.jpg"></li>
-          <li class="item" data-background-image="https://picdm.sunbangyan.cn/2024/02/04/b37fcc362fba9c732eb4e4a4d5103ed0.jpeg"></li>
+          <li class="item" data-background-image="https://s11.ax1x.com/2024/02/04/pFlmheH.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/kSusGLzm.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/UBWtnixc.jpg"></li>
           <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/0Gclhvmj.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/UdwXvHnV.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2023/10/04/7nh1HUTd.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/aqpk7vZD.webp"></li>
         </ul>
       </div>
     </header>
@@ -130,7 +130,9 @@ MySQL数据库学习（二） |
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="item" rel="index" title="In 大数据"><span itemprop="name">大数据</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
@@ -149,12 +151,106 @@ MySQL数据库学习（二） |
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <p><strong>排序查询</strong>：select 字段列表 from [表名] <strong>order by</strong> [字段名1] [asc升序&#x2F;desc降序，默认值为升序],[字段名2] [排序方式]；&#x2F;&#x2F;字段名1为优先级排序，如果字段名1有相同的，再以字段名2排序</p>
+<p><strong>聚合函数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>count</th>
+<th>统计数量（一般不选null的列）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>max</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>总和</td>
+</tr>
+<tr>
+<td>avg</td>
+<td>平均值</td>
+</tr>
+</tbody></table>
+<p>Select 聚合函数(字段名) from 表名；&#x2F;&#x2F;null值不参与所有聚合函数运算 ! ！</p>
+<p><strong>分组查询</strong>：selcet 字段列表 from [where 分组前条件限定] group by 分组字段名 [having 分组后条件过滤];&#x2F;&#x2F;分组后查询的字段为聚合函数和分组字段，查询其他字段无意义，执行顺序：where&gt;聚合函数&gt;having</p>
+<p>eg：select sex,avg(score),count(<em>) from where score&gt;60 student group by sex having count(</em>)&gt;1;&#x2F;&#x2F;查询student表格中以sex(性别)为分组的score值大于60的人的平均score（成绩）并且前面加上sex的数据后面加上分组后每个组的数量,如果人数小于2则过滤掉</p>
+<p>AS的用法： select [字段] [聚合函数] as [your_name] from … ：as就是将聚合函数的内容的字段有个名字</p>
+<p><strong>分页查询</strong>：select 字段列表 from limit 起始索引 , 查询条目数;&#x2F;&#x2F;起始索引&#x3D;（当前页码-1）*每页显示的条数</p>
+<h2 id="—多表查询—"><a href="#—多表查询—" class="headerlink" title="—多表查询—"></a>—<strong>多表查询</strong>—</h2><p>基础：select *from 表名1,表名2; 这种查会显示表1和表2的集合乘，即展示的表会有表1数量乘表2数量的乘积。</p>
+<p>隐式内连接：select 字段列表 from 表1，表2… where 条件;</p>
+<p>显示内连接：select 字段列表 from 表1 [inner] join 表2 on 条件;&#x2F;&#x2F;这两种差不多，只是表达不一样。</p>
+<p>左右连接：select 字段列表 from 表1 left&#x2F;right join 表2 on 条件;&#x2F;&#x2F;显示左&#x2F;右边的所有数据（因为有些条件会不显示部分数据或有些数据为null）</p>
+<h2 id="索引index"><a href="#索引index" class="headerlink" title="索引index"></a>索引index</h2><p>索引是对数据库表中一列或多列的值进行排序的一种结构。MySQL索引的建立对于MySQL的高效运行是很重要的，索引可以大大提高MySQL的检索速度</p>
+<ul>
+<li>主键索引：一张表只能有一个主键索引，不允许重复、不允许为 NULL；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE TableName ADD PRIMARY KEY(column_list); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>唯一索引：数据列不允许重复，允许为 NULL 值，一张表可有多个唯一索引，索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX IndexName ON `TableName`(`字段名`(length));</span><br><span class="line"># 或者</span><br><span class="line">ALTER TABLE TableName ADD UNIQUE (column_list); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>普通索引：一张表可以创建多个普通索引，一个普通索引可以包含多个字段，允许数据重复，允许 NULL 值插入；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX IndexName ON `TableName`(`字段名`(length));</span><br><span class="line"># 或者</span><br><span class="line">ALTER TABLE TableName ADD INDEX IndexName(`字段名`(length));</span><br></pre></td></tr></table></figure>
+
+<h2 id="视图view"><a href="#视图view" class="headerlink" title="视图view"></a>视图view</h2><p>视图是虚拟表，本身不存储数据，而是按照指定的方式进行查询。所以借助视图，来执行相同或相似的查询。</p>
+<p>使用视图和使用表完全一样，只需要把视图当成一张表就OK了。视图是一张虚拟表</p>
+<table>
+<thead>
+<tr>
+<th>操作指令</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建视图</td>
+<td><code>CREATE VIEW 视图名(列1，列2...) AS SELECT (列1，列2...) FROM ...;</code></td>
+</tr>
+<tr>
+<td>使用视图</td>
+<td><code>当成表使用就好</code></td>
+</tr>
+<tr>
+<td>修改视图</td>
+<td><code>CREATE OR REPLACE VIEW 视图名 AS SELECT [...] FROM [...];</code></td>
+</tr>
+<tr>
+<td>查看数据库已有视图</td>
+<td><code>&gt;SHOW TABLES [like...];</code>（可以使用模糊查找）</td>
+</tr>
+<tr>
+<td>查看视图详情</td>
+<td><code>DESC 视图名</code>或者<code>SHOW FIELDS FROM 视图名</code></td>
+</tr>
+<tr>
+<td>视图条件限制</td>
+<td><code>[WITH CHECK OPTION]</code></td>
+</tr>
+</tbody></table>
+<h2 id="授权与回收权限"><a href="#授权与回收权限" class="headerlink" title="授权与回收权限"></a>授权与回收权限</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">MySQL 赋予用户权限命令的简单格式可概括为：</span><br><span class="line"></span><br><span class="line"> 1 grant 权限 on 数据库对象 to 用户  </span><br><span class="line">一、grant 普通数据用户，查询、插入、更新、删除 数据库中所有表数据的权利</span><br><span class="line">1 grant select on testdb.* to common_user@&#x27;%&#x27;  </span><br><span class="line">2 grant insert on testdb.* to common_user@&#x27;%&#x27;  </span><br><span class="line">3 grant update on testdb.* to common_user@&#x27;%&#x27;  </span><br><span class="line">4 grant delete on testdb.* to common_user@&#x27;%&#x27; </span><br><span class="line">或者，用一条 MySQL 命令来替代：</span><br><span class="line"></span><br><span class="line"> 1 grant select, insert, update, delete on testdb.* to common_user@&#x27;%&#x27;  </span><br><span class="line">二、grant 数据库开发人员，创建表、索引、视图、存储过程、函数等权限</span><br><span class="line"></span><br><span class="line">grant 创建、修改、删除 MySQL 数据表结构权限。</span><br><span class="line">1 grant create on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line">2 grant alter  on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line">3 grant drop   on testdb.* to developer@&#x27;192.168.0.%&#x27;; </span><br><span class="line">grant 操作 MySQL 外键权限：</span><br><span class="line"></span><br><span class="line"> 1 grant references on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line"></span><br><span class="line">grant 操作 MySQL 临时表权限：</span><br><span class="line"></span><br><span class="line"> 1 grant create temporary tables on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line"></span><br><span class="line">grant 操作 MySQL 索引权限：</span><br><span class="line"></span><br><span class="line"> 1 grant index on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line"></span><br><span class="line">grant 操作 MySQL 视图、查看视图源代码权限：</span><br><span class="line">1 grant create view on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line">2 grant show   view on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line">grant 操作 MySQL 存储过程、函数权限：</span><br><span class="line">1 grant create routine on testdb.* to developer@&#x27;192.168.0.%&#x27;; -- now, can show procedure status  </span><br><span class="line">2 grant alter  routine on testdb.* to developer@&#x27;192.168.0.%&#x27;; -- now, you can drop a procedure  </span><br><span class="line">3 grant execute        on testdb.* to developer@&#x27;192.168.0.%&#x27;;  </span><br><span class="line">三、grant 普通 DBA 管理某个 MySQL 数据库的权限</span><br><span class="line"></span><br><span class="line">  1 grant all privileges on testdb to dba@&#x27;localhost&#x27;  </span><br><span class="line"></span><br><span class="line">其中，关键字 “privileges” 可以省略。</span><br><span class="line"></span><br><span class="line">四、grant 高级 DBA 管理 MySQL 中所有数据库的权限：</span><br><span class="line"></span><br><span class="line"> 1 grant all on *.* to dba@&#x27;localhost&#x27;  </span><br><span class="line"></span><br><span class="line">五、MySQL grant 权限，分别可以作用在多个层次上</span><br><span class="line"></span><br><span class="line">1. grant 作用在整个 MySQL 服务器上：</span><br><span class="line">1 grant select on *.* to dba@localhost; -- dba 可以查询 MySQL 中所有数据库中的表。  </span><br><span class="line">2 grant all    on *.* to dba@localhost; -- dba 可以管理 MySQL 中的所有数据库  </span><br><span class="line">2. grant 作用在单个数据库上：</span><br><span class="line">1 grant select on testdb.* to dba@localhost; -- dba 可以查询 testdb 中的表。  </span><br><span class="line">3. grant 作用在单个数据表上：</span><br><span class="line">1 grant select, insert, update, delete on testdb.orders to dba@localhost;  </span><br><span class="line">这里在给一个用户授权多张表时，可以多次执行以上语句。例如：</span><br><span class="line">1 grant select(user_id,username) on smp.users to mo_user@&#x27;%&#x27; identified by &#x27;123345&#x27;;  </span><br><span class="line">2 grant select on smp.mo_sms to mo_user@&#x27;%&#x27; identified by &#x27;123345&#x27;;  </span><br><span class="line">4. grant 作用在表中的列上：</span><br><span class="line">1 grant select(id, se, rank) on testdb.apache_log to dba@localhost;  </span><br><span class="line">5. grant 作用在存储过程、函数上：</span><br><span class="line">1 grant execute on procedure testdb.pr_add to &#x27;dba&#x27;@&#x27;localhost&#x27;  </span><br><span class="line">2 grant execute on function testdb.fn_add to &#x27;dba&#x27;@&#x27;localhost&#x27;  </span><br><span class="line">六、查看 MySQL 用户权限</span><br><span class="line"></span><br><span class="line">查看当前用户（自己）权限：</span><br><span class="line">1 show grants;  </span><br><span class="line">查看其他 MySQL 用户权限：</span><br><span class="line">1 show grants for dba@localhost;  </span><br><span class="line">七、撤销已经赋予给 MySQL 用户权限的权限。</span><br><span class="line"></span><br><span class="line">revoke 跟 grant 的语法差不多，只需要把关键字 “to” 换成 “from” 即可：</span><br><span class="line">1 grant  all on *.* to   dba@localhost;  </span><br><span class="line">2 revoke all on *.* from dba@localhost; </span><br><span class="line">八、MySQL grant、revoke 用户权限注意事项</span><br><span class="line"></span><br><span class="line">1. grant, revoke 用户权限后，该用户只有重新连接 MySQL 数据库，权限才能生效。</span><br></pre></td></tr></table></figure>
+
+
   </div>
 
    <footer>
 
     <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-04 23:08:06" itemprop="dateModified" datetime="2024-02-04T23:08:06+08:00">2024-02-04</time>
+  </span>
 </div>
 
       
@@ -208,7 +304,7 @@ MySQL数据库学习（二） |
     <div class="item left">
       
 
-  <a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picss.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;75280808746b3a76c93c0e193acbe37b.jpeg" title="精通Java学习之路（四）">
+  <a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;bcl7RN7F.webp" title="精通Java学习之路（四）">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Java基础</span>
   <h3>精通Java学习之路（四）</h3>
@@ -218,7 +314,7 @@ MySQL数据库学习（二） |
     <div class="item right">
       
 
-  <a href="/2024/02/04/Python/%E6%9C%89C%E5%92%8CJava%E7%9A%84%E5%BA%95%E5%AD%90%E5%A6%82%E4%BD%95%E9%80%9F%E9%80%9APython%E8%AF%AD%E6%B3%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;UdwXvHnV.jpg" title="有C和Java的底子如何速通Python语法">
+  <a href="/2024/02/04/Python/%E6%9C%89C%E5%92%8CJava%E7%9A%84%E5%BA%95%E5%AD%90%E5%A6%82%E4%BD%95%E9%80%9F%E9%80%9APython%E8%AF%AD%E6%B3%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;oW9n6dBf.jpg" title="有C和Java的底子如何速通Python语法">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Python</span>
   <h3>有C和Java的底子如何速通Python语法</h3>
@@ -240,8 +336,12 @@ MySQL数据库学习（二） |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%94%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E2%80%94"><span class="toc-number">1.</span> <span class="toc-text">—多表查询—</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95index"><span class="toc-number">2.</span> <span class="toc-text">索引index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BEview"><span class="toc-number">3.</span> <span class="toc-text">视图view</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E4%B8%8E%E5%9B%9E%E6%94%B6%E6%9D%83%E9%99%90"><span class="toc-number">4.</span> <span class="toc-text">授权与回收权限</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2023/05/12/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="bookmark" title="MySQL数据库学习（一）">MySQL数据库学习（一）</a></li><li class="active"><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></li><li><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="Hadoop大数据基础学习笔记">Hadoop大数据基础学习笔记</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -254,13 +354,13 @@ MySQL数据库学习（二） |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">43</span>
+        <span class="count">42</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">9</span>
+        <span class="count">10</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -347,10 +447,24 @@ MySQL数据库学习（二） |
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
 </div>
 
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%BA%8C%E3%80%91-%E8%AF%BE%E7%A8%8B%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/" title="企业级微服务大项目实战《学成在线》【二】(课程相关接口)">企业级微服务大项目实战《学成在线》【二】(课程相关接口)</a></span>
+    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0-%E4%B8%89-%E3%80%90Docker%EF%BC%8CMQ%E3%80%91/" title="SpringCloud微服务学习(三)【Docker，MQ】">SpringCloud微服务学习(三)【Docker，MQ】</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%90Feign-Gateway%E3%80%91/" title="SpringCloud微服务学习笔记（二）【Feign,Gateway】">SpringCloud微服务学习笔记（二）【Feign,Gateway】</a></span>
   </li>
 
       
@@ -359,26 +473,17 @@ MySQL数据库学习（二） |
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/02/04/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2024/02/03/Java/Java%E5%9F%BA%E7%A1%80/swing%E7%95%8C%E9%9D%A2UI/" title="swing界面UI">swing界面UI</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
 </div>
 
-    <span><a href="/2024/02/03/swing%E7%95%8C%E9%9D%A2UI/" title="swing界面UI">swing界面UI</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/stories/" title="In 我的传奇">我的传奇</a>
-</div>
-
-    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%BA%8C%E4%B8%8A%EF%BC%89/" title="我的故事（大二上）">我的故事（大二上）</a></span>
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Hadoop大数据基础学习笔记">Hadoop大数据基础学习笔记</a></span>
   </li>
 
       
@@ -395,50 +500,56 @@ MySQL数据库学习（二） |
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/java/" title="In Java">Java</a>
+<a href="/categories/Java/" title="In Java">Java</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/java/javaweb/" title="In Java web">Java web</a>
+<a href="/categories/Java/Java-web/" title="In Java web">Java web</a>
 </div>
 
-    <span><a href="/2024/02/04/Java/Java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%89%EF%BC%89/" title="精通Java学习之路（三）">精通Java学习之路（三）</a></span>
+    <span><a href="/2024/02/04/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
 </div>
 
-    <span><a href="/2024/02/04/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" title="说说nginx反向代理和Kong网关">说说nginx反向代理和Kong网关</a></span>
+    <span><a href="/2024/02/03/%E5%89%8D%E7%AB%AF/html-css%E5%9F%BA%E7%A1%80/" title="html,css基础">html,css基础</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
 </div>
 
-    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%89%E3%80%91%EF%BC%88Nacos-Gateway-Minio%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）">企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）</a></span>
+    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" title="SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】">SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/stories/" title="In 我的传奇">我的传奇</a>
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Java-web/" title="In Java web">Java web</a>
 </div>
 
-    <span><a href="/2024/02/03/%E6%88%91%E7%9A%84%E4%BC%A0%E5%A5%87/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+    <span><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Python/" title="In Python">Python</a>
+</div>
+
+    <span><a href="/2024/02/04/Python/Python%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E6%A0%A1%E5%9B%AD%E8%AF%BE%E8%A1%A8-%E5%BC%BA%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%B8%BE%E4%BE%8B/" title="Python爬虫获取校园课表(强制系统举例)">Python爬虫获取校园课表(强制系统举例)</a></span>
   </li>
 
   </ul>
