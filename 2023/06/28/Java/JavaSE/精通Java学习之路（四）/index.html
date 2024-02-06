@@ -1,0 +1,576 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="何平安" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="何平安" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="何平安" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/06/28/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/">
+
+
+
+  <title>
+精通Java学习之路（四） - JavaSE - Java |
+练竹园 = 何平安 = 世界很大，代码连接世界</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">精通Java学习之路（四）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-06-28 03:50:02">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-28T03:50:02+08:00">2023-06-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">练竹园</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/1e86d9b5ab6a0f3c06aae5296f66dd67.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/U46haKFT.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/GUnooeBx.webp"></li>
+          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/9b1502552d0f9e3389645068570f950b.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/Etm6GnfH.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/twldH9Lp.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/" itemprop="item" rel="index" title="In Java"><span itemprop="name">Java</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/JavaSE/" itemprop="item" rel="index" title="In JavaSE"><span itemprop="name">JavaSE</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/28/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/a.jpg">
+    <meta itemprop="name" content="Hepingan">
+    <meta itemprop="description" content="世界很大，代码连接世界, 欢迎来到何平安的个人博客~欢迎您的浏览">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="何平安">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p><strong>本文章的图片由于是天香园1.0的但是过期了图片就查看不了，就当我自己的一个纪念了吧~</strong></p>
+<h2 id="—并发包—"><a href="#—并发包—" class="headerlink" title="—并发包—"></a><strong>—并发包—</strong></h2><p>大型企业开发才用，我Java学得差不多以后再来学，主要是有点难，没学泛型与集合…</p>
+<p>练手的ConcurrentHashMap:</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import java.util.HashMap;import java.util.Hashtable;import java.util.concurrent.ConcurrentHashMap;public class bingfa &#123;public static HashMap&lt;String,String&gt; *maps*=new HashMap&lt;&gt;();// public static Map&lt;String,String&gt; maps=new Hashtable&lt;&gt;();public static void main(String[] args) &#123;Runnable r1=new MyRunnable();Thread t1=new Thread(r1,&quot;线程1&quot;);Thread t2=new Thread(r1,&quot;线程2&quot;);t1.start();t2.start();try &#123;t1.join();//让t1跑完,主线程不能竞争t1的CPUt2.join();//让t2跑完,主线程不能竞争t2的CPU&#125; catch (InterruptedException e) &#123;throw new RuntimeException(e);&#125;System.*out*.println(&quot;元素个数:&quot;+*maps*.size());&#125;static class MyRunnable implements Runnable&#123;@Overridepublic void run() &#123;for(int i=1;i&lt;=500000;i++)&#123;bingfa.*maps*.put(Thread.*currentThread*().getName()+i,Thread.*currentThread*().getName()+i);&#125;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="—Map集合—"><a href="#—Map集合—" class="headerlink" title="—Map集合—"></a><strong>—Map集合—</strong></h2><p>Map集合特点：无序性，不重复性（后面重复的键对应的元素会覆盖前面的整个元素），无索引的，对值无要求都可以为null。一个元素的组成为键和值，一个键对应一个值，就像地图上一个地方对应一个地点名字，所以叫Map集合。</p>
+<p>HashMap：无序，不重复，无索引，值不做要求。经典的用得最多。</p>
+<p>LinkedHashMap：有序，不重复，无索引，值不做要求。</p>
+<p>TreeMap：浮点型的大小比较按照自己的排序，不重复，无索引，值不做要求。</p>
+<p>Map的创建：Map&lt;引用数据类型,引用数据类型&gt; map&#x3D;new HashMap&#x2F;LinkedHashMap&#x2F;TreeMap&lt;&gt;();ps:引用数据类型可以是其他类名的哦~</p>
+<p>添加数据:map.put(xx,xx);</p>
+<p>删除特定元素：map.remove(键);删除全部元素就直接map.clear();</p>
+<p>判断是否包含某个键：map.containsKey(键);</p>
+<p>判断是否包含某个值：map.containsValue(值);</p>
+<p>将maps2的所有元素全部仍到maps中：map.putAll(maps2);</p>
+<p>获取对应键的值：map.get(键);</p>
+<p>Set<String> keys&#x3D;map.keySet();&#x2F;&#x2F;获取全部键的集合,Set无序不重复<br>for (String key: keys){<br>System.<em>out</em>.println(key);<br>}<br>Collection<Integer> values&#x3D;map.values();&#x2F;&#x2F;因为值可能有重复，所以用Collection集合<br>for (Integer value: values){<br>System.<em>out</em>.println(value+”,”+map.size());<br>}</p>
+<p><strong>遍历方法：</strong></p>
+<p>遍历方式1：键找值(key的值为String,value的类型为Integer)：for(String key:maps.keySet()){Integer value &#x3D;maps.get(key);System.out.println(key+”&#x3D;”+value)};</p>
+<p>遍历方式2：键值对方式获取：相较于键找值更加面向对象，但代码复杂，它是把键值对当成一个整体遍历，也就是直接使用foreac遍历：for(被遍历集合的元素类型 变量 ：集合名称){…};有点像python的字典，创建方法：Set&lt;Map.Entry&lt;String,Integer&gt;&gt; xxx&#x3D;maps.entrySet();</p>
+<p>遍历方式3（最简单的）：k,v只是个随便定义的变量，名字乱取都行</p>
+<p>maps.forEach((k,v) -&gt;{<br>System.<em>out</em>.println(k+”–&gt;”+v);<br>});</p>
+<h2 id="—-网络通信—"><a href="#—-网络通信—" class="headerlink" title="—-网络通信—-"></a><strong>—-网络通信—-</strong></h2><p>C&#x2F;S结构的软件开发：客户需要下载客户端，一更新客户端也要更新。<br>B&#x2F;S结构软件开发：类似于网上开发，客服不用下客服端。<br>网络通信三要素：协议，IP地址，端口号。<br>协议就是计算机网络客户端与服务端通信必须事先约定和彼此遵守的通信规则，一般有HTTP,FTP,TCP,UDP,SSH,SMTP.<br>IP地址：Internet Protocol Address互联网协议地址。有IPv4和IPv6.</p>
+<p>IPv4:4个字节，32位组成<br>端口：如果说IP相当于一个酒店，端口就相当于酒店的房间号。端口取值范围：0~65535.比如浏览器的端口号就是80。<br>查看自己的ip：在cmd命令板输入ipconfig，尝试连接:ping ip地址或网站域名。<br>获取本地地址对象：(如果是公网IP就会优先输出公网IP，没有就是本地IP)<br>Inet4Address ip &#x3D; (Inet4Address) Inet4Address.getLocalHost();<br>    System.out.println(ip.getHostName());<br>    System.out.println(ip.getHostAddress());<br>获取网站的ip地址：InetAddress ip2&#x3D;InetAddress.getByName(“<span class="exturl" data-url="aHR0cDovL3d3dy5oZXBpbmdhbi50b3DigJ0v">www.hepingan.top”</span>);<br>    System.out.println(ip2.getHostName());<br>    System.out.println(ip2.getHostAddress());<br>测试连接：InetAddress ip3&#x3D;InetAddress.getByName(“<span class="exturl" data-url="aHR0cDovL3d3dy5iYWlkdS5jb23igJ0v">www.baidu.com”</span>);<br>    System.out.println(ip3.isReachable(5000));&#x2F;&#x2F;ping<br>相当于ping xxx，在规定时间内连接，成功输出true，失败false</p>
+<p><strong>UDP通信：</strong></p>
+<p>与服务端传输信息不需要进行交手，所以不怎么安全，但可以用作开发实时通讯等。<br>创建集装箱的参数：DatagramPacket packet &#x3D;new DatagramPacket(数据包，数据包的长度，【IP地址】，【端口号】)；发送的客户端要写【】内的，接受的服务端不用写。<br>创建接收和发送数据的码头：DataSocket socket &#x3D;new DataSocket();<br>(客户端)发送数据：socket.send(packet);<br>(服务端)接收数据：socket.receive(packet);<br>关闭码头：socket.close();</p>
+<p><strong>TCP通信</strong>(重点):</p>
+<p>一般web网站都是用的TCP&#x2F;IP协议。<br>TCP&#x2F;IP协议 &#x3D;&#x3D;&gt; Transfer Control Protocol &#x3D;&#x3D;&gt; 传输控制协议<br>TCP&#x2F;IP协议的特点<br>* 面向连接的协议<br>* 只能由客户端主动发送数据给服务器端，服务器端接收到数据之后，可以给客户端响应数据。<br>* 通过三次握手建立连接，连接成功形成数据传输通道。<br>* 通过四次挥手断开连接<br>* 基于IO流进行数据传输<br>* 传输数据大小没有限制<br>* 因为面向连接的协议，速度慢，但是是可靠的协议。</p>
+<p>客户端的开发流程：<br>1.客户端要请求于服务端的socket管道连接。<br>2.从socket通信管道中得到一个字节输出流<br>3.通过字节输出流给服务端写出数据。<br>服务端的开发流程：<br>1.注册端口。<br>2.接收客户端的Socket管道连接。<br>3.从socket通信管道中得到一个字节输入流。<br>4.从字节输入流中读取客户端发来的数据。<br>小结：<br>1.客户端用Socket连接服务端。Socket socket&#x3D;new Socket(ip,port)<br>2.服务端用ServerSocket注册端口，接收客户端的Socket连接。ServerSocket ss&#x3D;new ServerSocket(port);<br>3.通信是很严格的，对方怎么发，你就应该怎么收，对方发多少你就只能收多少。<br>4.实现的面向连接的socket端到端的通信管道，一方如果出现对象，另一方会出现异常！</p>
+<p><strong>2023最新IO传输方法：</strong>使用DataI&#x2F;OStream数据输入输出流进行传输，对DataStream对象使用writeUTF和readUTF进行就收发送和读写。就不用用byte了</p>
+<p><strong>总的方法</strong>就是客户端先创建Socket管道用于数据的传输管道，需要输入传输的IP地址和端口，再创建OutputStream对象从Socket管道中得到一个字节输出流，然后用DataOutputStream包装成高级的数据输出流，最后用writeUTF(msg)就可以发送消息了。服务端先注册一个端口号：ServerSocket ss&#x3D;new ServerSocket(端口号)，然后<strong>等待</strong>连接管道Socket socket &#x3D;ss.accept()，再创建InputStream并使用DataInputStream打包成数据输入流，最后创建个String类型变量使用readUTF()读写数据就行了。</p>
+<p><strong>volatile</strong>类型变量<em>用于解决多个线程访问共享变量是会出现一个线程修改变量值后其他线程看不到最新的线程值。</em></p>
+<p><strong>TCP通信实现多个客服端和服务端发消息</strong>（未使用线程池的）：学完网络通信能写出下面的就可以毕业了~</p>
+<p><strong>客户端：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package new_TCPstudy;</span><br><span class="line"></span><br><span class="line">import java.io.DataOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.OutputStream;</span><br><span class="line">import java.net.InetAddress;</span><br><span class="line">import java.net.Socket;</span><br><span class="line">import java.net.UnknownHostException;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Client &#123;</span><br><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">System.out.println(&quot;客服端启动&quot;);</span><br><span class="line">Socket socket=new Socket(InetAddress.getLocalHost(),9999);</span><br><span class="line">//从socket管道中得到一个字节输出流</span><br><span class="line">OutputStream OutputStream=socket.getOutputStream();</span><br><span class="line">//包装成高级的数据输出流</span><br><span class="line">DataOutputStream dataOutputStream=new DataOutputStream(OutputStream);</span><br><span class="line">Scanner scanner=new Scanner(System.in);</span><br><span class="line">while (true)&#123;</span><br><span class="line">System.out.println(&quot;请说：&quot;);</span><br><span class="line">String msg=scanner.nextLine();</span><br><span class="line">//输入exit退出客户端</span><br><span class="line">if(&quot;exit&quot;.equals(msg))&#123;</span><br><span class="line">System.out.println(&quot;退出客服端...&quot;);</span><br><span class="line">dataOutputStream.close();</span><br><span class="line">socket.close();</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">dataOutputStream.writeUTF(msg);</span><br><span class="line">dataOutputStream.flush();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>服务端：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package new_TCPstudy;</span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line">import java.net.ServerSocket;</span><br><span class="line">import java.net.Socket;</span><br><span class="line"></span><br><span class="line">public class Server &#123;</span><br><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">System.out.println(&quot;服务端，启动！&quot;);</span><br><span class="line">//为服务端注册端口</span><br><span class="line">ServerSocket ss=new ServerSocket(9999);</span><br><span class="line">//创建管道等待接收连接</span><br><span class="line">while (true)&#123;</span><br><span class="line">Socket socket=ss.accept();</span><br><span class="line">System.out.println(socket.getInputStream()+&quot;上线了~&quot;);</span><br><span class="line">new ServerThread(socket).start();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">public static class ServerThread extends Thread&#123;</span><br><span class="line">private Socket socket;</span><br><span class="line">public ServerThread(Socket socket)&#123;</span><br><span class="line">this.socket=socket;</span><br><span class="line">&#125;</span><br><span class="line">@Override</span><br><span class="line">public void run() &#123;</span><br><span class="line">try &#123;</span><br><span class="line">InputStream inputStream=socket.getInputStream();</span><br><span class="line">//包装成高级的数据输入流</span><br><span class="line">DataInputStream dataInputStream=new DataInputStream(inputStream);</span><br><span class="line">while (true)&#123;</span><br><span class="line">String msg=dataInputStream.readUTF();</span><br><span class="line">System.out.println(&quot;收到来自&quot;+socket.getRemoteSocketAddress()+&quot;的消息：&quot;+msg);</span><br><span class="line">&#125;</span><br><span class="line">&#125;catch (Exception e)&#123;</span><br><span class="line">System.out.println(socket.getRemoteSocketAddress()+&quot;下线了&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Map集合学习时的代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import java.sql.Connection;</span><br><span class="line">import java.util.*;</span><br><span class="line">public class MapDemo &#123;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">Map&lt;String ,Integer&gt; maps=new HashMap&lt;&gt;();</span><br><span class="line">Map&lt;String,Integer&gt; maps2=new LinkedHashMap&lt;&gt;();</span><br><span class="line">Map&lt;String,Integer&gt; maps3=new TreeMap&lt;&gt;();</span><br><span class="line">System.out.println(maps2.isEmpty());//判断是否为空集合，是则返回true,反之</span><br><span class="line">maps.put(&quot;food&quot;,5);</span><br><span class="line">maps.clear();//清空</span><br><span class="line">maps2.put(&quot;long&quot;,15);</span><br><span class="line">maps.put(&quot;doll&quot;,1);</span><br><span class="line">maps.put(&quot;Huawei&quot;,2);</span><br><span class="line">maps.put(&quot;doll&quot;,10);//后面的把前面的覆盖了</span><br><span class="line">maps.put(&quot;iphone&quot;,2);</span><br><span class="line">maps.put(null,null);</span><br><span class="line">maps.put(&quot;people&quot;,8);</span><br><span class="line">maps.putAll(maps2);//将maps2的所有元素全部仍到maps中</span><br><span class="line">maps.remove(&quot;people&quot;);//删除特定元素</span><br><span class="line">Integer value1 =maps.get(null);//获取null的值</span><br><span class="line"></span><br><span class="line">System.out.println(maps);</span><br><span class="line">System.out.println(maps.get(&quot;iphone&quot;)+&quot;,&quot;+value1);//输出iphone的值和 null的值</span><br><span class="line"></span><br><span class="line">Set&lt;String&gt; keys=maps.keySet();//获取全部键的集合,Set无序不重复</span><br><span class="line">for (String key: keys)&#123;</span><br><span class="line">Integer value=maps.get(key);//获取对应键的值</span><br><span class="line">System.out.println(key+&quot;=&quot;+value);</span><br><span class="line">&#125;</span><br><span class="line">Collection&lt;Integer&gt; values=maps.values();//因为值可能有重复，所以用Collection集合</span><br><span class="line">for (Integer value: values)&#123;</span><br><span class="line">for(String key:maps.keySet())&#123;</span><br><span class="line">if(value==maps.get(key))&#123;</span><br><span class="line">System.out.println(value+&quot;值的有&quot;+key);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(maps.size());// maps的大小</span><br><span class="line"></span><br><span class="line">Set&lt;Map.Entry&lt;String,Integer&gt;&gt; entries=maps.entrySet();//键值对方式</span><br><span class="line">System.out.println(entries);</span><br><span class="line">for (Map.Entry&lt;String, Integer&gt; entry : entries) &#123;</span><br><span class="line">String key=entry.getKey();</span><br><span class="line">Integer value=entry.getValue();</span><br><span class="line">System.out.println(key+&quot;--&gt;&quot;+value);</span><br><span class="line">&#125;</span><br><span class="line">//最简单的遍历方法</span><br><span class="line">maps.forEach((k,v) -&gt;&#123;</span><br><span class="line">System.out.println(k+&quot;--&gt;&quot;+v);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>啤酒问题（递归思路）</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 啤酒问题：Beer: 2/bottle,4 hats can change a beer,2 empty bottle can change a beer,question:how many bottle can 10 rmb drink?</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">bbb</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> totalNumber;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> lastBottles;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> lastHats;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">Scanner sc=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">System.out.println(<span class="string">&quot;你带了多少钱：&quot;</span>);</span><br><span class="line">buy(sc.nextInt());</span><br><span class="line">System.out.println(<span class="string">&quot;你能喝&quot;</span>+totalNumber+<span class="string">&quot;瓶&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;剩余瓶子数：&quot;</span>+lastBottles);</span><br><span class="line">System.out.println(<span class="string">&quot;剩余盖子数：&quot;</span>+lastHats);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">buy</span><span class="params">(<span class="type">int</span> money)</span>&#123;</span><br><span class="line">totalNumber+=money/<span class="number">2</span>;</span><br><span class="line">lastBottles+=money/<span class="number">2</span>;</span><br><span class="line">lastHats+=money/<span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> newNumber=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(lastBottles&gt;=<span class="number">2</span>)&#123;</span><br><span class="line">newNumber+=lastBottles/<span class="number">2</span>;</span><br><span class="line">lastBottles=lastBottles%<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(lastHats&gt;=<span class="number">4</span>)&#123;</span><br><span class="line">newNumber+=lastHats/<span class="number">4</span>;</span><br><span class="line">lastHats=lastHats%<span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (newNumber&gt;<span class="number">0</span>)&#123;</span><br><span class="line">buy(newNumber*<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-07 04:56:03" itemprop="dateModified" datetime="2024-02-07T04:56:03+08:00">2024-02-07</time>
+  </span>
+  <span id="2023/06/28/Java/JavaSE/精通Java学习之路（四）/" class="item leancloud_visitors" data-flag-title="精通Java学习之路（四）" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.jpg" alt="Hepingan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.jpg" alt="Hepingan Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Hepingan <i class="ic i-at"><em>@</em></i>何平安
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/06/28/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">http://example.com/2023/06/28/Java/JavaSE/精通Java学习之路（四）/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/06/23/Java/JavaSE/swing%E7%95%8C%E9%9D%A2UI/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picdl.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;f664477b22900c4106a3896060123c46.jpeg" title="java swing和FX界面UI">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> JavaSE</span>
+  <h3>java swing和FX界面UI</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/07/02/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;06&#x2F;DcvktO42.png" title="Javaweb学习笔记（一）">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Java web</span>
+  <h3>Javaweb学习笔记（一）</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%94%E5%B9%B6%E5%8F%91%E5%8C%85%E2%80%94"><span class="toc-number">1.</span> <span class="toc-text">—并发包—</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%94Map%E9%9B%86%E5%90%88%E2%80%94"><span class="toc-number">2.</span> <span class="toc-text">—Map集合—</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%94-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E2%80%94"><span class="toc-number">3.</span> <span class="toc-text">—-网络通信—-</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2023/04/02/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89/" rel="bookmark" title="精通Java学习之路（一）">精通Java学习之路（一）</a></li><li><a href="/2023/04/24/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="精通Java学习之路（二）">精通Java学习之路（二）</a></li><li><a href="/2023/06/23/Java/JavaSE/swing%E7%95%8C%E9%9D%A2UI/" rel="bookmark" title="java swing和FX界面UI">java swing和FX界面UI</a></li><li class="active"><a href="/2023/06/28/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="bookmark" title="精通Java学习之路（四）">精通Java学习之路（四）</a></li><li><a href="/2024/02/03/Java/JavaSE/%E5%A4%A7%E4%B8%80%E4%B8%8Bjava%E6%9C%9F%E6%9C%AB%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E8%8D%A3%E8%8E%B7%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%B8%80%EF%BC%89/" rel="bookmark" title="大一下java期末设计：学生信息管理系统（荣获班上第一）">大一下java期末设计：学生信息管理系统（荣获班上第一）</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Hepingan"
+      data-src="/images/a.jpg">
+  <p class="name" itemprop="name">Hepingan</p>
+  <div class="description" itemprop="description">欢迎来到何平安的个人博客~欢迎您的浏览</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">43</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlcGluZ2FuMTE=" title="https:&#x2F;&#x2F;github.com&#x2F;hepingan11"><i class="ic i-github"></i></span>
+      <span class="exturl item google" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20v" title="https:&#x2F;&#x2F;plus.google.com&#x2F;"><i class="ic i-google"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTM0MzI3MDEyNA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;343270124"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjE2NDE2NDM2NTY2QHFxLmNvbQ==" title="mailto:16416436566@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>链接</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/06/23/Java/JavaSE/swing%E7%95%8C%E9%9D%A2UI/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/07/02/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E6%97%A5%E5%B8%B8%E7%A0%94%E7%A9%B6/%E4%BF%AE%E5%A4%8D%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" title="修复域名访问问题">修复域名访问问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/JavaSE/" title="In JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2023/04/02/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89/" title="精通Java学习之路（一）">精通Java学习之路（一）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/03/%E3%80%90%E7%BD%AE%E9%A1%B6%E3%80%91%E4%BB%8B%E7%BB%8D%E4%B8%8E%E6%94%AF%E6%8C%81%E6%88%91/" title="【置顶】介绍与支持我">【置顶】介绍与支持我</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" title="说说nginx反向代理和Kong网关">说说nginx反向代理和Kong网关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Java-web/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2023/07/02/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="Javaweb学习笔记（一）">Javaweb学习笔记（一）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
+</div>
+
+    <span><a href="/2024/02/03/%E5%89%8D%E7%AB%AF/html-css%E5%9F%BA%E7%A1%80/" title="html,css基础">html,css基础</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" title="SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】">SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E6%97%A5%E5%B8%B8%E7%A0%94%E7%A9%B6/%E4%BD%BF%E7%94%A8OneDrive%E5%9C%A8%E7%BD%91%E7%AB%99%E5%9C%A8%E7%BA%BF%E6%92%AD%E6%94%BE%E9%9F%B3%E8%A7%86%E9%A2%91/" title="使用OneDrive在网站在线播放音视频">使用OneDrive在网站在线播放音视频</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%85%E4%BA%8B%E9%9B%86/" title="In 故事集">故事集</a>
+</div>
+
+    <span><a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/JavaSE/" title="In JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2023/06/28/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">精通Java学习之路（四）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Hepingan @ 练竹园</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/06/28/Java/JavaSE/精通Java学习之路（四）/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

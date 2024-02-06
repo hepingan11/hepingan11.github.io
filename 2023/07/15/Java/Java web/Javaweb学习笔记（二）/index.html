@@ -1,0 +1,587 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="何平安" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="何平安" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="何平安" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/07/15/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+
+
+  <title>
+Javaweb学习笔记（二） - Java web - Java |
+练竹园 = 何平安 = 世界很大，代码连接世界</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Javaweb学习笔记（二）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-07-15 03:52:58">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-07-15T03:52:58+08:00">2023-07-15</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">练竹园</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/iOC4NxHU.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/v5NFIBio.png"></li>
+          <li class="item" data-background-image="https://picst.sunbangyan.cn/2024/02/04/d453f090e853c994bb22371766db430a.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/zGtbnCj2.jpg"></li>
+          <li class="item" data-background-image="https://picst.sunbangyan.cn/2024/02/04/310a36f7f4a957840ebf9bedaaf12551.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/oIJGpXii.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/" itemprop="item" rel="index" title="In Java"><span itemprop="name">Java</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/Java-web/" itemprop="item" rel="index" title="In Java web"><span itemprop="name">Java web</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/15/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/a.jpg">
+    <meta itemprop="name" content="Hepingan">
+    <meta itemprop="description" content="世界很大，代码连接世界, 欢迎来到何平安的个人博客~欢迎您的浏览">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="何平安">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p><strong>本文章的图片由于是天香园1.0的但是过期了图片就查看不了，就当我自己的一个纪念了吧~</strong></p>
+<p><strong>—Mybatis—</strong></p>
+<p>一款持久层框架，简化JDBC。</p>
+<p><strong>认识使用Mybatis查询mysql数据库中的表的信息</strong>：</p>
+<p>创建MyBatis工程：IDEA创建sping工程，在SQL中选择Mybatis Framwork和Mysql Driver。连接数据库，再在main软件包下新建一个类，我的类名叫User,里面编写查询的表的所有数据的变量名，例如我要查询hh数据库中的student表，内容有：</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/08/4AWGHBI_8DHB7CRATDH.png" alt="img"></p>
+<p>我就需要定义如下的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private String name;</span><br><span class="line">private Integer schoolid;</span><br><span class="line">private String password;</span><br><span class="line">private Integer score;</span><br><span class="line">private String sex;</span><br><span class="line">private Integer id;</span><br></pre></td></tr></table></figure>
+
+<p>当然还要创建getter,setter,toString和构造函数。然后在Mybatis自动创建的main下的resoures下的application.properties里编写下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/hh#这里记得换自己的数据库名</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=1234#这里也要换</span><br></pre></td></tr></table></figure>
+
+<p>这样就不用写JDBC里面那一大堆连接代码了。然后再在main里面创建一个<strong>接口</strong>：mapper.UserMapper（会自动创建一个包名），这就相当于三层类里面的Dao类，当做一个容器代理实现类对象，里面编写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Mapper//运行时自动生成该接口的实现类对象（代理对象）。并且将该对象交给IOC容器管理</span><br><span class="line">public interface UserMapper &#123;</span><br><span class="line">@Select(&quot;select *from student&quot;)</span><br><span class="line">public List&lt;User&gt; list();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有个技巧可以选中mysql语句右键显示上下文再选择添加&#x2F;编辑注入语言，然后选择Mysql，就可以提示编写MySQL的语法了。里面然后打开test包里自动创建的那个类，里面编写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootTest//springboot整合单元测试的注解</span><br><span class="line">class MybatisStudyApplicationTests &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserMapper userMapper;</span><br><span class="line">    @Test</span><br><span class="line">    public void testListUser() &#123;</span><br><span class="line">        List&lt;User&gt; userList=userMapper.list();</span><br><span class="line">        userList.stream().forEach(user -&gt;&#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行此类就可以看到student表的数据以集合形式展示啦~</p>
+<p><strong>数据库连接池</strong>：</p>
+<p>跟线程池差不多的东西，因为有很多用户访问数据库，所以就直接创建一个池来提高性能，而且还可以让长时间不访问数据库的用户的连接断开，腾出空间来。</p>
+<p>spring默认的数据库连接池：hikari</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/08/P8RJX55OXLYHH@NBEB0-1024x82.png" alt="img"></p>
+<p>或者切换阿里巴巴的Druid数据库连接池：先下载jar然后添加到项目中<span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS9hcnRpZmFjdC9jb20uYWxpYmFiYS9kcnVpZC8xLjIuOA==">Maven Repository: com.alibaba » druid » 1.2.8 (mvnrepository.com)</span>，然后在pom.xml中添加下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;1.2.8&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>lombok工具包：不用写什么setter,getter,toString,equle,hashCode啥的，直接一个@Data注解搞定,另外无参有参分别为：@NoArgsConstructor,@AllArgsConstructor</p>
+<p>下载jar：<span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS9hcnRpZmFjdC9vcmcucHJvamVjdGxvbWJvay9sb21ib2svMS4xOC4yNA==">Maven Repository: org.projectlombok » lombok » 1.18.24 (mvnrepository.com)</span>，然后导入项目并在pom.xml输入（不用写 version，springboot 会自动管理）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>—Mybatis基础操作—</strong></p>
+<p>使用Mybatis对数据库进行增删改操作：eg:在main下自动生成的包下创建Mapper.EmpMapper（这只是我的名字）的接口类，此接口添加@Mapper注解，创建一个方法用作于增&#x2F;删&#x2F;改，并且添加上注解，增删改的注解分别为@Insert,@Delect,@Update，在注解旁边的括号输入要运行的Mysql语句，建议使用预编译SQL，需要把参数的值改为#{XXX}（另一种时${xxx}，这种就是直接拼接在MySQL语句上了，而非前面的#是引入参数）的样子，相当于以前写JDBC的”?”，然后再在方法里定义对应类型的参数。再在test测试类里面定义一个私有的EmpMapper引用数据类型的变量，并添加上@Autowired的注解，然后创建一个方法再调用EmpMapper里面的增删改方法：empmapper.delect(之前定义的参数)。</p>
+<p>如果预编译里面的参数过多，比如增加，可以创建一个Emp（也是我自己取的）类用于定义里面的变量，然后再在增加方法的参数直接创建这个类的变量。注意创建的变量名要和#{XXX}里的一样。查询的话就直接搞个集合来输出吧，因为有可能有多个结果。</p>
+<p>Emp类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">@AllArgsConstructor</span><br><span class="line">@NoArgsConstructor</span><br><span class="line">public class Emp &#123;</span><br><span class="line">private String name;</span><br><span class="line">private Short gender;</span><br><span class="line">private LocalDate enterday;</span><br><span class="line">private String image;</span><br><span class="line">private LocalDateTime createTime;</span><br><span class="line">private LocalDateTime updateTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Mapper接口类里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Insert(&quot;INSERT INTO mybatis.emp(name, gender, enterday, image, create_time, update_time) &quot; +</span><br><span class="line">&quot;VALUES (#&#123;name&#125;,#&#123;gender&#125;,#&#123;enterday&#125;,#&#123;image&#125;,#&#123;createTime&#125;,#&#123;updateTime&#125;)&quot;)</span><br><span class="line">public void insert(Emp emp);</span><br></pre></td></tr></table></figure>
+
+<p>test类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testInsert()&#123;</span><br><span class="line">Emp emp=new Emp();</span><br><span class="line">emp.setName(&quot;hepingan&quot;);</span><br><span class="line">emp.setGender((short) 1);</span><br><span class="line">emp.setEnterday(LocalDate.of(2023,8,2));</span><br><span class="line">emp.setImage(&quot;1.jpg&quot;);</span><br><span class="line">emp.setUpdateTime(LocalDateTime.now());</span><br><span class="line">emp.setCreateTime(LocalDateTime.now());</span><br><span class="line"></span><br><span class="line">empmapper.insert(emp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>XML映射文件</strong></p>
+<p>XML映射文件名称要与Mapper接口名一样，并且将XML文件和Mapper接口放置在相同包下（同包同名），在resources下创建三个文件夹就行了，创建目录直接输入com&#x2F;example&#x2F;mapper就行了。新建的XML文件输入：（可以在mybatis中文网查看：<span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm5ldC5jbi9nZXR0aW5nLXN0YXJ0ZWQuaHRtbA==">入门_MyBatis中文网</span>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt; &lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;&lt;mapper&gt;&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+
+<p>namespace与Mapper接口全限定名（文件路径）一致，我的是top.hepingan.mapper.EmpMapper；</p>
+<p>例如我要执行select查询语句我就需要在<mapper>里编写：（科普下MySQL的语法：条件like concat(‘%’,’xxx’,’%’)就是指和xxx长得像的东西，比如我查询条件为’何’，那么结果就可以显出’何平安’）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;list&quot; resultMap=&quot;com.example.pojo.Emp&quot;&gt;</span><br><span class="line">select *from hh.emp where emp.work like concat(&#x27;%&#x27;,#&#123;work&#125;,&#x27;%&#x27;)</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<p>id与Mapper接口中的方法名一致，并保持返回类型一致，resultMap就是单条记录锁封装的类型，比如我Empmapper里面有个方法为public List<Emp> list(String work);那么resultMap就是Emp。</p>
+<p>—<strong>动态SQL</strong>—</p>
+<p>如果搜索时只输入了一个条件，但是SQL语句本身有多个查询条件，其他的查询条件就会为空，就会出错，这时就要用到if标签。</p>
+<p>结构：&lt;if test&#x3D;”name !&#x3D;null”&gt;name like concat(‘%’,’#{name},’%’) </if>，意思就是如果name输入的参数值为空就没有标签里面的语句。</p>
+<p>eg：用name,gender,enterday三个参数查询emp中的数据。这里的where也要用标签是为了防止三条数据都为null或第一条数据为null导致where，and多余。而where标签就可以自动除掉该隐患。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;select&quot;&gt;</span><br><span class="line">select * from emp</span><br><span class="line">&lt;where&gt;</span><br><span class="line">&lt;if test=&quot;name !=null&quot;&gt;</span><br><span class="line">name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line">&lt;/if&gt;</span><br><span class="line">&lt;if test=&quot;gender !=null&quot;&gt;</span><br><span class="line">and gender =#&#123;gender&#125;</span><br><span class="line">&lt;/if&gt;</span><br><span class="line">&lt;if test=&quot;begin !=null and end !=null&quot;&gt;</span><br><span class="line">and enterday between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">&lt;/if&gt;</span><br><span class="line">&lt;/where&gt;</span><br><span class="line">order by update_time</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong><foreach>标签</strong>：有点像遍历，比如批量删除操作。各个参数：</p>
+<p>collection:遍历的集合或数组<br>item:遍历出来的每个元素（名字随便）<br>separator:分隔符<br>open:起始符<br>close:结束符</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-07 05:00:15" itemprop="dateModified" datetime="2024-02-07T05:00:15+08:00">2024-02-07</time>
+  </span>
+  <span id="2023/07/15/Java/Java web/Javaweb学习笔记（二）/" class="item leancloud_visitors" data-flag-title="Javaweb学习笔记（二）" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.jpg" alt="Hepingan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.jpg" alt="Hepingan Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Hepingan <i class="ic i-at"><em>@</em></i>何平安
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/07/15/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Javaweb学习笔记（二）">http://example.com/2023/07/15/Java/Java web/Javaweb学习笔记（二）/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/07/02/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;7pc8xvat.jpg" title="Javaweb学习笔记（一）">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Java web</span>
+  <h3>Javaweb学习笔记（一）</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;06&#x2F;Etm6GnfH.png" title="我的故事（大一下）">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> 故事集</span>
+  <h3>我的故事（大一下）</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2023/07/02/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（一）">Javaweb学习笔记（一）</a></li><li class="active"><a href="/2023/07/15/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></li><li><a href="/2023/07/22/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（三）">Javaweb学习笔记【项目实战】（三）</a></li><li><a href="/2023/08/14/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></li><li><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" rel="bookmark" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></li><li><a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" rel="bookmark" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Hepingan"
+      data-src="/images/a.jpg">
+  <p class="name" itemprop="name">Hepingan</p>
+  <div class="description" itemprop="description">欢迎来到何平安的个人博客~欢迎您的浏览</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">43</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlcGluZ2FuMTE=" title="https:&#x2F;&#x2F;github.com&#x2F;hepingan11"><i class="ic i-github"></i></span>
+      <span class="exturl item google" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20v" title="https:&#x2F;&#x2F;plus.google.com&#x2F;"><i class="ic i-google"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTM0MzI3MDEyNA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;343270124"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjE2NDE2NDM2NTY2QHFxLmNvbQ==" title="mailto:16416436566@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>链接</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/07/02/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E6%97%A5%E5%B8%B8%E7%A0%94%E7%A9%B6/%E4%BD%BF%E7%94%A8OneDrive%E5%9C%A8%E7%BD%91%E7%AB%99%E5%9C%A8%E7%BA%BF%E6%92%AD%E6%94%BE%E9%9F%B3%E8%A7%86%E9%A2%91/" title="使用OneDrive在网站在线播放音视频">使用OneDrive在网站在线播放音视频</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E5%9B%9B%E3%80%91%EF%BC%88%E5%AA%92%E8%B5%84%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【四】（媒资管理模块）">企业级微服务大项目实战《学成在线》【四】（媒资管理模块）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/JavaSE/" title="In JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2023/06/23/Java/JavaSE/swing%E7%95%8C%E9%9D%A2UI/" title="java swing和FX界面UI">java swing和FX界面UI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%85%E4%BA%8B%E9%9B%86/" title="In 故事集">故事集</a>
+</div>
+
+    <span><a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Java-web/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E6%97%A5%E5%B8%B8%E7%A0%94%E7%A9%B6/%E4%BF%AE%E5%A4%8D%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" title="修复域名访问问题">修复域名访问问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Java-web/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Python/" title="In Python">Python</a>
+</div>
+
+    <span><a href="/2024/02/04/Python/Python%E8%B0%83%E7%94%A8ChatGPT%E6%8E%A5%E5%8F%A3-2023/" title="Python调用ChatGPT接口(2023)">Python调用ChatGPT接口(2023)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Python/" title="In Python">Python</a>
+</div>
+
+    <span><a href="/2024/02/04/Python/%E6%9C%89C%E5%92%8CJava%E7%9A%84%E5%BA%95%E5%AD%90%E5%A6%82%E4%BD%95%E9%80%9F%E9%80%9APython%E8%AF%AD%E6%B3%95/" title="有C和Java的底子如何速通Python语法">有C和Java的底子如何速通Python语法</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Hepingan @ 练竹园</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/07/15/Java/Java web/Javaweb学习笔记（二）/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

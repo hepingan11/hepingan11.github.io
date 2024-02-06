@@ -1,4 +1,4 @@
-var CONFIG = {"version":"0.2.5","hostname":"http://example.com","root":"/","statics":"/","favicon":{"normal":"images/favicon.ico","hidden":"images/failure.ico"},"darkmode":false,"auto_scroll":true,"js":{"valine":"gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js","chart":"npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js","copy_tex":"npm/katex@0.12.0/dist/contrib/copy-tex.min.js","fancybox":"combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"},"css":{"valine":"css/comment.css","katex":"npm/katex@0.12.0/dist/katex.min.css","mermaid":"css/mermaid.css","fancybox":"combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"},"loader":{"start":true,"switch":true},"search":{"appID":"6d68e3d0b0e1264d02051962fb5f50e7","apiKey":"aa0710840c47e40a063fb0413a739d5a","indexName":"shoka","hits":{"per_page":10}},"valine":{"appId":"837sSSAPyOo6tLphk3e0bLxK-gzGzoHsz","appKey":"dUSfd6nq80rKcMzyKDBXPGkM","placeholder":"ヽ(○´∀`)ﾉ♪","avatar":"mp","pageSize":10,"lang":"zh-CN","visitor":true,"NoRecordIP":false,"serverURLs":null,"powerMode":true,"tagMeta":{"visitor":"新朋友","master":"站长","friend":"小伙伴","investor":"金主粑粑"},"tagColor":{"master":"var(--color-orange)","friend":"var(--color-aqua)","investor":"var(--color-pink)"},"tagMember":{"master":["hash of 1641436566@qq.com","1641436566@qq.com"],"friend":null,"investor":null}},"quicklink":{"timeout":3000,"priority":true},"audio":[{"title":"激情","list":["https://music.163.com/#/playlist?id=8579993383"]},{"title":"静静","list":["https://music.163.com/#/playlist?id=5266198988"]},{"title":"何平安like","list":["https://music.163.com/#/playlist?id=480799561"]}],"fireworks":["rgba(255,182,185,.9)","rgba(250,227,217,.9)","rgba(187,222,214,.9)","rgba(138,198,209,.9)"]};const getRndInteger = function (min, max) {
+var CONFIG = {"version":"0.2.5","hostname":"http://example.com","root":"/","statics":"/","favicon":{"normal":"images/favicon.ico","hidden":"images/failure.ico"},"darkmode":false,"auto_scroll":true,"js":{"valine":"gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js","chart":"npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js","copy_tex":"npm/katex@0.12.0/dist/contrib/copy-tex.min.js","fancybox":"combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"},"css":{"valine":"css/comment.css","katex":"npm/katex@0.12.0/dist/katex.min.css","mermaid":"css/mermaid.css","fancybox":"combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"},"loader":{"start":true,"switch":true},"search":null,"valine":{"appId":"837sSSAPyOo6tLphk3e0bLxK-gzGzoHsz","appKey":"dUSfd6nq80rKcMzyKDBXPGkM","placeholder":"ヽ(○´∀`)ﾉ♪","avatar":"mp","pageSize":10,"lang":"zh-CN","visitor":true,"NoRecordIP":false,"serverURLs":null,"powerMode":true,"tagMeta":{"visitor":"新朋友","master":"站长","friend":"小伙伴","investor":"金主粑粑"},"tagColor":{"master":"var(--color-orange)","friend":"var(--color-aqua)","investor":"var(--color-pink)"},"tagMember":{"master":["hash of 1641436566@qq.com","1641436566@qq.com"],"friend":null,"investor":null}},"quicklink":{"timeout":3000,"priority":true},"localSearch":{"enable":true,"path":"search.json","field":"post","format":"html","limit":10000,"content":true,"unescape":true,"preload":true,"trigger":"auto","pageSize":10},"audio":[{"title":"激情","list":["https://music.163.com/#/playlist?id=8579993383"]},{"title":"静静","list":["https://music.163.com/#/playlist?id=5266198988"]},{"title":"何平安like","list":["https://music.163.com/#/playlist?id=480799561"]}],"fireworks":["rgba(255,182,185,.9)","rgba(250,227,217,.9)","rgba(187,222,214,.9)","rgba(138,198,209,.9)"]};const getRndInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -2189,6 +2189,468 @@ const algoliaSearch = function(pjax) {
     }
   });
 }
+
+
+const localSearch = function(pjax) {
+  // 参考 hexo next 主题的配置方法
+  // 参考 https://qiuyiwu.github.io/2019/01/25/Hexo-LocalSearch/ 博文
+  if(CONFIG.localSearch === null)
+    return
+
+  if(!siteSearch) {
+    siteSearch = BODY.createChild('div', {
+      id: 'search',
+      innerHTML: '<div class="inner"><div class="header"><span class="icon"><i class="ic i-search"></i></span><div class="search-input-container"><input class="search-input"autocompvare="off"placeholder="'+LOCAL.search.placeholder+'"spellcheck="false"type="text"id="local-search-input"></div><span class="close-btn"><i class="ic i-times-circle"></i></span></div><div class="results"id="search-results"><div class="inner"><div id="search-stats"></div><div id="search-hits"></div><div id="search-pagination"></div></div></div></div></div>'
+    });
+  }
+  
+  var isFetched = false;
+  var datas;
+  var isXml = true;
+  var current_page = 0;
+  var pageSize = parseInt(CONFIG.localSearch.pageSize, 10);
+  if(isNaN(pageSize)) pageSize = 10;
+  var total_pages = 0;
+  var max_page_on_show = 7; // 一次最多显示 7 个页码
+  var start_page = 0;
+  var end_page = 0;
+  var resultItems = [];
+
+  // search DB path
+  var searchPath = CONFIG.localSearch.path;
+  if (searchPath.length == 0) {
+    searchPath = 'search.xml';
+  } else if (searchPath.endsWith('json')) {
+    isXml = false;
+  }
+
+  const input = $('.search-input'); // document.querySelector('.search-input');
+  const resultContent = document.getElementById('search-hits');
+  const paginationContent = document.getElementById('search-pagination');
+
+  const getIndexByWord = function(word, text, caseSensitive) {
+    if (CONFIG.localSearch.unescape) {
+      var div = document.createElement('div');
+      div.innerText = word;
+      word = div.innerHTML;
+    }
+    var wordLen = word.length;
+    if (wordLen === 0) {
+      return [];
+    }
+    var startPosition = 0;
+    var position = [];
+    var index = [];
+    if (!caseSensitive) {
+      text = text.toLowerCase();
+      word = word.toLowerCase();
+    }
+
+    while ((position = text.indexOf(word, startPosition)) > -1) {
+      index.push({position:position, word:word});
+      startPosition = position + wordLen;
+    }
+    return index;
+  };
+
+  // Merge hits into slices
+  const mergeIntoSlice = function(start, end, index, searchText) {
+    var item = index[index.length - 1];
+    var position = item.position;
+    var word = item.word;
+    var hits = [];
+    var searchTextCountInSlice = 0;
+    while (position + word.length <= end && index.length !== 0) {
+      if (word === searchText) {
+        searchTextCountInSlice++;
+      }
+      hits.push({
+        position:position,
+        length: word.length
+      });
+
+      var wordEnd = position + word.length;
+
+      // Move to next position of hit
+      index.pop();
+      while (index.length !== 0) {
+        item = index[index.length - 1];
+        position = item.position;
+        word = item.word;
+        if (wordEnd > position) {
+          index.pop();
+        } else {
+          break;
+        }
+      }
+    }
+    return {
+      hits:hits,
+      start:start,
+      end:end,
+      searchTextCount: searchTextCountInSlice
+    };
+  }
+
+  // Highlight title and content
+  const highlightKeyword = function(text, slice) {
+    var result = '';
+    var prevEnd = slice.start;
+    slice.hits.forEach(function(hit)  {
+      result += text.substring(prevEnd, hit.position);
+      var end = hit.position + hit.length;
+      result += '<mark>'+ text.substring(hit.position, end)+'</mark>';
+      prevEnd = end;
+    });
+    result += text.substring(prevEnd, slice.end);
+    return result;
+  };
+
+  const pagination = function() {
+    
+    const addPrevPage = function(current_page) {
+      var classContent = '';
+      var numberContent = '';
+      if (current_page === 0) {
+        classContent = '#search-pagination pagination-item disabled-item';
+        numberContent = '<span class="#search-pagination page-number"><i class="ic i-angle-left"></i></span>';
+      } else {
+        classContent = '#search-pagination pagination-item';
+        numberContent = '<a class="#search-pagination page-number" aria-label="Prev" href="#"><i class="ic i-angle-left"></i></a>';
+      }
+      var prevPage = '<li class="'+ classContent +'" id="prev-page">'+ numberContent+'</li>';
+      return prevPage;
+    };
+
+    const addNextPage = function(current_page) {
+      var classContent = '';
+      var numberContent = '';
+      if ((current_page + 1) === total_pages) {
+        classContent = '#search-pagination pagination-item disabled-item';
+        numberContent = '<span class="#search-pagination page-number"><i class="ic i-angle-right"></i></span>';
+      } else {
+        classContent = '#search-pagination pagination-item';
+        numberContent = '<a class="#search-pagination page-number"aria-label="Next"href="#"><i class="ic i-angle-right"></i></a>';
+      }
+      var nextPage = '<li class="' + classContent +'"id="next-page">'+ numberContent +'</li>';
+      return nextPage;
+    };
+
+    const addPage = function(index, current_page)  {
+      var classContent = '';
+      var numberContent = '<a class="#search-pagination page-number"aria-label="'+ (index + 1) +'"href="#">'+(index+1)+'</a>';
+      if (index === current_page) {
+        classContent = '#search-pagination pagination-item current';
+      } else {
+        classContent = '#search-pagination pagination-item';
+      }
+      var page = '<li class="'+classContent+'" id="page-'+(index + 1)+'">'+numberContent+'</li>';
+      return page;
+    }
+    
+    const addPaginationEvents = function(start_page, end_page)  {
+      if (total_pages <= 0) {
+        return;
+      }
+      const onPrevPageClick = function(event) {
+        if (current_page > 0) {
+          current_page -= 1;
+        }
+        if (current_page < start_page) {
+          start_page = current_page;
+          end_page = Math.min(end_page, start_page + max_page_on_show);
+        }
+        pagination();
+      };
+      const onNextPageClick = function(event)  {
+        if ((current_page + 1) < total_pages) {
+          current_page += 1;
+        }
+        if (current_page > end_page) {
+          end_page = current_page;
+          start_page = Math.max(0, end_page - max_page_on_show);
+        }
+        pagination();
+      };
+      const onPageClick = function(event)  {
+        var page_number = parseInt(event.target.ariaLabel);
+        current_page = page_number - 1; // note minus 1 here
+        pagination();
+      };
+      
+      var prevPage = document.getElementById('prev-page');
+      if(prevPage != null)prevPage.addEventListener('click', onPrevPageClick);
+      
+      var nextPage = document.getElementById('next-page');
+      if(nextPage != null) nextPage.addEventListener('click', onNextPageClick);
+      for (var i = start_page; i < end_page; i += 1) {
+        var page = document.getElementById('page-'+(i + 1));
+        if(page != null)page.addEventListener('click', onPageClick);
+      }
+    };
+    
+
+
+    paginationContent.innerHTML = ''; // clear
+   
+    var begin_index = Math.min(current_page * pageSize, resultItems.length);
+    var end_index = Math.min(begin_index + pageSize, resultItems.length);
+
+    resultContent.innerHTML = resultItems.slice(begin_index, end_index).map(function(result) {return result.item}).join('');
+  
+    start_page = Math.max(0, total_pages - max_page_on_show);
+    end_page = start_page + Math.min(total_pages, max_page_on_show);
+    var pageContent = '<div class="#search-pagination">';
+    pageContent += '<div class="#search-pagination pagination">';
+    pageContent += '<ul>';
+    if (total_pages > 0) {
+      // add prev page arrow, when no prev page not selectable
+      pageContent += addPrevPage(current_page);
+      for (var i = start_page; i < end_page; i += 1) {
+        pageContent += addPage(i, current_page);
+      }
+      // add next page arrow, when no next page not selectable
+      pageContent += addNextPage(current_page);
+    }
+    pageContent += '</ul>';
+    pageContent += '</div>';
+    pageContent += '</div>';
+    paginationContent.innerHTML = pageContent;
+    addPaginationEvents(start_page, end_page);
+    resultContent.scrollTop = 0;  // scroll to top
+    window.pjax && window.pjax.refresh(resultContent);
+  };
+
+
+  
+  const inputEventFunction = function() {
+    if (!isFetched) {
+      console.log("Data not fetched.");
+      return;
+    }
+
+    var searchText = input.value.trim().toLowerCase();
+    var keywords = searchText.split(/[-\s]+/);
+    
+    if (keywords.length > 1) {
+      keywords.push(searchText);
+    }
+    
+    resultItems = [];
+    if (searchText.length > 0) {
+      // Perform local searching
+      datas.forEach(function(index) {
+       
+        var categories = index.categories, title=index.title, content=index.content, url=index.url;
+        var titleInLowerCase = title.toLowerCase();
+        var contentInLowerCase = content.toLowerCase();
+        var indexOfTitle = [];
+        var indexOfContent = [];
+        var searchTextCount = 0;
+        keywords.forEach( function(keyword) {
+          indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+          indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+        });
+        
+        
+        // Show search results
+        if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+          var hitCount = indexOfTitle.length + indexOfContent.length;
+          // Sort index by position of keyword
+          [indexOfTitle, indexOfContent].forEach(function(index)  {
+            index.sort(function(itemLeft, itemRight)  {
+              if (itemRight.position !== itemLeft.position) {
+                return itemRight.position - itemLeft.position;
+              }
+              return itemLeft.word.length - item.word.length;
+            });
+          });
+
+          var slicesOfTitle = [];
+          if (indexOfTitle.length !== 0) {
+            var tmp = mergeIntoSlice(0, title.length, indexOfTitle, searchText);
+            searchTextCount += tmp.searchTextCountInSlice;
+            slicesOfTitle.push(tmp);
+          }
+          
+          var slicesOfContent = [];
+          while (indexOfContent.length !== 0) {
+            var item = indexOfContent[indexOfContent.length - 1];
+            var position = item.position;
+            var word = item.word;
+            // Cut out 100 characters
+            var start = position - 20;
+            var end = position + 30;
+            if (start < 0) {
+              start = 0;
+            }
+            if (end < position + word.length) {
+              end = position + word.length;
+            }
+            if (end > content.length) {
+              end = content.length;
+            }
+            var tmp = mergeIntoSlice(start, end, indexOfContent, searchText);
+            searchTextCount += tmp.searchTextCountInSlice;
+            slicesOfContent.push(tmp);
+          }
+          
+          
+          // Sort slices in content by search text's count and hits' count
+          slicesOfContent.sort( function(sliceLeft, sliceRight) {
+            if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+              return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+            } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+              return sliceRight.hits.length - sliceLeft.hits.length;
+            }
+            return sliceLeft.start - sliceRight.start;
+          });
+
+          // Select top N slices in content
+          var upperBound = parseInt(CONFIG.localSearch.pageSize, 10);
+          if (upperBound >= 0) {
+            slicesOfContent = slicesOfContent.slice(0, upperBound);
+          }
+
+
+          var resultItem = '';
+          resultItem += '<div class="#search-hits item">';
+          // resultItem += '<div class="#search-hits">';
+          // resultItem += '<ol class="item">'
+          resultItem += '<li>'
+          // resultItem += '<li>';
+          var cats = categories !== undefined ? '<span>' + categories.join('<i class="ic i-angle-right"></i>') + '</span>' : '<span>No categories</span>';
+          resultItem += '<a href="'+url+'">' + cats;
+          if (slicesOfTitle.length !== 0) {
+            // resultItem += '<li><a href="'+url}">'+highlightKeyword(title, slicesOfTitle[0])}</a>';
+            resultItem += '<b>'+highlightKeyword(title, slicesOfTitle[0])+'</b><br>';
+          } else {
+            // resultItem += '<li><a href="'+url}">'+title}</a>';
+            resultItem += '<b>'+title+'</b><br>';
+          }
+          
+          slicesOfContent.forEach(function(slice)  {
+            return resultItem += '<li class="#search-hits subitem">'+highlightKeyword(content, slice)+' ...</li>';
+          });
+          // resultItem += '</li>';
+          resultItem += '</a>';
+          resultItem += '</li>';
+          // resultItem += '</ol>';
+          resultItem += '</div>';
+          resultItems.push({
+            item: resultItem,
+            id  : resultItems.length,
+            hitCount:hitCount,
+            searchTextCount:searchTextCount
+          });
+        }
+      });
+    }
+    
+    if (keywords.length === 1 && keywords[0] === '') {
+      resultContent.innerHTML = '<div id="no-result"><i></i></div>';
+    } else if (resultItems.length === 0) {
+      resultContent.innerHTML = '<div id="no-result"><i></i></div>';
+    } else {
+      resultItems.sort(function(resultLeft, resultRight)  {
+        if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+          return resultRight.searchTextCount - resultLeft.searchTextCount;
+        } else if (resultLeft.hitCount !== resultRight.hitCount) {
+          return resultRight.hitCount - resultLeft.hitCount;
+        }
+        return resultRight.id - resultLeft.id;
+      });
+    }
+    
+    // Do pagination
+    total_pages = Math.ceil(resultItems.length / pageSize);
+    pagination();
+  }
+
+  
+  const fetchData = function() {
+    fetch(CONFIG.root + searchPath)
+      .then(function(response) {return response.text()} )
+      .then( function(res) {
+        // Get the contents from search data
+        isFetched = true;
+        datas = isXml ? [new DOMParser().parseFromString(res, 'text/xml').querySelectorAll('entry')].map( function(element) {
+          return {
+            title  : element.querySelector('title').textContent,
+            content: element.querySelector('content').textContent,
+            url    : element.querySelector('url').textContent
+          };
+        }) : JSON.parse(res);
+        // Only match articles with not empty titles
+        datas = datas.filter(function(data) {return data.title} ).map( function(data) {
+          data.title = data.title.trim();
+          data.content = data.content ? data.content.trim().replace(/<[^>]+>/g, '') : '';
+          data.url = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+          return data;
+        });
+        // Remove loading animation
+        document.getElementById('search-hits').innerHTML = '<i></i>';
+        inputEventFunction();
+      });
+  };
+
+  if (CONFIG.localSearch.preload) {
+    console.log("fetch data.");
+    fetchData();
+  }
+
+  if (CONFIG.localSearch.trigger === 'auto') {
+    input.addEventListener('input', inputEventFunction);
+  } else {
+    document.querySelector('.search-icon').addEventListener('click', inputEventFunction);
+    input.addEventListener('keypress',function(event) {
+      if (event.key === 'Enter') {
+        inputEventFunction();
+      }
+    });
+  }
+
+  // Handle and trigger popup window
+  document.querySelectorAll('.popup-trigger').forEach( function(element) {
+    element.addEventListener('click', function()  {
+      document.body.style.overflow = 'hidden';
+      document.querySelector('.search-pop-overlay').classList.add('search-active');
+      input.focus();
+      if (!isFetched) fetchData();
+    });
+  });
+
+  // Handle and trigger popup window
+  $.each('.search', function(element) {
+    element.addEventListener('click', function() {
+      document.body.style.overflow = 'hidden';
+      transition(siteSearch, 'shrinkIn', function() {
+          $('.search-input').focus();
+        }) // transition.shrinkIn
+    });
+  });
+
+  // Monitor main search box
+  const onPopupClose = function() {
+    document.body.style.overflow = '';
+    transition(siteSearch, 0); // "transition.shrinkOut"
+  };
+
+  siteSearch.addEventListener('click', function(event) {
+    if (event.target === siteSearch) {
+      onPopupClose();
+    }
+  });
+
+  $('.close-btn').addEventListener('click', onPopupClose);
+  window.addEventListener('pjax:success', onPopupClose);
+  window.addEventListener('keyup', function(event) {
+    if (event.key === 'Escape') {
+      onPopupClose();
+    }
+  });
+
+};
 const domInit = function() {
   $.each('.overview .menu > .item', function(el) {
     siteNav.child('.menu').appendChild(el.cloneNode(true));
@@ -2313,7 +2775,11 @@ const siteInit = function () {
   visibilityListener()
   themeColorListener()
 
-  algoliaSearch(pjax)
+  if (CONFIG.localSearch != null) {
+    localSearch(pjax)
+  }else if(CONFIG.search != null) {
+    algoliaSearch(pjax)
+  }
 
   window.addEventListener('scroll', scrollHandle)
 

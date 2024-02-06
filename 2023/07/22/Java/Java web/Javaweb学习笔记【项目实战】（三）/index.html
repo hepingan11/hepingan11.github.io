@@ -1,0 +1,652 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="何平安" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="何平安" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="何平安" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/07/22/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+
+
+  <title>
+Javaweb学习笔记【项目实战】（三） - Java web - Java |
+练竹园 = 何平安 = 世界很大，代码连接世界</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Javaweb学习笔记【项目实战】（三）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-07-22 03:53:33">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-07-22T03:53:33+08:00">2023-07-22</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">练竹园</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/75280808746b3a76c93c0e193acbe37b.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/05/l5lFKred.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/xjW3Lg0C.webp"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/uoWbbHMS.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/v5NFIBio.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2023/10/04/IskM26R0.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/" itemprop="item" rel="index" title="In Java"><span itemprop="name">Java</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/Java-web/" itemprop="item" rel="index" title="In Java web"><span itemprop="name">Java web</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/22/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/a.jpg">
+    <meta itemprop="name" content="Hepingan">
+    <meta itemprop="description" content="世界很大，代码连接世界, 欢迎来到何平安的个人博客~欢迎您的浏览">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="何平安">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p><strong>本文章的图片由于是天香园1.0的但是过期了图片就查看不了，就当我自己的一个纪念了吧~</strong></p>
+<p>科普一下htpps各种错误代码：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zMTY3NDU3NA==">常见HTTP错误代码大全 – 知乎 (zhihu.com)</span></p>
+<p><strong>环境搭建&#x2F;基础准备</strong></p>
+<p>创建如下的文件</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/08/651JE8D9C1GZSO.png" alt="img"></p>
+<p>配置MySQL数据库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">-- 部门管理</span><br><span class="line">create table dept(</span><br><span class="line">    id int unsigned primary key auto_increment comment &#x27;主键ID&#x27;,</span><br><span class="line">    name varchar(10) not null unique comment &#x27;部门名称&#x27;,</span><br><span class="line">    create_time datetime not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    update_time datetime not null comment &#x27;修改时间&#x27;</span><br><span class="line">) comment &#x27;部门表&#x27;;</span><br><span class="line">insert into dept (id, name, create_time, update_time) values(1,&#x27;学工部&#x27;,now(),now()),(2,&#x27;教研部&#x27;,now(),now()),(3,&#x27;咨询部&#x27;,now(),now()), (4,&#x27;就业部&#x27;,now(),now()),(5,&#x27;人事部&#x27;,now(),now());</span><br><span class="line">-- 员工管理(带约束)</span><br><span class="line">create table emp (</span><br><span class="line">  id int unsigned primary key auto_increment comment &#x27;ID&#x27;,</span><br><span class="line">  username varchar(20) not null unique comment &#x27;用户名&#x27;,</span><br><span class="line">  password varchar(32) default &#x27;123456&#x27; comment &#x27;密码&#x27;,</span><br><span class="line">  name varchar(10) not null comment &#x27;姓名&#x27;,</span><br><span class="line">  gender tinyint unsigned not null comment &#x27;性别, 说明: 1 男, 2 女&#x27;,</span><br><span class="line">  image varchar(300) comment &#x27;图像&#x27;,</span><br><span class="line">  job tinyint unsigned comment &#x27;职位, 说明: 1 班主任,2 讲师, 3 学工主管, 4 教研主管, 5 咨询师&#x27;,</span><br><span class="line">  entrydate date comment &#x27;入职时间&#x27;,</span><br><span class="line">  dept_id int unsigned comment &#x27;部门ID&#x27;,</span><br><span class="line">  create_time datetime not null comment &#x27;创建时间&#x27;,</span><br><span class="line">  update_time datetime not null comment &#x27;修改时间&#x27;</span><br><span class="line">) comment &#x27;员工表&#x27;;</span><br><span class="line">INSERT INTO emp</span><br><span class="line">	(id, username, password, name, gender, image, job, entrydate,dept_id, create_time, update_time) VALUES</span><br><span class="line">	(1,&#x27;jinyong&#x27;,&#x27;123456&#x27;,&#x27;金庸&#x27;,1,&#x27;1.jpg&#x27;,4,&#x27;2000-01-01&#x27;,2,now(),now()),</span><br><span class="line">	(2,&#x27;zhangwuji&#x27;,&#x27;123456&#x27;,&#x27;张无忌&#x27;,1,&#x27;2.jpg&#x27;,2,&#x27;2015-01-01&#x27;,2,now(),now()),</span><br><span class="line">	(3,&#x27;yangxiao&#x27;,&#x27;123456&#x27;,&#x27;杨逍&#x27;,1,&#x27;3.jpg&#x27;,2,&#x27;2008-05-01&#x27;,2,now(),now()),</span><br><span class="line">	(4,&#x27;weiyixiao&#x27;,&#x27;123456&#x27;,&#x27;韦一笑&#x27;,1,&#x27;4.jpg&#x27;,2,&#x27;2007-01-01&#x27;,2,now(),now()),</span><br><span class="line">	(5,&#x27;changyuchun&#x27;,&#x27;123456&#x27;,&#x27;常遇春&#x27;,1,&#x27;5.jpg&#x27;,2,&#x27;2012-12-05&#x27;,2,now(),now()),</span><br><span class="line">	(6,&#x27;xiaozhao&#x27;,&#x27;123456&#x27;,&#x27;小昭&#x27;,2,&#x27;6.jpg&#x27;,3,&#x27;2013-09-05&#x27;,1,now(),now()),</span><br><span class="line">	(7,&#x27;jixiaofu&#x27;,&#x27;123456&#x27;,&#x27;纪晓芙&#x27;,2,&#x27;7.jpg&#x27;,1,&#x27;2005-08-01&#x27;,1,now(),now()),</span><br><span class="line">	(8,&#x27;zhouzhiruo&#x27;,&#x27;123456&#x27;,&#x27;周芷若&#x27;,2,&#x27;8.jpg&#x27;,1,&#x27;2014-11-09&#x27;,1,now(),now()),</span><br><span class="line">	(9,&#x27;dingminjun&#x27;,&#x27;123456&#x27;,&#x27;丁敏君&#x27;,2,&#x27;9.jpg&#x27;,1,&#x27;2011-03-11&#x27;,1,now(),now()),</span><br><span class="line">	(10,&#x27;zhaomin&#x27;,&#x27;123456&#x27;,&#x27;赵敏&#x27;,2,&#x27;10.jpg&#x27;,1,&#x27;2013-09-05&#x27;,1,now(),now()),</span><br><span class="line">	(11,&#x27;luzhangke&#x27;,&#x27;123456&#x27;,&#x27;鹿杖客&#x27;,1,&#x27;11.jpg&#x27;,5,&#x27;2007-02-01&#x27;,3,now(),now()),</span><br><span class="line">	(12,&#x27;hebiweng&#x27;,&#x27;123456&#x27;,&#x27;鹤笔翁&#x27;,1,&#x27;12.jpg&#x27;,5,&#x27;2008-08-18&#x27;,3,now(),now()),</span><br><span class="line">	(13,&#x27;fangdongbai&#x27;,&#x27;123456&#x27;,&#x27;方东白&#x27;,1,&#x27;13.jpg&#x27;,5,&#x27;2012-11-01&#x27;,3,now(),now()),</span><br><span class="line">	(14,&#x27;zhangsanfeng&#x27;,&#x27;123456&#x27;,&#x27;张三丰&#x27;,1,&#x27;14.jpg&#x27;,2,&#x27;2002-08-01&#x27;,2,now(),now()),</span><br><span class="line">	(15,&#x27;yulianzhou&#x27;,&#x27;123456&#x27;,&#x27;俞莲舟&#x27;,1,&#x27;15.jpg&#x27;,2,&#x27;2011-05-01&#x27;,2,now(),now()),</span><br><span class="line">	(16,&#x27;songyuanqiao&#x27;,&#x27;123456&#x27;,&#x27;宋远桥&#x27;,1,&#x27;16.jpg&#x27;,2,&#x27;2007-01-01&#x27;,2,now(),now()),</span><br><span class="line">	(17,&#x27;chenyouliang&#x27;,&#x27;123456&#x27;,&#x27;陈友谅&#x27;,1,&#x27;17.jpg&#x27;,NULL,&#x27;2015-03-21&#x27;,NULL,now(),now());</span><br></pre></td></tr></table></figure>
+
+<p>可以看到SQL语句里面的dept和emp的变量，就分别在pojo里的Dept and Emp里定理对应的私有型变量，命名规则为驼峰型，并添加上lombok注解省略简单方法。</p>
+<p>配置application.properties文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#驱动类名称</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span><br><span class="line">#数据库连接的url</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/tlias</span><br><span class="line">#连接数据库的用户名</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">#连接数据库的密码</span><br><span class="line">spring.datasource.password=1234</span><br><span class="line">#配置mybatis的日志, 指定输出到控制台</span><br><span class="line">mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl</span><br><span class="line">#开启mybatis的驼峰命名自动映射开关 a_column ------&gt; aCloumn</span><br><span class="line">mybatis.configuration.map-underscore-to-camel-case=true</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用Restful开发规范</strong>，<strong>前端请求方式：</strong></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sb2NhbGhvc3Q6ODA4MC91c2Vycy8x">https://localhost:8080/users/1</span> (GET:查询id为1的用户；DELECT：删除id为1的用户)</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sb2NhbGhvc3Q6ODA4MC91c2Vycw==">https://localhost:8080/users</span> （POST:新增&#x2F;修改用户）</p>
+<p>Result类：用作于统一的数据操作响应的返回类型，看代码就懂了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">@NoArgsConstructor</span><br><span class="line">@AllArgsConstructor</span><br><span class="line">public class Result &#123;</span><br><span class="line">private Integer code;//响应码，1 代表成功; 0 代表失败</span><br><span class="line">private String msg; //响应信息 描述字符串</span><br><span class="line">private Object data; //返回的数据</span><br><span class="line"></span><br><span class="line">//增删改 成功响应</span><br><span class="line">public static Result success()&#123;</span><br><span class="line">return new Result(1,&quot;success&quot;,null);</span><br><span class="line">&#125;</span><br><span class="line">//查询 成功响应</span><br><span class="line">public static Result success(Object data)&#123;</span><br><span class="line">return new Result(1,&quot;success&quot;,data);</span><br><span class="line">&#125;</span><br><span class="line">//失败响应</span><br><span class="line">public static Result error(String msg)&#123;</span><br><span class="line">return new Result(0,msg,null);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加查询系统</strong></p>
+<p>原始记录日志方式：private static Logger <em>log</em>&#x3D; LoggerFactory.<em>getLogger</em>(DeptController.class);有了lombok可以直接在Controller类上使用Slf4j注解来自动创建log日志；</p>
+<p>原始指定值和请求方法：@RequestMapping(value &#x3D; “&#x2F;dept”,method &#x3D; RequestMethod.GET) &#x2F;&#x2F;指定请求方式为GET；直接新的注解：**@GetMapping**(“&#x2F;dept”) &#x2F;&#x2F;直接使用Get&#x2F;Post&#x2F;…Mapping就可以省略method后面的。Java像是面向注解编程…</p>
+<p>DeptController类：通过前端请求GET型的depts指令，调用Result类型的 list方法，创建一个DeptServicelmpl类的list()方法的集合用于输出，并将结果返回给前端。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">private DeptServicelmpl deptService;</span><br><span class="line"></span><br><span class="line">@GetMapping(&quot;/depts&quot;)   /**直接使用Get/Post/...Mapping就可以省略method后面的*/</span><br><span class="line">    public Result list()&#123;</span><br><span class="line">        log.info(&quot;查询全部部门数据&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;Dept&gt; deptList=deptService.list();</span><br><span class="line">        return Result.success(deptList);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>DeptService接口里面：定义了一个Dept类的集合的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Dept&gt; list();</span><br></pre></td></tr></table></figure>
+
+<p>DeptServicelmpl接口类：重新list()方法，里面返回DepMapper类的list()方法的结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class DeptServicelmpl implements DeptService &#123;</span><br><span class="line"></span><br><span class="line">@Autowired</span><br><span class="line">private DeptMapper deptMapper;</span><br><span class="line">@Override</span><br><span class="line">public List&lt;Dept&gt; list() &#123;</span><br><span class="line">return deptMapper.list();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DeptMapper接口：list()方法为调用SQL的select查询语句。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Mapper</span><br><span class="line">public interface DeptMapper &#123;</span><br><span class="line">@Select(&quot;select *from dept&quot;)</span><br><span class="line">List&lt;Dept&gt; list();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总的来说就是要熟悉三层架构，层层套娃，Controller类调用Service类，Service类再调用Mapper类的方法，然后该方法又返回给Service，再返回给Controller，最后返回给前端。用postman可以输入<span class="exturl" data-url="aHR0cHM6Ly9sb2NhbGhvc3Q6ODA4MC9kZXB0cyVFNiVCNSU4QiVFOCVBRiU5NSVFNCVCOCU4QiVFNSU5MyU4RCVFNSVCQSU5NCVFMyU4MCU4Mg==">https://localhost:8080/depts测试下响应。</span></p>
+<p><strong>前后端联调</strong></p>
+<p>首先下载该项目的前端文件：<span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMXcwYi1NSjMzV2h6TkV3WE5nQjlFS3c/cHdkPTEyMzQlRUYlQkMlOEMlRTYlOEYlOTAlRTUlOEYlOTYlRTclQTAlODElRUYlQkMlOUExMjM0">https://pan.baidu.com/s/1w0b-MJ33WhzNEwXNgB9EKw?pwd=1234，提取码：1234</span></p>
+<p>将zip解压到一个全英文路径的文件夹，并打开里面的exe文件，打开任务管理器如果有这个程序在后台说明就运行成功了，该程序会自动占用一个90端口。打开浏览器输入localhost:90，点击部门管理，如果有结果说明就成功了！可以打开F12查看网络，是通过Tomcat将90端口转换为8080端口的。</p>
+<p><strong>删除部门系统</strong></p>
+<p>删除方法就需要前端请求时附上一个id了，且返回给前端的数据不需要日志（date），所有就用Result返回类中的success无参方法了。</p>
+<p>一样的，Controller层：这里的**@PathVariable**注解是用于传递上面的{id}的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@DeleteMapping(&quot;/depts/&#123;id&#125;&quot;)</span><br><span class="line">public Result delete(@PathVariable Integer id)&#123;</span><br><span class="line">log.info(&quot;根据id删除部门:&#123;&#125;&quot;,id);</span><br><span class="line">deptService.delect(id);</span><br><span class="line">return Result.success();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DeptService接口：定义一个有参的方法（id）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void delect(Integer id);</span><br></pre></td></tr></table></figure>
+
+<p>DeptServicelmpl类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void delect(Integer id)&#123;</span><br><span class="line">deptMapper.delectById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DeptMapper类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Delete(&quot;delete from dept where id=#&#123;id&#125;&quot;)</span><br><span class="line">void delectById(Integer id);</span><br></pre></td></tr></table></figure>
+
+<p>总之就是套娃…..会了一个其他的几乎也就全会。<strong>请求方式是DELECT了注意哦~</strong></p>
+<p><strong>新增部门</strong></p>
+<p>请求参数就一个部门名字，因为id是自动生成，create_time和update_time也是根据创建时间生成。请求类型为POST。</p>
+<p>Controller:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(&quot;/depts&quot;)</span><br><span class="line">public Result add(@RequestBody Dept dept)&#123;</span><br><span class="line">log.info(&quot;添加部门:&#123;&#125;&quot;,dept);</span><br><span class="line">deptService.add(dept);</span><br><span class="line">return Result.success();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Service:(接口省了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void add(Dept dept) &#123;</span><br><span class="line">dept.setCreateTime(LocalDateTime.now());</span><br><span class="line">dept.setUpdateTime(LocalDateTime.now());</span><br><span class="line">deptMapper.insert(dept);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Mapper:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Insert(&quot;INSERT INTO dept (name, create_time, update_time) value (#&#123;name&#125;,#&#123;createTime&#125;,#&#123;updateTime&#125;)&quot;)</span><br><span class="line">void insert(Dept dept);</span><br></pre></td></tr></table></figure>
+
+<p>postman我这样编辑：</p>
+<p><img data-src="http://www.hepingan.top/wp-content/uploads/2023/08/W0PM@33WI70VTXL_6.png" alt="img"></p>
+<p><strong>分页查询功能</strong></p>
+<p>由于起始索引有变化(（页码-1）*每页展示记录数 )，所以需要前端传递一个页码数，另外前端还需要传递‘每页展示记录数’的参数。</p>
+<p>先在pojo里创建个PageBean类用于定义参数，就跟之前的Dept一样，需要添加上@Date等注解。定义的变量:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">private Long total;//总记录数</span><br><span class="line">private List rows;//数据列表</span><br></pre></td></tr></table></figure>
+
+<p>先在Controller类定义@GetMapping的方法，因为要传递参数所以就要用有参的嘛，参数就这么定义：@RequestParam注解替代了原始的if语句，直接添加默认值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@RequestParam(defaultValue = &quot;1&quot;) Integer page,@RequestParam(defaultValue = &quot;10&quot;) Integer pageSize</span><br></pre></td></tr></table></figure>
+
+<p>EmpController类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/emps&quot;)</span><br><span class="line">public Result page(@RequestParam(defaultValue = &quot;1&quot;) Integer page,</span><br><span class="line">                   @RequestParam(defaultValue = &quot;10&quot;) Integer pageSize)&#123;</span><br><span class="line">log.info(&quot;分页查询,参数：&#123;&#125;,&#123;&#125;&quot;,page,pageSize);</span><br><span class="line">PageBean pageBean=empService.page(page,pageSize);</span><br><span class="line">return Result.success(pageBean);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>EmpServiceImpl接口类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public PageBean page(Integer page, Integer pageSize) &#123;</span><br><span class="line">Long count=empMapper.count();</span><br><span class="line">Integer start=(page-1)*pageSize;</span><br><span class="line">List&lt;Emp&gt; empList=empMapper.page(start,pageSize);</span><br><span class="line">//封装PageBean对象</span><br><span class="line">PageBean pageBean=new PageBean(count,empList);</span><br><span class="line">return pageBean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>EmpMapper接口：一个是查询页码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;Select count(*) from emp&quot;)</span><br><span class="line">public Long count();</span><br></pre></td></tr></table></figure>
+
+<p>一个是查询当前页的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;SELECT *from emp limit #&#123;start&#125;,#&#123;pagesize&#125;&quot;)</span><br><span class="line">public List&lt;Emp&gt; page(Integer start,Integer pagesize);</span><br></pre></td></tr></table></figure>
+
+<p><strong>PageHelper分页插件：</strong></p>
+<p>目的就是简化Mapper接口和Service层的代码。下载：<span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS9hcnRpZmFjdC9jb20uZ2l0aHViLnBhZ2VoZWxwZXIvcGFnZWhlbHBlci1zcHJpbmctYm9vdC1zdGFydGVyLzEuNC42">Maven Repository: com.github.pagehelper » pagehelper-spring-boot-starter » 1.4.6 (mvnrepository.com)</span></p>
+<p>Mapper就只写：不用什么limit还要写两个查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;SELECT *from emp&quot;)</span><br><span class="line">public List&lt;Emp&gt; list();</span><br></pre></td></tr></table></figure>
+
+<p>EmpServiceImpl接口类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public PageBean page(Integer page, Integer pageSize) &#123;</span><br><span class="line">PageHelper.startPage(page,pageSize);</span><br><span class="line">List&lt;Emp&gt; empList=empMapper.list();</span><br><span class="line">Page&lt;Emp&gt; p=(Page&lt;Emp&gt;)empList;</span><br><span class="line">//封装PageBean对象</span><br><span class="line">PageBean pageBean=new PageBean(p.getTotal(),p.getResult());</span><br><span class="line">return pageBean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他的类都一样。</p>
+<p><strong>条件分页查询</strong></p>
+<p>查询条件：模糊查询的名字，精确查询的性别，between中间查询的入职日期：eg.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select *</span><br><span class="line">from emp</span><br><span class="line">where name like concat(&#x27;%&#x27;, &#x27;张&#x27;, &#x27;%&#x27;)</span><br><span class="line">and gender = 1</span><br><span class="line">and entrydate between &#x27;2000-01-01&#x27; and &#x27;2010-01-01&#x27;</span><br><span class="line">order by update_time desc</span><br></pre></td></tr></table></figure>
+
+<p>EmpController类里面查询方法再添加4个变量：String name,Short gender,@DateTimeFormat(pattern &#x3D; “yyyy-MM-dd”) LocalDate begin,@DateTimeFormat(pattern &#x3D; “yyyy-MM-dd”) LocalDate end，其他地方的看IDEA提示修改就行。Service里也要添加这四个变量。</p>
+<p>EmpServiceImpl接口类里面要注意的是list()里面只需要这新增的四个变量，因为MySQL查询语句里面用不到page和pageSize这两个变量。Mapper接口：public List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);可以看出是使用了XML映射文件才没写@Selcet，XML文件里面的SQL查询语句（位置就在resources里面的top&#x2F;hepingan&#x2F;mapper）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace=&quot;top.hepingan.mapper.EmpMapper&quot;&gt;</span><br><span class="line">&lt;select id=&quot;list&quot; resultType=&quot;top.hepingan.pojo.Emp&quot;&gt;</span><br><span class="line">select *</span><br><span class="line">from emp</span><br><span class="line">&lt;where&gt;</span><br><span class="line">&lt;if test=&quot;name!=null&quot;&gt;</span><br><span class="line">name like concat(&#x27;%&#x27;, #&#123;name&#125;, &#x27;%&#x27;)</span><br><span class="line">&lt;/if&gt;</span><br><span class="line">&lt;if test=&quot;gender!=null&quot;&gt;</span><br><span class="line">and gender = #&#123;gender&#125;</span><br><span class="line">&lt;/if&gt;</span><br><span class="line">&lt;if test=&quot;begin!=null and end!=null&quot;&gt;</span><br><span class="line">and entrydate between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">&lt;/if&gt;</span><br><span class="line">&lt;/where&gt;</span><br><span class="line">order by update_time desc </span><br><span class="line">&lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+
+<p>查询语句：<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo4MDgwL2VtcHM/cGFnZT0xJnBhZ2VzaXplPTEwJm5hbWU9JUU1JUJDJUEwJmdlbmRlcj0xJmJlZ2luPTIwMDAtMDEtMDEmZW5kPTIwMTAtMDEtMDE=">http://localhost:8080/emps?page=1&amp;pagesize=10&amp;name=张&amp;gender=1&amp;begin=2000-01-01&amp;end=2010-01-01</span></p>
+<p><strong>删除操作</strong></p>
+<p>前端请求参数：&#x2F;emp&#x2F;{ids}，请求方式：DELECT</p>
+<p>创建@DeleteMapping(“emps&#x2F;{ids}”)注解的方法delete(@PathVariable List<Integer> ids)。然后直接调用empService的delete(ids)方法，点击报错的直接在Service里生成代码，接口类里面的重写就一行empMapper.delete(ids);然后再点报错的直接在Mapper里创建好代码，最后再在XML文件编写删除的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;delete id=&quot;delete&quot;&gt;</span><br><span class="line">delete</span><br><span class="line">from emp</span><br><span class="line">where id in</span><br><span class="line">&lt;foreach collection=&quot;ids&quot; item=&quot;id&quot; separator=&quot;,&quot; open=&quot;(&quot; close=&quot;)&quot;&gt;</span><br><span class="line">#&#123;id&#125;</span><br><span class="line">&lt;/foreach&gt;</span><br><span class="line">&lt;/delete&gt;</span><br></pre></td></tr></table></figure>
+
+<p>嗯学会了一种方法其他的都简单。</p>
+<p><strong>新增员工操作</strong></p>
+<p>前端请求方式post,json格式输入，要求有image,username,name,gender,job,entrydate,deptId。</p>
+<p>数据比较多，之前创建的Emp就派上用场了，由于是json格式，所以就需要添加@RequestBody注解，调用Service的方法，创建Service方法，接口类定义基础的create_time and update_time，调用Mapper的方法，这里的Mapper里的添加方法就不用XML映射了，直接:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Insert(&quot;INSERT INTO emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time)&quot; +</span><br><span class="line">&quot;value (#&#123;username&#125;,#&#123;name&#125;,#&#123;gender&#125;,#&#123;image&#125;,#&#123;job&#125;,#&#123;entrydate&#125;,#&#123;deptId&#125;,#&#123;createTime&#125;,#&#123;updateTime&#125;)&quot;)</span><br><span class="line">void insert(Emp emp);</span><br></pre></td></tr></table></figure>
+
+<p><strong>上传文件</strong></p>
+<p><strong>上传到本地存储</strong></p>
+<p>在resources&#x2F;static里面创建upload.html文件，里面编写：前端文件不用管。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;上传文件&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=&quot;/upload&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">姓名: &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">年龄: &lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;</span><br><span class="line">头像: &lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>再在Controller里面创建一个UploadController类，里面编写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">public class UploadController &#123;</span><br><span class="line">@PostMapping(&quot;/upload&quot;)</span><br><span class="line">public Result upload(String name, Integer age, MultipartFile image)&#123;</span><br><span class="line">log.info(&quot;上传文件：&#123;&#125;,&#123;&#125;,&#123;&#125;&quot;,name,age,image);</span><br><span class="line">return Result.success();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>MultipartFile 函数就上传文件的格式。这里定义的变量名要和前端给的名字一样。</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-07 05:00:24" itemprop="dateModified" datetime="2024-02-07T05:00:24+08:00">2024-02-07</time>
+  </span>
+  <span id="2023/07/22/Java/Java web/Javaweb学习笔记【项目实战】（三）/" class="item leancloud_visitors" data-flag-title="Javaweb学习笔记【项目实战】（三）" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.jpg" alt="Hepingan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.jpg" alt="Hepingan Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Hepingan <i class="ic i-at"><em>@</em></i>何平安
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/07/22/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/" title="Javaweb学习笔记【项目实战】（三）">http://example.com/2023/07/22/Java/Java web/Javaweb学习笔记【项目实战】（三）/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;06&#x2F;micZgzGg.png" title="我的故事（大一下）">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 故事集</span>
+  <h3>我的故事（大一下）</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/08/14/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;06&#x2F;xjW3Lg0C.webp" title="Javaweb学习笔记【项目实战】（四）">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Java web</span>
+  <h3>Javaweb学习笔记【项目实战】（四）</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2023/07/02/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（一）">Javaweb学习笔记（一）</a></li><li><a href="/2023/07/15/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></li><li class="active"><a href="/2023/07/22/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（三）">Javaweb学习笔记【项目实战】（三）</a></li><li><a href="/2023/08/14/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="bookmark" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></li><li><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" rel="bookmark" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></li><li><a href="/2024/02/04/Java/Java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" rel="bookmark" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Hepingan"
+      data-src="/images/a.jpg">
+  <p class="name" itemprop="name">Hepingan</p>
+  <div class="description" itemprop="description">欢迎来到何平安的个人博客~欢迎您的浏览</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">43</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlcGluZ2FuMTE=" title="https:&#x2F;&#x2F;github.com&#x2F;hepingan11"><i class="ic i-github"></i></span>
+      <span class="exturl item google" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20v" title="https:&#x2F;&#x2F;plus.google.com&#x2F;"><i class="ic i-google"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTM0MzI3MDEyNA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;343270124"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjE2NDE2NDM2NTY2QHFxLmNvbQ==" title="mailto:16416436566@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>链接</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/08/14/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Java-web/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2023/08/14/Java/Java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%91%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Javaweb学习笔记【项目实战】（四）">Javaweb学习笔记【项目实战】（四）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E6%97%A5%E5%B8%B8%E7%A0%94%E7%A9%B6/%E4%BF%AE%E5%A4%8D%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" title="修复域名访问问题">修复域名访问问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%80/" title="企业级开发项目《苍穹外卖》(一)">企业级开发项目《苍穹外卖》(一)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%89%E3%80%91%EF%BC%88Nacos-Gateway-Minio%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）">企业级微服务大项目实战《学成在线》【三】（Nacos,Gateway,Minio环境搭建）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/Axios%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%AE%9E%E4%BE%8B/" title="Axios前后端交互实例">Axios前后端交互实例</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Java-web/" title="In Java web">Java web</a>
+</div>
+
+    <span><a href="/2024/02/04/Java/Java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="In Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/JavaSE/" title="In JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2023/04/02/Java/JavaSE/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89/" title="精通Java学习之路（一）">精通Java学习之路（一）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Hepingan @ 练竹园</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/07/22/Java/Java web/Javaweb学习笔记【项目实战】（三）/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
