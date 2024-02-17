@@ -100,12 +100,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/iVtMsT4Z.png"></li>
-          <li class="item" data-background-image="https://picst.sunbangyan.cn/2024/02/04/310a36f7f4a957840ebf9bedaaf12551.jpeg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/FNF8MvPh.png"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/H9rzlu1R.png"></li>
-          <li class="item" data-background-image="https://picdl.sunbangyan.cn/2024/02/04/f664477b22900c4106a3896060123c46.jpeg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/8nA020ej.webp"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/iOC4NxHU.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/gfFcjdmT.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/oW9n6dBf.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/05/YClDALX6.png"></li>
+          <li class="item" data-background-image="https://picss.sunbangyan.cn/2024/02/04/faf2a366c22728f1462c3f4d4a08d542.jpeg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/uoWbbHMS.png"></li>
         </ul>
       </div>
     </header>
@@ -149,12 +149,87 @@
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <p>2024.2.16 openai 官网发布了关于 sora 文本视频生成式ai的介绍（原生文）：</p>
+<h1 id="Video-generation-models-as-world-simulators"><a href="#Video-generation-models-as-world-simulators" class="headerlink" title="Video generation models as world simulators"></a>Video generation models as world simulators</h1><p>We explore large-scale training of generative models on video data. Specifically, we train text-conditional diffusion models jointly on videos and images of variable durations, resolutions and aspect ratios. We leverage a transformer architecture that operates on spacetime patches of video and image latent codes. Our largest model, Sora, is capable of generating a minute of high fidelity video. Our results suggest that scaling video generation models is a promising path towards building general purpose simulators of the physical world.</p>
+<h3 id="More-resources"><a href="#More-resources" class="headerlink" title="More resources"></a>More resources</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3NvcmE=">View Sora overview</span></li>
+</ul>
+<p><span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoP3RvcGljcz12aWRlby1nZW5lcmF0aW9u">Video generation</span>, <span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoP21vZGVscz1zb3Jh">Sora</span>, <span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoP2NvbnRlbnRUeXBlcz1taWxlc3RvbmU=">Milestone</span>, <span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoP2NvbnRlbnRUeXBlcz1yZWxlYXNl">Release</span></p>
+<p>This technical report focuses on (1) our method for turning visual data of all types into a unified representation that enables large-scale training of generative models, and (2) qualitative evaluation of Sora’s capabilities and limitations. Model and implementation details are not included in this report.</p>
+<p>Much prior work has studied generative modeling of video data using a variety of methods, including recurrent networks,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMQ==">1</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMg==">2</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMw==">3</span> generative adversarial networks,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tNA==">4</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tNQ==">5</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tNg==">6</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tNw==">7</span> autoregressive transformers,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tOA==">8</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tOQ==">9</span> and diffusion models.<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTA=">10</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTE=">11</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTI=">12</span> These works often focus on a narrow category of visual data, on shorter videos, or on videos of a fixed size. Sora is a generalist model of visual data—it can generate videos and images spanning diverse durations, aspect ratios and resolutions, up to a full minute of high definition video.</p>
+<h2 id="Turning-visual-data-into-patches"><a href="#Turning-visual-data-into-patches" class="headerlink" title="Turning visual data into patches"></a>Turning visual data into patches</h2><p>We take inspiration from large language models which acquire generalist capabilities by training on internet-scale data.<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTM=">13</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTQ=">14</span> The success of the LLM paradigm is enabled in part by the use of tokens that elegantly unify diverse modalities of text—code, math and various natural languages. In this work, we consider how generative models of visual data can inherit such benefits. Whereas LLMs have text tokens, Sora has visual <em>patches</em>. Patches have previously been shown to be an effective representation for models of visual data.<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTU=">15</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTY=">16</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTc=">17</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTg=">18</span> We find that patches are a highly-scalable and effective representation for training generative models on diverse types of videos and images.</p>
+<p><img data-src="https://images.openai.com/blob/1d2955dd-9d05-4f33-b346-be531d2a7737/figure-patches.png?trim=0,0,0,0&width=10&height=10&quality=50" alt="Figure Patches"></p>
+<p>At a high level, we turn videos into patches by first compressing videos into a lower-dimensional latent space,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTk=">19</span> and subsequently decomposing the representation into spacetime patches.</p>
+<h2 id="Video-compression-network"><a href="#Video-compression-network" class="headerlink" title="Video compression network"></a>Video compression network</h2><p>We train a network that reduces the dimensionality of visual data.<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjA=">20</span> This network takes raw video as input and outputs a latent representation that is compressed both temporally and spatially. Sora is trained on and subsequently generates videos within this compressed latent space. We also train a corresponding decoder model that maps generated latents back to pixel space.</p>
+<h2 id="Spacetime-latent-patches"><a href="#Spacetime-latent-patches" class="headerlink" title="Spacetime latent patches"></a>Spacetime latent patches</h2><p>Given a compressed input video, we extract a sequence of spacetime patches which act as transformer tokens. This scheme works for images too since images are just videos with a single frame. Our patch-based representation enables Sora to train on videos and images of variable resolutions, durations and aspect ratios. At inference time, we can control the size of generated videos by arranging randomly-initialized patches in an appropriately-sized grid.</p>
+<h2 id="Scaling-transformers-for-video-generation"><a href="#Scaling-transformers-for-video-generation" class="headerlink" title="Scaling transformers for video generation"></a>Scaling transformers for video generation</h2><p>Sora is a diffusion model<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjE=">21</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjI=">22</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjM=">23</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjQ=">24</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjU=">25</span>; given input noisy patches (and conditioning information like text prompts), it’s trained to predict the original “clean” patches. Importantly, Sora is a diffusion <em>transformer</em>.<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjY=">26</span> Transformers have demonstrated remarkable scaling properties across a variety of domains, including language modeling,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTM=">13</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTQ=">14</span> computer vision,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTU=">15</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTY=">16</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTc=">17</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMTg=">18</span> and image generation.<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjc=">27</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjg=">28</span>,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMjk=">29</span></p>
+<p><img data-src="https://images.openai.com/blob/aa8b687c-bee5-4d72-a1c8-1350d33c80d3/figure-diffusion.png?trim=0,0,0,0&width=10&height=10&quality=50" alt="Figure Diffusion"></p>
+<p>In this work, we find that diffusion transformers scale effectively as video models as well. Below, we show a comparison of video samples with fixed seeds and inputs as training progresses. Sample quality improves markedly as training compute increases.</p>
+<p>Base compute</p>
+<p>4x compute</p>
+<p>32x compute</p>
+<h2 id="Variable-durations-resolutions-aspect-ratios"><a href="#Variable-durations-resolutions-aspect-ratios" class="headerlink" title="Variable durations, resolutions, aspect ratios"></a>Variable durations, resolutions, aspect ratios</h2><p>Past approaches to image and video generation typically resize, crop or trim videos to a standard size—e.g., 4 second videos at 256x256 resolution. We find that instead training on data at its native size provides several benefits.</p>
+<h3 id="Sampling-flexibility"><a href="#Sampling-flexibility" class="headerlink" title="Sampling flexibility"></a>Sampling flexibility</h3><p>Sora can sample widescreen 1920x1080p videos, vertical 1080x1920 videos and everything inbetween. This lets Sora create content for different devices directly at their native aspect ratios. It also lets us quickly prototype content at lower sizes before generating at full resolution—all with the same model.</p>
+<h3 id="Improved-framing-and-composition"><a href="#Improved-framing-and-composition" class="headerlink" title="Improved framing and composition"></a>Improved framing and composition</h3><p>We empirically find that training on videos at their native aspect ratios improves composition and framing. We compare Sora against a version of our model that crops all training videos to be square, which is common practice when training generative models. The model trained on square crops (left) sometimes generates videos where the subject is only partially in view. In comparison, videos from Sora (right) have improved framing.</p>
+<h2 id="Language-understanding"><a href="#Language-understanding" class="headerlink" title="Language understanding"></a>Language understanding</h2><p>Training text-to-video generation systems requires a large amount of videos with corresponding text captions. We apply the re-captioning technique introduced in DALL·E 3<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMzA=">30</span> to videos. We first train a highly descriptive captioner model and then use it to produce text captions for all videos in our training set. We find that training on highly descriptive video captions improves text fidelity as well as the overall quality of videos.</p>
+<p>Similar to DALL·E 3, we also leverage GPT to turn short user prompts into longer detailed captions that are sent to the video model. This enables Sora to generate high quality videos that accurately follow user prompts.</p>
+<p>a woman</p>
+<p>wearing</p>
+<p>a green dress and a sun hat</p>
+<p>taking a pleasant stroll in</p>
+<p>Johannesburg, South Africa</p>
+<p>during</p>
+<p>a winter storm</p>
+<h2 id="Prompting-with-images-and-videos"><a href="#Prompting-with-images-and-videos" class="headerlink" title="Prompting with images and videos"></a>Prompting with images and videos</h2><p>All of the results above and in our <span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3NvcmE=">landing page</span> show text-to-video samples. But Sora can also be prompted with other inputs, such as pre-existing images or video. This capability enables Sora to perform a wide range of image and video editing tasks—creating perfectly looping video, animating static images, extending videos forwards or backwards in time, etc.</p>
+<h3 id="Animating-DALL·E-images"><a href="#Animating-DALL·E-images" class="headerlink" title="Animating DALL·E images"></a>Animating DALL·E images</h3><p>Sora is capable of generating videos provided an image and prompt as input. Below we show example videos generated based on DALL·E 2<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMzE=">31</span> and DALL·E 3<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMzA=">30</span> images.</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/prompting_0.png" alt="img"></p>
+<p>A Shiba Inu dog wearing a beret and black turtleneck.</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/prompting_2.png" alt="img"></p>
+<p>Monster Illustration in flat design style of a diverse family of monsters. The group includes a furry brown monster, a sleek black monster with antennas, a spotted green monster, and a tiny polka-dotted monster, all interacting in a playful environment.</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/prompting_4.png" alt="img"></p>
+<p>An image of a realistic cloud that spells “SORA”.</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/prompting_6.png" alt="img"></p>
+<p>In an ornate, historical hall, a massive tidal wave peaks and begins to crash. Two surfers, seizing the moment, skillfully navigate the face of the wave.</p>
+<h3 id="Extending-generated-videos"><a href="#Extending-generated-videos" class="headerlink" title="Extending generated videos"></a>Extending generated videos</h3><p>Sora is also capable of extending videos, either forward or backward in time. Below are four videos that were all extended backward in time starting from a segment of a generated video. As a result, each of the four videos starts different from the others, yet all four videos lead to the same ending.</p>
+<p><video class="w-full h-full object-cover" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / .5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; max-width: 100%; height: 134.325px; width: 238.8px; object-fit: cover;"></video></p>
+<p><video class="w-full h-full object-cover" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / .5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; max-width: 100%; height: 134.325px; width: 238.8px; object-fit: cover;"></video></p>
+<p><video class="w-full h-full object-cover" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / .5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; max-width: 100%; height: 134.325px; width: 238.8px; object-fit: cover;"></video></p>
+<p>00:0000:20</p>
+<p>We can use this method to extend a video both forward and backward to produce a seamless infinite loop.</p>
+<h3 id="Video-to-video-editing"><a href="#Video-to-video-editing" class="headerlink" title="Video-to-video editing"></a>Video-to-video editing</h3><p>Diffusion models have enabled a plethora of methods for editing images and videos from text prompts. Below we apply one of these methods, SDEdit,<span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3Jlc2VhcmNoL3ZpZGVvLWdlbmVyYXRpb24tbW9kZWxzLWFzLXdvcmxkLXNpbXVsYXRvcnMjZm4tMzI=">32</span> to Sora. This technique enables Sora to transform the styles and environments of input videos zero-shot.</p>
+<p>Input video</p>
+<p><video class="w-full h-full object-cover" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / .5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; max-width: 100%; height: 196.988px; width: 350.2px; object-fit: cover;"></video></p>
+<p>change the setting to be in a lush junglechange the setting to the 1920s with an old school car. make sure to keep the red colormake it go underwaterchange the video setting to be different than a mountain? perhaps joshua tree?put the video in space with a rainbow roadkeep the video the same but make it be wintermake it in claymation animation stylerecreate in the style of a charcoal drawing, making sure to be black and whitechange the setting to be cyberpunkchange the video to a medieval thememake it have dinosaursrewrite the video in a pixel art style</p>
+<p><video class="w-full h-full object-cover" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / .5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; max-width: 100%; height: 196.988px; width: 350.2px; object-fit: cover;"></video></p>
+<h3 id="Connecting-videos"><a href="#Connecting-videos" class="headerlink" title="Connecting videos"></a>Connecting videos</h3><p>We can also use Sora to gradually interpolate between two input videos, creating seamless transitions between videos with entirely different subjects and scene compositions. In the examples below, the videos in the center interpolate between the corresponding videos on the left and right.</p>
+<h2 id="Image-generation-capabilities"><a href="#Image-generation-capabilities" class="headerlink" title="Image generation capabilities"></a>Image generation capabilities</h2><p>Sora is also capable of generating images. We do this by arranging patches of Gaussian noise in a spatial grid with a temporal extent of one frame. The model can generate images of variable sizes—up to 2048x2048 resolution.</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/image_0.png" alt="img">Close-up portrait shot of a woman in autumn, extreme detail, shallow depth of field</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/image_1.png" alt="img">Vibrant coral reef teeming with colorful fish and sea creatures</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/image_2.png" alt="img">Digital art of a young tiger under an apple tree in a matte painting style with gorgeous details</p>
+<p><img data-src="https://cdn.openai.com/tmp/s/image_3.png" alt="img">A snowy mountain village with cozy cabins and a northern lights display, high detail and photorealistic dslr, 50mm f&#x2F;1.2</p>
+<h2 id="Emerging-simulation-capabilities"><a href="#Emerging-simulation-capabilities" class="headerlink" title="Emerging simulation capabilities"></a>Emerging simulation capabilities</h2><p>We find that video models exhibit a number of interesting emergent capabilities when trained at scale. These capabilities enable Sora to simulate some aspects of people, animals and environments from the physical world. These properties emerge without any explicit inductive biases for 3D, objects, etc.—they are purely phenomena of scale.</p>
+<p><strong>3D consistency.</strong> Sora can generate videos with dynamic camera motion. As the camera shifts and rotates, people and scene elements move consistently through three-dimensional space.</p>
+<p><strong>Long-range coherence and object permanence.</strong> A significant challenge for video generation systems has been maintaining temporal consistency when sampling long videos. We find that Sora is often, though not always, able to effectively model both short- and long-range dependencies. For example, our model can persist people, animals and objects even when they are occluded or leave the frame. Likewise, it can generate multiple shots of the same character in a single sample, maintaining their appearance throughout the video.</p>
+<p><strong>Interacting with the world.</strong> Sora can sometimes simulate actions that affect the state of the world in simple ways. For example, a painter can leave new strokes along a canvas that persist over time, or a man can eat a burger and leave bite marks.</p>
+<p><strong>Simulating digital worlds.</strong> Sora is also able to simulate artificial processes–one example is video games. Sora can simultaneously control the player in Minecraft with a basic policy while also rendering the world and its dynamics in high fidelity. These capabilities can be elicited zero-shot by prompting Sora with captions mentioning “Minecraft.”</p>
+<p>These capabilities suggest that continued scaling of video models is a promising path towards the development of highly-capable simulators of the physical and digital world, and the objects, animals and people that live within them.</p>
+<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p>Sora currently exhibits numerous limitations as a simulator. For example, it does not accurately model the physics of many basic interactions, like glass shattering. Other interactions, like eating food, do not always yield correct changes in object state. We enumerate other common failure modes of the model—such as incoherencies that develop in long duration samples or spontaneous appearances of objects—in our <span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL3NvcmE=">landing page</span>.</p>
+<p>We believe the capabilities Sora has today demonstrate that continued scaling of video models is a promising path towards the development of capable simulators of the physical and digital world, and the objects, animals and people that live within them.</p>
+<h1 id="我的打算"><a href="#我的打算" class="headerlink" title="我的打算"></a>我的打算</h1><p>肯定要抓住啊，之前chatgpt出来的时候一堆套壳网站，圈了好多钱。</p>
+<p>打算用vue+springboot+python来做个项目，就是调用官方接口，前几次免费后面收费，就这样。</p>
+
   </div>
 
    <footer>
 
     <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-17 08:13:27" itemprop="dateModified" datetime="2024-02-17T08:13:27+08:00">2024-02-17</time>
+  </span>
   <span id="2024/02/17/下一个AI风口-sora文本视频生成式AI/" class="item leancloud_visitors" data-flag-title="下一个AI风口,sora文本视频生成式AI" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
@@ -211,7 +286,7 @@
     <div class="item left">
       
 
-  <a href="/2024/02/17/%E5%89%8D%E7%AB%AF/vue%E7%9F%A5%E8%AF%86+%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;WZeVsA0P.jpg" title="vue知识+调用后端">
+  <a href="/2024/02/17/%E5%89%8D%E7%AB%AF/vue%E7%9F%A5%E8%AF%86+%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;picss.sunbangyan.cn&#x2F;2024&#x2F;02&#x2F;04&#x2F;75280808746b3a76c93c0e193acbe37b.jpeg" title="vue知识+调用后端">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> 前端</span>
   <h3>vue知识+调用后端</h3>
@@ -235,6 +310,7 @@
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Video-generation-models-as-world-simulators"><span class="toc-number">1.</span> <span class="toc-text">Video generation models as world simulators</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#More-resources"><span class="toc-number">1.0.1.</span> <span class="toc-text">More resources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turning-visual-data-into-patches"><span class="toc-number">1.1.</span> <span class="toc-text">Turning visual data into patches</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Video-compression-network"><span class="toc-number">1.2.</span> <span class="toc-text">Video compression network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spacetime-latent-patches"><span class="toc-number">1.3.</span> <span class="toc-text">Spacetime latent patches</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scaling-transformers-for-video-generation"><span class="toc-number">1.4.</span> <span class="toc-text">Scaling transformers for video generation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variable-durations-resolutions-aspect-ratios"><span class="toc-number">1.5.</span> <span class="toc-text">Variable durations, resolutions, aspect ratios</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sampling-flexibility"><span class="toc-number">1.5.1.</span> <span class="toc-text">Sampling flexibility</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Improved-framing-and-composition"><span class="toc-number">1.5.2.</span> <span class="toc-text">Improved framing and composition</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Language-understanding"><span class="toc-number">1.6.</span> <span class="toc-text">Language understanding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prompting-with-images-and-videos"><span class="toc-number">1.7.</span> <span class="toc-text">Prompting with images and videos</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Animating-DALL%C2%B7E-images"><span class="toc-number">1.7.1.</span> <span class="toc-text">Animating DALL·E images</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extending-generated-videos"><span class="toc-number">1.7.2.</span> <span class="toc-text">Extending generated videos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Video-to-video-editing"><span class="toc-number">1.7.3.</span> <span class="toc-text">Video-to-video editing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Connecting-videos"><span class="toc-number">1.7.4.</span> <span class="toc-text">Connecting videos</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image-generation-capabilities"><span class="toc-number">1.8.</span> <span class="toc-text">Image generation capabilities</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Emerging-simulation-capabilities"><span class="toc-number">1.9.</span> <span class="toc-text">Emerging simulation capabilities</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Discussion"><span class="toc-number">1.10.</span> <span class="toc-text">Discussion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%89%93%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">我的打算</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -340,18 +416,22 @@
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/java/" title="In java">java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/java-web/" title="In java web">java web</a>
 </div>
 
-    <span><a href="/2024/02/04/git%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" title="git从入门到入土">git从入门到入土</a></span>
+    <span><a href="/2023/07/02/java/java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="Javaweb学习笔记（一）">Javaweb学习笔记（一）</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
 </div>
 
-    <span><a href="/2024/02/04/%E6%97%A5%E5%B8%B8%E7%A0%94%E7%A9%B6/%E4%BD%BF%E7%94%A8OneDrive%E5%9C%A8%E7%BD%91%E7%AB%99%E5%9C%A8%E7%BA%BF%E6%92%AD%E6%94%BE%E9%9F%B3%E8%A7%86%E9%A2%91/" title="使用OneDrive在网站在线播放音视频">使用OneDrive在网站在线播放音视频</a></span>
+    <span><a href="/2024/02/04/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
   </li>
 
       
@@ -361,7 +441,7 @@
 <a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
 </div>
 
-    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="微信小程序开发学习笔记">微信小程序开发学习笔记</a></span>
+    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/Axios%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%AE%9E%E4%BE%8B/" title="Axios前后端交互实例">Axios前后端交互实例</a></span>
   </li>
 
       
@@ -373,7 +453,7 @@
 <a href="/categories/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
 </div>
 
-    <span><a href="/2024/02/04/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0-%E4%B8%89-%E3%80%90Docker%EF%BC%8CMQ%E3%80%91/" title="SpringCloud微服务学习（三）【Docker，MQ】">SpringCloud微服务学习（三）【Docker，MQ】</a></span>
+    <span><a href="/2024/02/03/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" title="SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】">SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】</a></span>
   </li>
 
       
@@ -383,29 +463,7 @@
 <a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
 </div>
 
-    <span><a href="/2024/02/17/%E5%89%8D%E7%AB%AF/vue%E7%9F%A5%E8%AF%86+%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE/" title="vue知识+调用后端">vue知识+调用后端</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/java/" title="In java">java</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
-</div>
-
-    <span><a href="/2024/02/04/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%90Feign-Gateway%E3%80%91/" title="SpringCloud微服务学习笔记（二）【Feign,Gateway】">SpringCloud微服务学习笔记（二）【Feign,Gateway】</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E6%95%85%E4%BA%8B%E9%9B%86/" title="In 故事集">故事集</a>
-</div>
-
-    <span><a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/%E9%80%9A%E8%BF%87node-js%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/" title="通过node.js部署vue项目">通过node.js部署vue项目</a></span>
   </li>
 
       
@@ -422,12 +480,30 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/java/" title="In java">java</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/java/java%E5%9F%BA%E7%A1%80/" title="In java基础">java基础</a>
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
 </div>
 
-    <span><a href="/2024/02/03/java/java%E5%9F%BA%E7%A1%80/%E5%A4%A7%E4%B8%80%E4%B8%8Bjava%E6%9C%9F%E6%9C%AB%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E8%8D%A3%E8%8E%B7%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%B8%80%EF%BC%89/" title="大一下java期末设计：学生信息管理系统（荣获班上第一）">大一下java期末设计：学生信息管理系统（荣获班上第一）</a></span>
+    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" title="说说nginx反向代理和Kong网关">说说nginx反向代理和Kong网关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E5%9B%9B%E3%80%91%EF%BC%88%E5%AA%92%E8%B5%84%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%89/" title="企业级微服务大项目实战《学成在线》【四】（媒资管理模块）">企业级微服务大项目实战《学成在线》【四】（媒资管理模块）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
   </li>
 
       
