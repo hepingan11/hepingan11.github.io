@@ -1,0 +1,530 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="何平安" href="http://hepingan.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="何平安" href="http://hepingan.top/atom.xml" />
+<link rel="alternate" type="application/json" title="何平安" href="http://hepingan.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://hepingan.top/2024/03/17/%E5%9F%BA%E4%BA%8ETimeSea%E7%9A%84sd%E7%BB%98%E7%94%BB%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E4%B8%BA%E9%98%BF%E9%87%8C%E4%BA%91FC/">
+
+
+
+  <title>
+基于TimeSea的sd绘画接口修改为阿里云FC |
+练竹园 = 何平安 = 世界很大，代码连接世界</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">基于TimeSea的sd绘画接口修改为阿里云FC
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-03-17 18:09:53">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-03-17T18:09:53+08:00">2024-03-17</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <!--自定义看板娘-->
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="/live2d-widget/autoload.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+<nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">练竹园</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/58n1EzYk.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/25/qOcYkjaF.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/25/qU9vHMt2.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/yfhC5wAf.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/03/11/AnOgRoxc.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/AIfisT2e.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://hepingan.top/2024/03/17/%E5%9F%BA%E4%BA%8ETimeSea%E7%9A%84sd%E7%BB%98%E7%94%BB%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E4%B8%BA%E9%98%BF%E9%87%8C%E4%BA%91FC/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/a.jpg">
+    <meta itemprop="name" content="Hepingan">
+    <meta itemprop="description" content="世界很大，代码连接世界, 如果你在国外推荐使用heping.top这个地址；你在国内就使用hepingan11.gitee.io">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="何平安">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="代码修改"><a href="#代码修改" class="headerlink" title="代码修改"></a>代码修改</h2><p>下载时间海大佬的源码：<span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vZHVsYWlkdXdhbmdfaGp4X2JpbGliaWxpL3RpbWVfc2VhX2NoYXRncHQ=">TIME SEA CHATGPT: 基于SpringBoot3 开发的 双端Ai (含小程序 H5, 网页支持已适配手机)平台 , 适配 功能 ChatGPT、数字人视频生成、NewBing 、Claude、自定义对话、自定义角色、 SD绘图 、GPT绘图、MJ绘图, 网页数据和小程序端同步 登录方式分为 邮箱登录 或 微信扫一扫登录 , 绘图内含 百度翻译 黄图鉴权 , 支持 小程序流量主功能 双端自带 管理系统 (gitee.com)</span></p>
+<p>里面有后端的部署教程哦~</p>
+<p>直接进入Web模块，里面全局搜索DrawingTextView.vue文件，将里面的代码全部替换为下面的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;demo-image__placeholder&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;block&quot;&gt;</span><br><span class="line">      &lt;span class=&quot;demonstration&quot;&gt;&lt;/span&gt;</span><br><span class="line">      &lt;el-image :src=&quot;src&quot;&gt;&lt;/el-image&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">      目前PC版显示可能有些问题，建议缩小网页或使用手机端</span><br><span class="line">  &lt;br/&gt;</span><br><span class="line">      正向提示词(英文更准确~):</span><br><span class="line">      &lt;el-input</span><br><span class="line">          type=&quot;textarea&quot;</span><br><span class="line">          :rows=&quot;2&quot;</span><br><span class="line">          placeholder=&quot;请输入绘画提示词&quot;</span><br><span class="line">          v-model=&quot;prompt&quot;&gt;</span><br><span class="line">      &lt;/el-input&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      绘画模型:</span><br><span class="line">      &lt;el-select v-model=&quot;value&quot; placeholder=&quot;请选择&quot;&gt;</span><br><span class="line">        &lt;el-option</span><br><span class="line">            v-for=&quot;item in options&quot;</span><br><span class="line">            :key=&quot;item.value&quot;</span><br><span class="line">            :label=&quot;item.label&quot;</span><br><span class="line">            :value=&quot;item.value&quot;&gt;</span><br><span class="line">        &lt;/el-option&gt;</span><br><span class="line">      &lt;/el-select&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      采样器:</span><br><span class="line">      &lt;el-select v-model=&quot;value2&quot; placeholder=&quot;请选择&quot;&gt;</span><br><span class="line">        &lt;el-option</span><br><span class="line">            v-for=&quot;item in options2&quot;</span><br><span class="line">            :key=&quot;item.value2&quot;</span><br><span class="line">            :label=&quot;item.label2&quot;</span><br><span class="line">            :value=&quot;item.value2&quot;&gt;</span><br><span class="line">        &lt;/el-option&gt;</span><br><span class="line">      &lt;/el-select&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      大小:</span><br><span class="line">      &lt;el-select v-model=&quot;height&quot; placeholder=&quot;请选择&quot;&gt;</span><br><span class="line">        &lt;el-option</span><br><span class="line">            v-for=&quot;item in shape&quot;</span><br><span class="line">            :key=&quot;item.height&quot;</span><br><span class="line">            :label=&quot;item.label3&quot;</span><br><span class="line">            :value=&quot;item.height&quot;&gt;</span><br><span class="line">        &lt;/el-option&gt;</span><br><span class="line">      &lt;/el-select&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      步数(越高越丰富,越低越简约):</span><br><span class="line">      &lt;el-select v-model=&quot;step&quot; placeholder=&quot;请选择&quot;&gt;</span><br><span class="line">        &lt;el-option</span><br><span class="line">            v-for=&quot;item in options3&quot;</span><br><span class="line">            :key=&quot;item.step&quot;</span><br><span class="line">            :label=&quot;item.label3&quot;</span><br><span class="line">            :value=&quot;item.step&quot;&gt;</span><br><span class="line">        &lt;/el-option&gt;</span><br><span class="line">      &lt;/el-select&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;el-button type=&quot;primary&quot; @click=&quot;requestImage&quot;&gt;开始绘画&lt;/el-button&gt;</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      (画好后记得保存到本地哦~)</span><br><span class="line">      &lt;br/&gt;</span><br><span class="line">      &lt;div v-if=&quot;loading===1&quot;&gt;</span><br><span class="line">        &lt;h1&gt;</span><br><span class="line">          &lt;span&gt;加&lt;/span&gt;</span><br><span class="line">          &lt;span&gt;载&lt;/span&gt;</span><br><span class="line">          &lt;span&gt;中&lt;/span&gt;</span><br><span class="line">          &lt;span&gt;.&lt;/span&gt;</span><br><span class="line">          &lt;span&gt;.&lt;/span&gt;</span><br><span class="line">          &lt;span&gt;.&lt;/span&gt;</span><br><span class="line">        &lt;/h1&gt;</span><br><span class="line">        (预计需要1分钟，请勿刷新网页或点击按钮)</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div v-if=&quot;loading===2&quot;&gt;</span><br><span class="line">        &lt;div v-if=&quot;decodedImages.length&quot;&gt;</span><br><span class="line">          &lt;div v-for=&quot;(img, index) in decodedImages&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">            &lt;img :src=&quot;img&quot; alt=&quot;image&quot; /&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div v-if=&quot;loading===3&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;milky&quot;&gt;AI绘画调用失败T_T&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">import axios from &quot;axios&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;DrawingView&quot;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      src: &#x27;https://img2.imgtp.com/2024/03/17/3qkbcd2h.png&#x27;,</span><br><span class="line">      textarea: &#x27;&#x27;,</span><br><span class="line">      loading: &#x27;0&#x27;,</span><br><span class="line">      decodedImages: [],</span><br><span class="line">      prompt: &#x27;lovely girl&#x27;,</span><br><span class="line">      step: &#x27;&#x27;,</span><br><span class="line"></span><br><span class="line">      options: [&#123;</span><br><span class="line">        value: &#x27;mixProV4.Cqhm.safetensors&#x27;,</span><br><span class="line">        label: &#x27;经典模型&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        value: &#x27;Anime_Art_SDXL.safetensors&#x27;,</span><br><span class="line">        label: &#x27;优美动漫风格&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        value: &#x27;majicMIX realistic_v6.safetensors&#x27;,</span><br><span class="line">        label: &#x27;写真人物&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        value: &#x27;Counterfeit-V2.5_v30.safetensors&#x27;,</span><br><span class="line">        label: &#x27;丰富二次元&#x27;</span><br><span class="line">      &#125;],</span><br><span class="line">      value: &#x27;&#x27;,</span><br><span class="line">      options2: [&#123;</span><br><span class="line">        value2: &#x27;Euler a&#x27;,</span><br><span class="line">        label2: &#x27;Euler a(默认推荐)&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        value2: &#x27;Euler&#x27;,</span><br><span class="line">        label2: &#x27;Euler&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        value2: &#x27;LMS&#x27;,</span><br><span class="line">        label2: &#x27;LMS&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        value2: &#x27;DPM++ 2M&#x27;,</span><br><span class="line">        label2: &#x27;DPM++ 2M&#x27;</span><br><span class="line">      &#125;],</span><br><span class="line"></span><br><span class="line">      options3: [&#123;</span><br><span class="line">        step: &#x27;10&#x27;,</span><br><span class="line">        label3: &#x27;10&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        step: &#x27;20&#x27;,</span><br><span class="line">        label3: &#x27;20&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        step: &#x27;30&#x27;,</span><br><span class="line">        label3: &#x27;30&#x27;</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        step: &#x27;40&#x27;,</span><br><span class="line">        label3: &#x27;40&#x27;</span><br><span class="line">      &#125;],</span><br><span class="line">      height: &#x27;512&#x27;,</span><br><span class="line">      width: &#x27;512&#x27;,</span><br><span class="line">      value2: &#x27;&#x27;,</span><br><span class="line">      shape: [&#123;</span><br><span class="line">        height: 512,</span><br><span class="line">        width: 512,</span><br><span class="line">        label3: &quot;1 : 1(正方形)&quot;</span><br><span class="line">      &#125;,&#123;</span><br><span class="line">        height: 1485,</span><br><span class="line">        width: 810,</span><br><span class="line">        label3: &quot;16 : 9(电脑屏幕)&quot;</span><br><span class="line">      &#125;,&#123;</span><br><span class="line">        height: 512,</span><br><span class="line">        width: 1024,</span><br><span class="line">        label3: &quot;1 : 2(手机屏幕)&quot;</span><br><span class="line">      &#125;,&#123;</span><br><span class="line">        height: 750,</span><br><span class="line">        width: 1000,</span><br><span class="line">        label3: &quot;3 : 4(小红书)&quot;</span><br><span class="line">      &#125;,&#123;</span><br><span class="line">        height: 1440,</span><br><span class="line">        width: 2560,</span><br><span class="line">        label3: &quot;2k (价格昂贵少用...)&quot;</span><br><span class="line">      &#125;],</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    requestImage() &#123;</span><br><span class="line">      console.log(&quot;开始发送请求&quot;);</span><br><span class="line">      this.loading=1;</span><br><span class="line">      //TODO 设置阿里云绘画地址</span><br><span class="line">      axios.post(&quot;http://你的阿里云sd绘画接口&quot;, &#123;</span><br><span class="line">        &quot;prompt&quot;: this.prompt,</span><br><span class="line">        &quot;step&quot;: 10,</span><br><span class="line">        &quot;height&quot;: this.height,</span><br><span class="line">        &quot;width&quot;: this.width,</span><br><span class="line">        &quot;override_settings&quot;: &#123;</span><br><span class="line">          &quot;sd_model_checkpoint&quot;: this.value,</span><br><span class="line">          // &quot;sd_model_checkpoint&quot;: &quot;majicMIX realistic_v6.safetensors&quot;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        headers: &#123;</span><br><span class="line">          &quot;Authorization&quot;: &quot;Basic Og==&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;).then(response =&gt; &#123;</span><br><span class="line">        console.log(response.status);</span><br><span class="line">        this.loading = 2;</span><br><span class="line">        this.decodeImages(response.data.images); // 解码并展示图像数据</span><br><span class="line">        this.costMoney();</span><br><span class="line">      &#125;).catch(err =&gt; &#123;</span><br><span class="line">        console.error(err);</span><br><span class="line">        this.loading = 3;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    decodeImages(images) &#123;</span><br><span class="line">      const decodedImages = images.map(img =&gt; this.base64Decode(img));</span><br><span class="line">      this.decodedImages = decodedImages;</span><br><span class="line">    &#125;,</span><br><span class="line">    base64Decode(base64) &#123;</span><br><span class="line">      const binaryString = window.atob(base64);</span><br><span class="line">      const len = binaryString.length;</span><br><span class="line">      const bytes = new Uint8Array(len);</span><br><span class="line">      for (let i = 0; i &lt; len; ++i) &#123;</span><br><span class="line">        bytes[i] = binaryString.charCodeAt(i);</span><br><span class="line">      &#125;</span><br><span class="line">      const blob = new Blob([bytes.buffer], &#123; type: &#x27;image/png&#x27; &#125;);</span><br><span class="line">      return URL.createObjectURL(blob); // 将解码后的图像数据转换为URL</span><br><span class="line">    &#125;,</span><br><span class="line">    //未完成的扣费系统</span><br><span class="line">    costMoney()&#123;</span><br><span class="line">      axios.post(&quot;http://localhost:8625/drawing/sd/gpt/text&quot;</span><br><span class="line">      ).then(re =&gt;&#123;</span><br><span class="line">        console.log(re.status)</span><br><span class="line">      &#125;).catch(err =&gt;&#123;</span><br><span class="line">        console.log(err);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  setup()&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:deep(.el-textarea) &#123;</span><br><span class="line">  .el-textarea__inner &#123;</span><br><span class="line">    background: var(--bgColor2);</span><br><span class="line">    box-shadow: none;</span><br><span class="line">    max-height: 400px;</span><br><span class="line">    padding: 10px;</span><br><span class="line">    font-size: 10px;</span><br><span class="line">    color: var(--textColor2);</span><br><span class="line"></span><br><span class="line">    &amp;:hover &#123;</span><br><span class="line">      box-shadow: none;</span><br><span class="line">      background: var(--bgColor2);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ::placeholder &#123;</span><br><span class="line">    color: var(--textColor4); /* 将颜色值修改为您想要的占位符文字颜色 */</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /* 兼容性处理 */</span><br><span class="line">  :-ms-input-placeholder &#123;</span><br><span class="line">    color: var(--textColor4); /* 将颜色值修改为您想要的占位符文字颜色 */</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">h1 span &#123;</span><br><span class="line">  top: 20px; /*字符上下浮动*/</span><br><span class="line">  position: relative;</span><br><span class="line">  animation: loading 0.3s ease 0s infinite alternate; /*引用动画*/</span><br><span class="line">  /* animation: 动画名称 动画时间 动画曲线 何时开始 播放次数 是否反方向;</span><br><span class="line">  alternate:表示动画先正常运行再反方向运行，并持续交替</span><br><span class="line">  infinite:表示无限循环*/</span><br><span class="line">  font-size: 100px;</span><br><span class="line">  color: white;</span><br><span class="line">  text-shadow: 0 1px 0  #CCC,</span><br><span class="line">  0 2px 0 #CCC,</span><br><span class="line">  0 3px 0 #CCC,</span><br><span class="line">  0 4px 0 #CCC,</span><br><span class="line">  0 5px 0 #CCC,</span><br><span class="line">  0 6px 0 #CCC,</span><br><span class="line">  0 7px 0 #CCC,</span><br><span class="line">  0 8px 0 #CCC,</span><br><span class="line">  0 9px 0 #CCC,</span><br><span class="line">  0 10px 10px rgba(0, 0, 0, 0.5);</span><br><span class="line">  /*text-shadow: 水平阴影位置(必须) 垂直阴影位置(必须) 模糊距离(可选) 阴影颜色(可选);</span><br><span class="line">    text-shadow: h-shadow v-shadow blur color; */</span><br><span class="line">&#125;</span><br><span class="line">h1 span:nth-child(2) &#123;</span><br><span class="line">  animation-delay: 0.1s;</span><br><span class="line">&#125;</span><br><span class="line">h1 span:nth-child(3) &#123;</span><br><span class="line">  animation-delay: 0.2s;</span><br><span class="line">&#125;</span><br><span class="line">h1 span:nth-child(4) &#123;</span><br><span class="line">  animation-delay: 0.3s;</span><br><span class="line">&#125;</span><br><span class="line">h1 span:nth-child(5) &#123;</span><br><span class="line">  animation-delay: 0.4s;</span><br><span class="line">&#125;</span><br><span class="line">h1 span:nth-child(6) &#123;</span><br><span class="line">  animation-delay: 0.5s;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes loading &#123;  /* 定义动画*/</span><br><span class="line">  100% &#123;</span><br><span class="line">    top: -20px;  /*字符上下浮动*/</span><br><span class="line">    text-shadow: 0 1px 0 #CCC,</span><br><span class="line">    0 2px 0 #CCC,</span><br><span class="line">    0 3px 0 #CCC,</span><br><span class="line">    0 4px 0 #CCC,</span><br><span class="line">    0 5px 0 #CCC,</span><br><span class="line">    0 6px 0 #CCC,</span><br><span class="line">    0 7px 0 #CCC,</span><br><span class="line">    0 8px 0 #CCC,</span><br><span class="line">    0 9px 0 #CCC,</span><br><span class="line">    0 50px 25px rgba(0, 0, 0, 0.3);</span><br><span class="line">    /*上升的时候阴影要在文字下面一些，所以垂直阴影的位置坐标和模糊距离要大一些*/</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.milky&#123;</span><br><span class="line">  font-size: 80px;   /*设置文字大小*/</span><br><span class="line">  color:#3366FF;  /*设置文字颜色*/</span><br><span class="line">  text-shadow: 0 8px 10px #6699FF;  /*设置文字阴影*/</span><br><span class="line">  font-weight: bolder;  /*设置文字宽度*/</span><br><span class="line">  text-align: center;  /*设置文字居中*/</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>记得修改TODO处的绘画地址哦~</p>
+<p>然后在根目录下cmd运行npm run build即可</p>
+<p>模型选择要自己配置下载的模型哦，默认都有第一个经典模型</p>
+<h2 id="阿里云FC函数计算申请"><a href="#阿里云FC函数计算申请" class="headerlink" title="阿里云FC函数计算申请"></a>阿里云FC函数计算申请</h2><p>在阿里云官网找到FC函数计算：（新人有免费的280元额度）<img data-src="https://img2.imgtp.com/2024/03/17/zUtJ5ldk.png"></p>
+<p>算了不想写了，看b站教程吧：<span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMTl1NDExeDdCay8/c3BtX2lkX2Zyb209MzMzLjEwMDcudG9wX3JpZ2h0X2Jhcl93aW5kb3dfZGVmYXVsdF9jb2xsZWN0aW9uLmNvbnRlbnQuY2xpY2s=">https://www.bilibili.com/video/BV19u411x7Bk/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click</span></p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-03-17 18:24:56" itemprop="dateModified" datetime="2024-03-17T18:24:56+08:00">2024-03-17</time>
+  </span>
+  <span id="2024/03/17/基于TimeSea的sd绘画接口修改为阿里云FC/" class="item leancloud_visitors" data-flag-title="基于TimeSea的sd绘画接口修改为阿里云FC" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.jpg" alt="Hepingan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.jpg" alt="Hepingan Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Hepingan <i class="ic i-at"><em>@</em></i>何平安
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://hepingan.top/2024/03/17/%E5%9F%BA%E4%BA%8ETimeSea%E7%9A%84sd%E7%BB%98%E7%94%BB%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E4%B8%BA%E9%98%BF%E9%87%8C%E4%BA%91FC/" title="基于TimeSea的sd绘画接口修改为阿里云FC">http://hepingan.top/2024/03/17/基于TimeSea的sd绘画接口修改为阿里云FC/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/03/09/hexo%E6%B7%BB%E5%8A%A0live2d%E6%A8%A1%E5%9E%8B/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;oIJGpXii.jpg" title="hexo添加live2d模型">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>hexo添加live2d模型</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9"><span class="toc-number">1.</span> <span class="toc-text">代码修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91FC%E5%87%BD%E6%95%B0%E8%AE%A1%E7%AE%97%E7%94%B3%E8%AF%B7"><span class="toc-number">2.</span> <span class="toc-text">阿里云FC函数计算申请</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Hepingan"
+      data-src="/images/a.jpg">
+  <p class="name" itemprop="name">Hepingan</p>
+  <div class="description" itemprop="description">如果你在国外推荐使用heping.top这个地址；你在国内就使用hepingan11.gitee.io</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">52</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlcGluZ2FuMTE=" title="https:&#x2F;&#x2F;github.com&#x2F;hepingan11"><i class="ic i-github"></i></span>
+      <span class="exturl item google" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20v" title="https:&#x2F;&#x2F;plus.google.com&#x2F;"><i class="ic i-google"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTM0MzI3MDEyNA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;343270124"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjE2NDE2NDM2NTY2QHFxLmNvbQ==" title="mailto:16416436566@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>链接</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/03/09/hexo%E6%B7%BB%E5%8A%A0live2d%E6%A8%A1%E5%9E%8B/" title="hexo添加live2d模型">hexo添加live2d模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+</div>
+
+    <span><a href="/2024/02/04/%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%80%E3%80%91-%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="企业级微服务大项目实战《学成在线》【一】(项目环境搭建)">企业级微服务大项目实战《学成在线》【一】(项目环境搭建)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%85%E4%BA%8B%E9%9B%86/" title="In 故事集">故事集</a>
+</div>
+
+    <span><a href="/2023/07/15/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%89/" title="我的故事（大一下）">我的故事（大一下）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/04/%E6%97%A5%E5%B8%B8%E7%A0%94%E7%A9%B6/%E9%98%BF%E9%87%8C%E4%BA%91%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%88%86%E4%BA%AB/" title="阿里云网站搭建分享">阿里云网站搭建分享</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In java">java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/java%E5%9F%BA%E7%A1%80/" title="In java基础">java基础</a>
+</div>
+
+    <span><a href="/2023/05/12/java/java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%89%EF%BC%89/" title="精通Java学习之路（三）">精通Java学习之路（三）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In java">java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/java%E5%9F%BA%E7%A1%80/" title="In java基础">java基础</a>
+</div>
+
+    <span><a href="/2023/06/23/java/java%E5%9F%BA%E7%A1%80/swing%E7%95%8C%E9%9D%A2UI/" title="java swing和FX界面UI">java swing和FX界面UI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/13/SpringMvc%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AAHexo/" title="使用SpringMvc登录拦截Hexo博客">使用SpringMvc登录拦截Hexo博客</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%85%E4%BA%8B%E9%9B%86/" title="In 故事集">故事集</a>
+</div>
+
+    <span><a href="/2024/02/03/%E6%95%85%E4%BA%8B%E9%9B%86/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%80%E4%B8%8A%EF%BC%89/" title="我的故事（大一上）">我的故事（大一上）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Hepingan @ 练竹园</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/03/17/基于TimeSea的sd绘画接口修改为阿里云FC/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
