@@ -1,0 +1,568 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="何平安" href="http://hepingan.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="何平安" href="http://hepingan.top/atom.xml" />
+<link rel="alternate" type="application/json" title="何平安" href="http://hepingan.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="捣鼓" />
+
+
+<link rel="canonical" href="http://hepingan.top/2024/04/06/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/">
+
+
+
+  <title>
+vue+python flask实现智谱清言接口web服务 - python |
+练竹园 = 何平安 = 世界很大，代码连接世界</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">vue+python flask实现智谱清言接口web服务
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-04-06 13:59:09">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-06T13:59:09+08:00">2024-04-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <!--自定义看板娘-->
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="/live2d-widget/autoload.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+<nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">练竹园</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/25/fgzGIlt6.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/25/E9cuVsYz.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/25/Lv9cTxpd.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/03/04/pzgWKT9p.png"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/AIfisT2e.jpg"></li>
+          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/25/jMMAqjuu.png"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/python/" itemprop="item" rel="index" title="In python"><span itemprop="name">python</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://hepingan.top/2024/04/06/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/a.jpg">
+    <meta itemprop="name" content="Hepingan">
+    <meta itemprop="description" content="世界很大，代码连接世界, 如果你在国外推荐使用heping.top这个地址；你在国内就使用hepingan11.gitee.io">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="何平安">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>创建个主py文件和副py接口，主py先引入运行代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> blog <span class="keyword">import</span> blog</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.register_blueprint(blog)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<p>这里我的副py文件叫blog.py，所以就引入它的名字了（记得放在同一个目录下）</p>
+<p>接下来是blog接口代码~</p>
+<p>引入配置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Blueprint, request</span><br><span class="line"><span class="keyword">from</span> zhipuai <span class="keyword">import</span> ZhipuAI</span><br><span class="line"></span><br><span class="line">blog = Blueprint(<span class="string">&#x27;blog&#x27;</span>, __name__)</span><br><span class="line"></span><br><span class="line">client = ZhipuAI(api_key=<span class="string">&quot;替换为你的Api key&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="接口代码"><a href="#接口代码" class="headerlink" title="接口代码"></a>接口代码</h2><p><strong>普通的GLM4文本对话接口：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@blog.route(<span class="params"><span class="string">&#x27;/chat&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chat_GLM4</span>():</span><br><span class="line">    content = request.form[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">    <span class="built_in">print</span>(request.form[<span class="string">&#x27;content&#x27;</span>])</span><br><span class="line">    response = client.chat.completions.create(</span><br><span class="line">        model=<span class="string">&quot;glm-4&quot;</span>,</span><br><span class="line">        messages=[</span><br><span class="line">            &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;你是一个和蔼可亲，粘人的女友，你在回答用户问题时可以带点儿甜言蜜语&quot;</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: content&#125;</span><br><span class="line">        ],</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">print</span>(response.choices[<span class="number">0</span>].message.content)</span><br><span class="line">    <span class="keyword">return</span> response.choices[<span class="number">0</span>].message.content</span><br></pre></td></tr></table></figure>
+
+<p>这里的message中的system内容是让模型扮演个对应角色或提出要求，下面的content才是提出问题</p>
+<p><strong>GLM-4v图像文本对话：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@blog.route(<span class="params"><span class="string">&#x27;/chatgv&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chat_GLM4V</span>():</span><br><span class="line">    img = request.files.get(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">    <span class="comment"># print(img)</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&quot;token&quot;</span>: <span class="string">&quot;你的IMGTP图床token&quot;</span>,</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 本地方法</span></span><br><span class="line">    <span class="comment"># image_filename = &quot;abc.png&quot;</span></span><br><span class="line">    <span class="comment"># directory = os.getcwd()</span></span><br><span class="line">    <span class="comment"># image_path = os.path.join(directory, image_filename)</span></span><br><span class="line"></span><br><span class="line">    files = &#123;</span><br><span class="line">        <span class="string">&quot;image&quot;</span>: (<span class="string">&#x27;img.jpg&#x27;</span>, img, <span class="string">&#x27;multipart/form-data&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    r2 = requests.post(url=<span class="string">&quot;https://www.imgtp.com/api/upload&quot;</span>, files=files, headers=header)</span><br><span class="line"></span><br><span class="line">    r2_data = r2.json()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> r2.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="comment"># print(f&quot;信息:&#123;r2_data&#125;&quot;)</span></span><br><span class="line">        img_url = r2_data.get(<span class="string">&quot;data&quot;</span>, &#123;&#125;).get(<span class="string">&quot;url&quot;</span>)</span><br><span class="line">        img_name = r2_data.get(<span class="string">&quot;data&quot;</span>, &#123;&#125;).get(<span class="string">&quot;name&quot;</span>)</span><br><span class="line">        img_id = r2_data.get(<span class="string">&quot;data&quot;</span>, &#123;&#125;).get(<span class="string">&quot;id&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;图片地址：<span class="subst">&#123;img_url&#125;</span>,图片名：<span class="subst">&#123;img_name&#125;</span>,图片id: <span class="subst">&#123;img_id&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(r2.status_code)</span><br><span class="line"></span><br><span class="line">    content = request.form[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">    response = client.chat.completions.create(</span><br><span class="line">        model=<span class="string">&quot;glm-4v&quot;</span>,</span><br><span class="line">        messages=[</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">                <span class="string">&quot;content&quot;</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;text&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;text&quot;</span>: content</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;image_url&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;image_url&quot;</span>: &#123;</span><br><span class="line">                            <span class="string">&quot;url&quot;</span>: img_url</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">print</span>(response.choices[<span class="number">0</span>].message.content)</span><br><span class="line">    r = requests.post(<span class="string">&quot;https://www.imgtp.com/api/delete&quot;</span>, headers=header, data=&#123;<span class="string">&#x27;id&#x27;</span>: img_id&#125;)</span><br><span class="line">    <span class="built_in">print</span>(r.json())</span><br><span class="line">    <span class="keyword">return</span> response.choices[<span class="number">0</span>].message.content</span><br></pre></td></tr></table></figure>
+
+<p>记得替换你的IMGTP图床token，获取token方法：登录网站：<span class="exturl" data-url="aHR0cHM6Ly93d3cuaW1ndHAuY29tLw==">ImgTP - 免费公共图床</span>，在设置里面可以看到你账号的token：</p>
+<p><img data-src="https://img2.imgtp.com/2024/04/06/Jtu9UAuH.png"></p>
+<p>它里面也提供了官方接口文档</p>
+<p>我这里的逻辑是先通过imgtp图床上传图片，将上传的图片链接返回并传给GLM-4v对话模型，调用完成后就删除图片了（删除它可以不占用图床空间，也可以不删看自己需求）</p>
+<p><strong>cogview-3图像生成</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@blog.route(<span class="params"><span class="string">&#x27;/draw&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw</span>():</span><br><span class="line">    content = request.form.get(<span class="string">&#x27;content&#x27;</span>)</span><br><span class="line">    response = client.images.generations(</span><br><span class="line">        model=<span class="string">&quot;cogview-3&quot;</span>,  <span class="comment"># 填写需要调用的模型名称</span></span><br><span class="line">        prompt=content,</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">print</span>(response.data[<span class="number">0</span>].url)</span><br><span class="line">    <span class="keyword">return</span> response.data[<span class="number">0</span>].url</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>会返回图片链接</p>
+<h2 id="调用实例"><a href="#调用实例" class="headerlink" title="调用实例"></a>调用实例</h2><p>工具：postman</p>
+<p>运行主py文件，普通文本对话：</p>
+<p><img data-src="https://img2.imgtp.com/2024/04/06/g2fHsYcs.png"></p>
+<p>图像文本对话：</p>
+<p><img data-src="https://img2.imgtp.com/2024/04/06/l6HmdJRS.png"></p>
+<p>图像生成接口：</p>
+<p><img data-src="https://img2.imgtp.com/2024/04/06/yCf80rGY.png"></p>
+
+      <div class="tags">
+          <a href="/tags/%E6%8D%A3%E9%BC%93/" rel="tag"><i class="ic i-tag"></i> 捣鼓</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-04-06 16:19:30" itemprop="dateModified" datetime="2024-04-06T16:19:30+08:00">2024-04-06</time>
+  </span>
+  <span id="2024/04/06/vue-python-flask实现智谱清言接口web服务/" class="item leancloud_visitors" data-flag-title="vue+python flask实现智谱清言接口web服务" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.jpg" alt="Hepingan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.jpg" alt="Hepingan Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Hepingan <i class="ic i-at"><em>@</em></i>何平安
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://hepingan.top/2024/04/06/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/" title="vue+python flask实现智谱清言接口web服务">http://hepingan.top/2024/04/06/vue-python-flask实现智谱清言接口web服务/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/03/29/%E3%80%8A%E5%A4%A9%E9%A6%99%E5%9B%AD%E3%80%8B2-0%E5%A4%8D%E6%B4%BB%E4%B8%8A%E7%BA%BF%EF%BC%8CAIGC%E7%A0%B4%E5%A3%81%E7%A4%BE%E7%9A%84%E5%88%86%E7%AB%99/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;03&#x2F;29&#x2F;FqKO8jH8.png" title="《天香园》2.0复活上线，AIGC破壁社的分站！">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>《天香园》2.0复活上线，AIGC破壁社的分站！</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">接口代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">调用实例</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/04/python/%E6%9C%89C%E5%92%8CJava%E7%9A%84%E5%BA%95%E5%AD%90%E5%A6%82%E4%BD%95%E9%80%9F%E9%80%9APython%E8%AF%AD%E6%B3%95/" rel="bookmark" title="有C和Java的底子如何速通Python语法">有C和Java的底子如何速通Python语法</a></li><li><a href="/2024/02/04/python/Python%E8%B0%83%E7%94%A8ChatGPT%E6%8E%A5%E5%8F%A3-2023/" rel="bookmark" title="Python调用ChatGPT接口(2023)">Python调用ChatGPT接口(2023)</a></li><li><a href="/2024/02/04/python/Python%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E6%A0%A1%E5%9B%AD%E8%AF%BE%E8%A1%A8-%E5%BC%BA%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%B8%BE%E4%BE%8B/" rel="bookmark" title="Python爬虫获取校园课表(强制系统举例)">Python爬虫获取校园课表(强制系统举例)</a></li><li><a href="/2024/03/08/python/Python%E8%BF%9B%E9%98%B6%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="bookmark" title="Python进阶之正则表达式">Python进阶之正则表达式</a></li><li><a href="/2024/03/08/python/python%E8%B0%83%E7%94%A8sd%E7%BB%98%E7%94%BB%E6%8E%A5%E5%8F%A3/" rel="bookmark" title="python调用sd绘画接口">python调用sd绘画接口</a></li><li class="active"><a href="/2024/04/06/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/" rel="bookmark" title="vue+python flask实现智谱清言接口web服务">vue+python flask实现智谱清言接口web服务</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Hepingan"
+      data-src="/images/a.jpg">
+  <p class="name" itemprop="name">Hepingan</p>
+  <div class="description" itemprop="description">如果你在国外推荐使用heping.top这个地址；你在国内就使用hepingan11.gitee.io</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">54</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">1</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlcGluZ2FuMTE=" title="https:&#x2F;&#x2F;github.com&#x2F;hepingan11"><i class="ic i-github"></i></span>
+      <span class="exturl item google" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20v" title="https:&#x2F;&#x2F;plus.google.com&#x2F;"><i class="ic i-google"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTM0MzI3MDEyNA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;343270124"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjE2NDE2NDM2NTY2QHFxLmNvbQ==" title="mailto:16416436566@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>链接</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In java">java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/java-web/" title="In java web">java web</a>
+</div>
+
+    <span><a href="/2023/07/15/java/java%20web/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Javaweb学习笔记（二）">Javaweb学习笔记（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="MySQL数据库学习（二）">MySQL数据库学习（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Hadoop大数据基础学习笔记">Hadoop大数据基础学习笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/%E8%AF%B4%E8%AF%B4nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CKong%E7%BD%91%E5%85%B3/" title="说说nginx反向代理和Kong网关">说说nginx反向代理和Kong网关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In java">java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
+</div>
+
+    <span><a href="/2024/02/04/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0-%E4%B8%89-%E3%80%90Docker%EF%BC%8CMQ%E3%80%91/" title="SpringCloud微服务学习（三）【Docker，MQ】">SpringCloud微服务学习（三）【Docker，MQ】</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In java">java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="In 微服务">微服务</a>
+</div>
+
+    <span><a href="/2024/02/03/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%90%E4%BB%8B%E7%BB%8D-Eureka-Ribbon-Nacos%E3%80%91/" title="SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】">SpringCloud微服务学习笔记（一）【介绍,Eureka,Ribbon,Nacos】</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="In python">python</a>
+</div>
+
+    <span><a href="/2024/04/06/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/" title="vue+python flask实现智谱清言接口web服务">vue+python flask实现智谱清言接口web服务</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
+</div>
+
+    <span><a href="/2024/02/04/%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A4%A7%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E3%80%8A%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E3%80%8B%E3%80%90%E4%B8%80%E3%80%91-%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="企业级微服务大项目实战《学成在线》【一】(项目环境搭建)">企业级微服务大项目实战《学成在线》【一】(项目环境搭建)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/03/01/GPT-SoVITS%E6%90%AD%E5%BB%BA/" title="GPT-SoVITS搭建">GPT-SoVITS搭建</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/java/" title="In java">java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/java/java-web/" title="In java web">java web</a>
+</div>
+
+    <span><a href="/2024/02/04/java/java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Hepingan @ 练竹园</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/04/06/vue-python-flask实现智谱清言接口web服务/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
