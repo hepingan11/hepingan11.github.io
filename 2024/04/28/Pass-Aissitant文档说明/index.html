@@ -104,14 +104,7 @@ Pass Aissitant文档说明 |
 
       </div>
       <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/25/PgzrlunP.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/04/E1XT8m6p.jpg"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/FNF8MvPh.png"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/HbpgEMXq.png"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/02/06/58n1EzYk.png"></li>
-          <li class="item" data-background-image="https://img2.imgtp.com/2024/03/11/5On05oID.png"></li>
-        </ul>
+          <img src="https://img2.imgtp.com/2024/04/28/mrPpQmag.png">
       </div>
     </header>
     <div id="waves">
@@ -157,6 +150,57 @@ Pass Aissitant文档说明 |
     <p><img data-src="https://img2.imgtp.com/2024/04/28/mrPpQmag.png"></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>全新的Ai整合Web网站，基于近年来大火的ChatGPT3.5，ChatGPT4和智谱清言GLM-4v大模型开发了基础的智能对话系统。该网站拥有基础的登录系统，积分系统，用户管理系统，兑换码系统，订单系统，收藏功能和服务器配置系统等，还有预设角色和模型对话，SD-AI绘画模块，私人GPT预设模块，数字人平台模块等新奇功能。</p>
 <p>•SD-AI绘画模块：采用远程调用云服务器sd绘画接口，能在线实现文生图，图生图功能，用户在线完成绘画功能后，可以选择将其发布到该网站给予其它浏览人观看，实现共享型绘画分享社区。<br>•私人GPT预设模块：用户能自己填写对话模型api，密钥，模型预设，回复速率等设置，实现自己私人定制的GPT，打造更符合自身的预设。<br>•数字人平台：基于智能问答模型(GPT3.5&#x2F;GLM-4V)，GPT-SOVITS模型和阿里云函数计算FC应用数字人接口集合而成的在线数字人问答平台，用户能够在预设的数字人模型中与其对话，发送消息后会经过这三个模型加工处理，返回一个对刚刚消息处理的数字人对话视频。该模块平台除了对话功能，还有在线定制数字人功能，用户仅需上传人物头像，一分钟录制语音和模型预设词就可在线合成数字人模型，并且可以将模型分享到该网站。</p>
+<h2 id="部分接口文档及设计"><a href="#部分接口文档及设计" class="headerlink" title="部分接口文档及设计"></a>部分接口文档及设计</h2><p>接口文档由本人亲自编写，有错误欢迎指正哦~(qq1973016127)</p>
+<p><strong>控制台(Admin)</strong></p>
+<p>对ai模型各个配置可直接在可视化面板修改，因为后端所有请求中都是查询redis中的配置数据进行接口调用，所以配置信息也是存储在redis中的。</p>
+<p>获取终端数据：GET &#x2F;admin&#x2F;server&#x2F;get&#x2F;terminal</p>
+<p>更新终端数据：POST &#x2F;admin&#x2F;server&#x2F;put&#x2F;terminal</p>
+<p>获取总人数：GET &#x2F;admin&#x2F;user&#x2F;get&#x2F;count</p>
+<p>获取用户信息：POST &#x2F;user&#x2F;current&#x2F;info</p>
+<p><strong>黑夜&#x2F;日间 主题切换</strong></p>
+<p><strong>Web 对话记忆(历史对话记录)</strong></p>
+<p><strong>超级实验室功能 (含绘图功能 NewBing claude 免费GPT)</strong></p>
+<p><strong>对话暂停</strong></p>
+<p><strong>商品</strong></p>
+<p>获取订单分页数据：&#x2F;admin&#x2F;orders&#x2F;page?pageNum&#x3D;a&amp;prompt&#x3D; b &amp;status&#x3D;c</p>
+<p>删除交易产品：&#x2F;admin&#x2F;product&#x2F;delete&#x2F;‘ + data</p>
+<p>添加交易产品：&#x2F;admin&#x2F;product&#x2F;put&#x2F;data</p>
+<p>获取交易产品：&#x2F;admin&#x2F;product&#x2F;get&#x2F;page?pageNum&#x3D;’ + a + ‘&amp;prompt&#x3D;’ + b,</p>
+<p><strong>支付宝支付</strong></p>
+<p>构建订单：url: ‘&#x2F;pay&#x2F;alipay&#x2F;pay&#x2F;‘ + data,<br>method: ‘POST’</p>
+<p>状态查询：url: ‘&#x2F;pay&#x2F;alipay&#x2F;status&#x2F;‘ + data,<br>method: ‘POST’</p>
+<p>用户订单page：url: ‘&#x2F;pay&#x2F;orders&#x2F;page?pageNum&#x3D;’ + data,<br>method: ‘GET’</p>
+<p><strong>GPT 流对话</strong></p>
+<p><strong>对话功能收藏功能 以及 收藏对话回溯场景</strong></p>
+<p><strong>支持 GPT 自定义敏感词拦截 以及 微信铭感词拦截</strong></p>
+<p><strong>SD MJ 文生图 图生图</strong></p>
+<p><strong>支持自定义 GPT 预设词功能版块(无限制定义)</strong></p>
+<p><strong>项目工件模块化</strong></p>
+<p><strong>Ai 币兑换码</strong> </p>
+<p>生产交换码：&#x2F;admin&#x2F;exchange&#x2F;build</p>
+<p>删除交换码：&#x2F;admin&#x2F;exchange&#x2F;delete&#x2F;（data）</p>
+<p>兑换交换码：&#x2F;admin&#x2F;exchange&#x2F;get&#x2F;page?pageNum&#x3D;’ + a + ‘&amp;prompt&#x3D;’ + b,</p>
+<p><strong>登录注册</strong></p>
+<p>找回密码：POST &#x2F;auth&#x2F;email&#x2F;password&#x2F;back</p>
+<p>注册：url: ‘&#x2F;auth&#x2F;email&#x2F;enroll’,<br>method: ‘POST’</p>
+<p>邮箱登录：url: ‘&#x2F;auth&#x2F;email&#x2F;login’,<br>method: ‘POST’</p>
+<p>是否登录成功：url: ‘&#x2F;auth&#x2F;wechat&#x2F;code&#x2F;result?verifyCode&#x3D;’ + data,<br>method: ‘GET’</p>
+<p><strong>创意广场(允许将优秀个人作品展示至鉴赏 所有用户可视)</strong></p>
+<p><strong>支持 GPT 对话暂停输出以及继续输出</strong></p>
+<p><strong>内置后台管理 (用户管理 绘图管理 服务器管理 兑换码管理)</strong></p>
+<p><strong>接入百度翻译 API</strong></p>
+<p><strong>收藏</strong></p>
+<p>添加收藏：url: ‘&#x2F;user&#x2F;stat&#x2F;put&#x2F;data’,<br>method: ‘POST’,<br>data</p>
+<p>删除收藏：url: ‘&#x2F;user&#x2F;star&#x2F;delete&#x2F;‘ + data,<br>method: ‘POST’</p>
+<p><strong>绘图类 API 列队处理</strong></p>
+<p><strong>绘画模型控制台修改</strong></p>
+<p>查询：GET &#x2F;admin&#x2F;sd&#x2F;page&#x2F;model?pageNum&#x3D;?</p>
+<p>新增：POST &#x2F;admin&#x2F;sd&#x2F;put&#x2F;data</p>
+<p>删除：&#x2F;admin&#x2F;sd&#x2F;delete&#x2F;data</p>
+<p><strong>数据懒异步处理</strong></p>
+<p><strong>支持主流语言以及配置类 代码高亮</strong></p>
+<p><strong>公告</strong></p>
+<p>url: ‘&#x2F;public&#x2F;get&#x2F;announcement’,<br>method: ‘GET’</p>
 
   </div>
 
@@ -168,7 +212,7 @@ Pass Aissitant文档说明 |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-04-28 23:12:10" itemprop="dateModified" datetime="2024-04-28T23:12:10+08:00">2024-04-28</time>
+    <time title="Modified: 2024-05-06 13:56:43" itemprop="dateModified" datetime="2024-05-06T13:56:43+08:00">2024-05-06</time>
   </span>
   <span id="2024/04/28/Pass-Aissitant文档说明/" class="item leancloud_visitors" data-flag-title="Pass Aissitant文档说明" title="Views">
       <span class="icon">
@@ -226,7 +270,7 @@ Pass Aissitant文档说明 |
     <div class="item left">
       
 
-  <a href="/2024/04/06/python/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;06&#x2F;LcAFD3st.png" title="vue+python flask实现智谱清言接口web服务">
+  <a href="/2024/04/06/python/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;25&#x2F;fgzGIlt6.png" title="vue+python flask实现智谱清言接口web服务">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> python</span>
   <h3>vue+python flask实现智谱清言接口web服务</h3>
@@ -236,10 +280,10 @@ Pass Aissitant文档说明 |
     <div class="item right">
       
 
-  <a href="/2024/04/28/Pass-Aissitant-%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;25&#x2F;Ov7ost0M.png" title="Pass Aissitant 功能演示">
+  <a href="/2024/04/28/Pass-Aissitant-%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img2.imgtp.com&#x2F;2024&#x2F;02&#x2F;04&#x2F;AIfisT2e.jpg" title="Pass Aissitant Function demonstration">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Pass Aissitant 功能演示</h3>
+  <h3>Pass Aissitant Function demonstration</h3>
   </a>
 
     </div>
@@ -258,7 +302,7 @@ Pass Aissitant文档说明 |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%8F%8A%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">部分接口文档及设计</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -372,59 +416,6 @@ Pass Aissitant文档说明 |
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/java/" title="In java">java</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/java/java-web/" title="In java web">java web</a>
-</div>
-
-    <span><a href="/2024/02/04/java/java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
-</div>
-
-    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/%E9%80%9A%E8%BF%87node-js%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/" title="通过node.js部署vue项目">通过node.js部署vue项目</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/python/" title="In python">python</a>
-</div>
-
-    <span><a href="/2024/04/06/python/vue-python-flask%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%B0%B1%E6%B8%85%E8%A8%80%E6%8E%A5%E5%8F%A3web%E6%9C%8D%E5%8A%A1/" title="vue+python flask实现智谱清言接口web服务">vue+python flask实现智谱清言接口web服务</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
-</div>
-
-    <span><a href="/2024/02/04/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%BA%8C/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/02/13/SpringMvc%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AAHexo/" title="使用SpringMvc登录拦截Hexo博客">使用SpringMvc登录拦截Hexo博客</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
 <i class="ic i-angle-right"></i>
 <a href="/categories/%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" title="In 学成在线">学成在线</a>
@@ -437,10 +428,10 @@ Pass Aissitant文档说明 |
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/python/" title="In python">python</a>
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
 </div>
 
-    <span><a href="/2024/03/08/python/Python%E8%BF%9B%E9%98%B6%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Python进阶之正则表达式">Python进阶之正则表达式</a></span>
+    <span><a href="/2024/02/17/%E5%89%8D%E7%AB%AF/vue%E7%9F%A5%E8%AF%86+%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE/" title="vue知识+调用后端">vue知识+调用后端</a></span>
   </li>
 
       
@@ -452,7 +443,19 @@ Pass Aissitant文档说明 |
 <a href="/categories/java/java%E5%9F%BA%E7%A1%80/" title="In java基础">java基础</a>
 </div>
 
-    <span><a href="/2023/04/02/java/java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89/" title="精通Java学习之路（一）">精通Java学习之路（一）</a></span>
+    <span><a href="/2023/06/28/java/java%E5%9F%BA%E7%A1%80/%E7%B2%BE%E9%80%9AJava%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%9B%9B%EF%BC%89/" title="精通Java学习之路（四）">精通Java学习之路（四）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%80/" title="企业级开发项目《苍穹外卖》(一)">企业级开发项目《苍穹外卖》(一)</a></span>
   </li>
 
       
@@ -461,10 +464,19 @@ Pass Aissitant文档说明 |
 <div class="breadcrumb">
 <a href="/categories/java/" title="In java">java</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/java/java%E5%9F%BA%E7%A1%80/" title="In java基础">java基础</a>
+<a href="/categories/java/java-web/" title="In java web">java web</a>
 </div>
 
-    <span><a href="/2024/02/03/java/java%E5%9F%BA%E7%A1%80/%E5%A4%A7%E4%B8%80%E4%B8%8Bjava%E6%9C%9F%E6%9C%AB%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E8%8D%A3%E8%8E%B7%E7%8F%AD%E4%B8%8A%E7%AC%AC%E4%B8%80%EF%BC%89/" title="大一下java期末设计：学生信息管理系统（荣获班上第一）">大一下java期末设计：学生信息管理系统（荣获班上第一）</a></span>
+    <span><a href="/2024/02/04/java/java%20web/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86-AOP%E8%AE%B0%E5%BD%95%E6%8A%80%E6%9C%AF/" title="事务管理+AOP记录技术">事务管理+AOP记录技术</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/03/%E3%80%90%E7%BD%AE%E9%A1%B6%E3%80%91%E4%BB%8B%E7%BB%8D%E4%B8%8E%E6%94%AF%E6%8C%81%E6%88%91/" title="【置顶】介绍与支持我">【置顶】介绍与支持我</a></span>
   </li>
 
       
@@ -473,10 +485,42 @@ Pass Aissitant文档说明 |
 <div class="breadcrumb">
 <a href="/categories/java/" title="In java">java</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/java/java%E5%9F%BA%E7%A1%80/" title="In java基础">java基础</a>
+<a href="/categories/java/java-web/" title="In java web">java web</a>
 </div>
 
-    <span><a href="/2023/06/23/java/java%E5%9F%BA%E7%A1%80/swing%E7%95%8C%E9%9D%A2UI/" title="java swing和FX界面UI">java swing和FX界面UI</a></span>
+    <span><a href="/2024/02/04/java/java%20web/%E9%80%9A%E8%BF%87Maven%E5%B0%86%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/" title="通过Maven将文件上传到阿里云对象存储OSS">通过Maven将文件上传到阿里云对象存储OSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A1%B9%E7%9B%AE/" title="In 项目">项目</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" title="In 苍穹外卖">苍穹外卖</a>
+</div>
+
+    <span><a href="/2024/02/04/%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E3%80%8A%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E3%80%8B%E4%B8%89/" title="企业级开发项目《苍穹外卖》（二）">企业级开发项目《苍穹外卖》（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
+</div>
+
+    <span><a href="/2024/02/07/%E5%89%8D%E7%AB%AF/Hexo-Shoka%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E5%85%A8%E5%8A%9F%E8%83%BD%E5%AE%8C%E5%96%84/" title="Hexo+Shoka博客搭建和全功能完善">Hexo+Shoka博客搭建和全功能完善</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
+</div>
+
+    <span><a href="/2024/02/04/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="微信小程序开发学习笔记">微信小程序开发学习笔记</a></span>
   </li>
 
   </ul>
