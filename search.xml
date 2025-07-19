@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>7.20解决cursor国区使用限制</title>
+      <link href="/2025/07/20/7-20%E8%A7%A3%E5%86%B3cursor%E5%9B%BD%E5%8C%BA%E4%BD%BF%E7%94%A8%E9%99%90%E5%88%B6/"/>
+      <url>/2025/07/20/7-20%E8%A7%A3%E5%86%B3cursor%E5%9B%BD%E5%8C%BA%E4%BD%BF%E7%94%A8%E9%99%90%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<p>shift+ctrl+p</p><p>搜索：Open user settings 带json那个 </p><p>“http.proxy”: “<a href="http://127.0.0.1:33210/">http://127.0.0.1:33210</a>“, </p><p>“http.proxyStrictSSL”: false, </p><p>“http.proxySupport”: “override”, </p><p>“http.noProxy”: [],</p><p>“cursor.general.disableHttp2”: true,</p><p><strong>其中端口需要自行替换成自己的代理端口，如我的clash就是7890</strong></p><p><strong>有时候会出现超时，多发送几次就行，记得代理地区不要选香港澳门这些国区~</strong></p><p>呜呜呜被美帝制裁了，国产ai编程工具发力火起来的好时机呀，Trea发力呀~</p><p><img src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/20250720001521.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/20250720001521.png </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cursor </tag>
+            
+            <tag> 破解 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>微信小程序UGC类项目上线技巧|文本和媒体安全验证实现</title>
       <link href="/2025/06/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FUGC%E7%B1%BB%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E6%8A%80%E5%B7%A7-%E6%96%87%E6%9C%AC%E5%92%8C%E5%AA%92%E4%BD%93%E5%AE%89%E5%85%A8%E9%AA%8C%E8%AF%81%E5%AE%9E%E7%8E%B0/"/>
       <url>/2025/06/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FUGC%E7%B1%BB%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E6%8A%80%E5%B7%A7-%E6%96%87%E6%9C%AC%E5%92%8C%E5%AA%92%E4%BD%93%E5%AE%89%E5%85%A8%E9%AA%8C%E8%AF%81%E5%AE%9E%E7%8E%B0/</url>
