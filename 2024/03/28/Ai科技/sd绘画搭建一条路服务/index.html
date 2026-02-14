@@ -1,0 +1,674 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>sd绘画搭建一条路服务 | 天香园</title><meta name="keywords" content="ai绘画"><meta name="author" content="何平安,1973016127@qq.com"><meta name="copyright" content="何平安"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="sd绘画搭建一条路服务"><meta name="application-name" content="sd绘画搭建一条路服务"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="sd绘画搭建一条路服务"><meta property="og:url" content="http://ai.hepingan.top/2024/03/28/Ai%E7%A7%91%E6%8A%80/sd%E7%BB%98%E7%94%BB%E6%90%AD%E5%BB%BA%E4%B8%80%E6%9D%A1%E8%B7%AF%E6%9C%8D%E5%8A%A1/index.html"><meta property="og:site_name" content="天香园"><meta property="og:description" content="一、本地部署 Stable Diffusion 前言 目前市面上比较权威，并能用于工作中的AI绘画软件其实就两款。一个叫Midjourney（简称MJ），另一个叫Stable-Diffusion（简称SD）。MJ需要付费使用，而SD开源免费，但是上手难度和学习成本略大，并且非常吃电脑配置（显卡、内存"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://pic3.zhimg.com/80/v2-ddc6c5960c6d609ff4f49d31390fb3aa_720w.webp"><meta property="article:author" content="何平安"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-ddc6c5960c6d609ff4f49d31390fb3aa_720w.webp"><meta name="description" content="一、本地部署 Stable Diffusion 前言 目前市面上比较权威，并能用于工作中的AI绘画软件其实就两款。一个叫Midjourney（简称MJ），另一个叫Stable-Diffusion（简称SD）。MJ需要付费使用，而SD开源免费，但是上手难度和学习成本略大，并且非常吃电脑配置（显卡、内存"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://ai.hepingan.top/2024/03/28/Ai%E7%A7%91%E6%8A%80/sd%E7%BB%98%E7%94%BB%E6%90%AD%E5%BB%BA%E4%B8%80%E6%9D%A1%E8%B7%AF%E6%9C%8D%E5%8A%A1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: '',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: {"apiurl":null},
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 何平安","link":"链接: ","source":"来源: 天香园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#66e79f","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '天香园',
+  title: 'sd绘画搭建一条路服务',
+  postAI: '',
+  pageFillDescription: '一本地部署前言目前市面上比较权威并能用于工作中的绘画软件其实就两款一个叫简称另一个叫简称需要付费使用而开源免费但是上手难度和学习成本略大并且非常吃电脑配置显卡内存和相比最大的优势是开源这意味着的潜力巨大发展飞快由于开源免费属性已经收获了大量活跃用户开发者社群已经为此提供了大量免费高质量的外接预训练模型和插件并且在持续维护更新在第三方插件和模型的加持下拥有比更加丰富的个性化功能在经过使用者调教后可以生成更贴近需求的图片甚至在视频特效音乐生成等领域也占据了一席之地是一种潜在扩散模型能够从文本描述中生成详细的图像它还可以用于图像修复图像绘制文本到图像和图像到图像等任务简单地说我们只要给出想要的图片的文字描述在提就能生成符合你要求的逼真的图像电脑配置电脑配置最核心的关键点看显卡看内存看硬盘看其中最重要的是看显卡卡英伟达独立显卡首选效率远超集显显卡和渲染最低系起步体验感佳用系显存最低及格上不封顶内存最低及格上不封顶硬盘可用空间最好有个朝上固态最佳系统要求支持仅限版本的无法调用显卡和系统苹果版兼容的插件数量较少功能性不及与电脑如果身边没有合适的电脑可以考虑购买云主机比如腾讯云服务器若无法使用独立显卡和云服务亦可修改启动配置使用渲染兼容性强出图速度慢需要以上内存从图中可看出与或英特尔的任何产品相比的提供了卓越的性能有时是以巨大的优势随着的修复到位的性能比带有的高出而没有的性能则高出生成每张图片只需要三秒多安装方法开源地址目前大家普遍采用的是发布于开源程序分享网站的项目和平常软件安装方法有所不同不是下载安装即可用的软件需要准备执行环境编译源码针对不同操作系统操作系统依赖不同电脑硬件依赖还有做些手工调整这需要使用者拥有一定的程序开发经验可以现学已经有很多大佬们写了详细的安装教程如托尼不是塔克如果像我一样是小白不会装现在可以直接使用大佬们做的一键启动程序包比如国内秋葉大大开发的整合包极大的降低了安装门槛强烈推荐详见一键启动包只是封装了可视化的一键界面不影响出图效果只是降低了本地部署的门槛显卡用户须知在使用前请登录官网下载安装对应显卡最新版驱动程序与显卡支持的最新版驱动启动进入安装文件夹双击待其加载完成方可使用浏览器登录默认的加载界面汉化如果需要中文语言包可以下载如下中文语言包扩展下载界面网址为方法通过拓展进行安装打开进入选项卡点击注意下方的输入框粘贴或输入本仓库地址点击下方的黄色按钮即可完成安装然后重启点击左方的然后点击黄色按钮网页下方的完成重启点击左侧点击界面在界面里最下方的选择或者点击界面最上方的黄色按钮再点击右侧的即可完成汉化二界面基础了解界面接下来是具体的使用方法简介目前并不存在通行可靠的使用规范每个人的电脑配置需求都不尽相同大模型等模型各类插件提示词输出参数的组合牵一发则动全身需要大家有足够的耐心查阅插件开发者的说明文档和来自等分享网站的使用心得大家可以先到上搜索中意的图例复用原作者的出图提示词参数和模型再以此修改这样学习的效果最为直观文生图根据文本提示生成图像图生图根据提供的图像作为范本结合文本提示生成图像更多优化清晰扩展图像图片信息显示图像基本信息包含提示词和模型信息除非信息被隐藏模型合并把已有的模型按不同比例进行合并生成新模型训练根据提供的图片训练具有某种图像风格的模型描述语分为正向负向描述它们也叫标签或提示词正面提示词相比需要写得更精准和细致描述少就给更多自由发挥空间负面提示词不想让生成的内容正向更多画质词画面描述反向根据画面产出加不想出现的画面生成下面的个小图标从左到右依次分别是复原上次生成图片的提示词自动记录清空当前所有提示词打开模型选择界面应用选择的风格模板到当前的提示词存档当前的正反向提示词采样方法建议根据自己使用的使用脚本跑网格图用自己关心的参数然后选择自己想要的结果懒得对比请使用或二次元图或想要点惊喜和变化写实图注意调整对应值和都是多样性相关的但是它们的多样性来自步数的变化追求更大多样性的话应该关注的变化这两项参数应该是在图片框架被选定后再在此基础上做微调时使用的参数采样步数稳定扩散通过从充满噪音的画布开始创建图像并逐渐去噪以达到最终输出此参数控制这些去噪步骤的数量通常越高越好但在一定程度上我们使用的默认值是个步骤以下是不同情况下使用哪个步骤编号的一般指南如果您正在测试新的提示并希望获得快速结果来调整您的输入请使用个步骤当您找到您喜欢的提示时请将步骤增加到如果是有毛皮的动物或有纹理的主题生成的图像缺少一些细节尝试将其提高到面部修复修复人物的面部但是非写实风格的人物开启面部修复可能导致面部崩坏平铺生成一张可以平铺的图像高分辨率重绘使用两个步骤的过程进行生成以较小的分辨率创建图像然后在不改变构图的情况下改进其中的细节选中该选项会有一系列新的参数其中重要的是放大算法在许多情况下效果不错但重绘幅度小于后就不甚理想对以下的重绘幅度有较好支持放大倍数通常倍即可重绘幅度决定算法对图像内容的保留程度该值越高放大后图像就比放大前图像差别越大低意味着修正原图高就和原图就没有大的相关性了一般来讲阈值是左右超过和原图基本上无关以下就是稍微改一些什么都不会改变会得到一个完全不同的图像具体的执行步骤为重绘强度重绘步数长宽尺寸分辨率长宽尺寸并非数值越大越好最佳的范围应在至像素之间比如正方形图多是和人像肖像风景画可按比例加大或减小这个值必须是的倍数如果不希望主题对象出现重复应在此范围内选择适当的尺寸如果需要更高分辨率的图片建议先使用模型生成图片然后再使用合适的模型进行生成批次每次生成图像的组数一次运行生成图像的数量为生成批次每批数量每批数量同时生成多少个图像增加这个值可以提高性能但你也需要更多的图像总数是这个值乘以批次数除等高级显卡以外通常保持为提示词相关性较高的数值将提高生成结果与提示的匹配度上使用的默认是这在创造力和生成你想要的东西之间提供了最佳平衡通常不建议低于量表可以分为不同的范围每个范围都适合不同的提示类型和目标有创意但可能太扭曲没有遵循提示对于简短的提示来说可以很有趣和有用推荐用于大多数提示创造力和引导一代之间的良好平衡当您确定您的提示是详细且非常清晰的您希望图像是什么样子时除非提示非常详细否则通常不推荐可能影响一致性和质量几乎无法使用随机种子生成每张图片时的随机种子这个种子是用来作为确定扩散初始状态的基础不懂的话用随机的即可提示词生成开始不知道怎么写提示词可以先参考优秀的风格模板作为起手式还可以借助描述语工具和网站多出图多研究掌握了出图规律慢慢就可以自己写提示词啦写提示词要尽可能写的详细跑的过程就像抽卡抽出一堆卡选出你审美范畴里觉得好看的找关键词网站可参考中优秀作品的提示词作为模板其他网站还有魔咒百科词典咒术生成器词汇加速器词图鳖哲法典格式优化第一段画质画风第二段画面主体主体强调主体细节概括主体可以是人事物景画面核心内容第三段画面场景细节或人物细节画面细节内容第二段一般提供人数人物主要特征主要动作一般置于人物之前物体主要特征主景或景色框架等举个例子具体场景还是要灵活应用多尝试找到合适自己的节奏和风格第一段第二段第三段规则细节越靠前的权重越大生成图片的大小会影响的效果图片越大需要的越多不然会相互污染中可以使用括号人工修改提示词的权重方法如下将权重提高倍将权重提高倍将权重降低至原先的将权重提高倍将权重减少为原先的请注意权重值最好不要超过支持使用可通过添加达到表现效果如形容表情可修手用法和都是用于连接短但两端要加空格约等于为循环绘制符号融合符号以上表达适用于为权重会对两进行循环绘制可往后无限加入不一定是多么充满细节只要模型稳定小图高分辨率重绘的图变成初识小图减少崩坏概率关键词最好具有特异性譬如动漫一词就相对泛化而一词就能清晰地指向动漫的画风措辞越不抽象越好尽可能避免留下解释空间的措辞三了解模型下载模型主流模型下载网站是一个专注于构建训练和部署先进开源机器学习模型的网站是一个专为艺术模型设计的网站是非常好的模型库主流模型被删除可以去备用模型站下载模型选择如何选择合适模型是最重要的从你想画的风格写实二次元卡通盲盒等来选择大模型再搭配合适的体积较大也被称为大模型不同的大模型使用不同的图片训练而成对应不同的风格相当于最底层的引擎有时候需要大模型联合搭配使用以达到需要的效果下载的大模型可放置于文件夹内是特征模型体积较小是基于某个确定的角色确定的风格或者固定的动作训练而成的模型可使用权重控制确定性要远强于和有功能交集的部分也有互相不可取代的地方在大模型上附加使用对人物姿势物体表现较好在界面的下勾线启用然后在下选择模型并可用调整权重权重越大该的影响也越大不建议权重过大超过否则很容易出现扭曲的结果多个模型混合使用可以起到叠加效果譬如一个控制面部的配合一个控制画风的就可以生成具有特定画风的特定人物因此可以使用多个专注于不同方面优化的分别调整权重结合出自己想要实现的效果模型是一种模型的改进模型也一种模型的改进泛化能力更强下载的可放置于文件夹内模型类似滤镜对画面进行调色与微调一般需要搭配相应的模型一起使用如果图片比较灰颜色不太靓丽就可能是没加载下载的可放置于文件夹内关键词预设模型即关键词打包即等于预设好一篮子关键词打包进而来指代特定的对象风格也可以通过下载进行使用下载的可放置于文件夹内四使得从玩具变成做商业项目的神器接下来会重中之重来详细讲解一下是斯坦福大学研究人员开发的的扩展使创作者能够轻松地控制图像和视频中的对象它将根据边缘检测草图处理或人体姿势等各种条件来控制图像生成可以概括为一种简单的稳定扩散微调方法的工作原理是将可训练的网络模块附加到稳定扩散模型的噪声预测器的各个部分模型的权重是锁定的在训练过程中它们是不变的在训练期间仅修改附加模块安装从上找到并把网址填到扩展里安装安装完后记得点击将模型或放入文件夹打开或选项卡写下您的提示按刷新模型选择要使用的模型若没有出现请尝试重新加载重新启动上传您的图像并选择预处理器完成目前它支持完整型号和修剪型号使用从原始文件中提取预训练模型界面介绍开启选中此框以启用颜色反转交换黑色和白色例如它可以在您上传涂鸦时使用需要黑色背景和白色涂鸦如果您使用白色背景的外部软件创建涂鸦则必须使用此选项如果您使用的界面创建涂鸦则不需要使用此选项转为用于检测用户导入图像中的颜色信息有时图像中的颜色信息可能与扩展所期望的不同如果您上传图像并使用预处理则无需选中此框低显存这将减缓进程但有助于使用更少的计算空间显存小于建议使用检查您是否用完了内存或者想要增加处理的图像数量推测模式自动识别图像不需要提示和负面提示与选定的预处理器它强制编码器遵循输入控制图如深度边缘等即使没有提示也是如此使用此模式时使用更高的步进例如但是这个效果不一定好权重代表使用生成图片时被应用的权重占比引导介入时机在理解此功能之前我们应该先知道生成图片的采样步数功能步数代表生成一张图片要刷新计算多少次设置为即代表开始时就介入默认为设置为时即代表从步数时开始介入计算引导退出时机和引导介入时机相对应如设置为则表示在计算完时才会退出介入也就是不退出默认为可调节范围如设置为时即代表从步数时退出介入调整大小模式提供了调整大小和上传图像的纵横比不保留纵横比的情况下改变图像的大小以匹配设置的宽度和高度这包括拉伸或压缩图像以适应指定的尺寸调整图像的大小以适应的尺寸它将调整图像的大小直到它能够适应设置的宽度和高度调整的大小以适应图像的尺寸它将调整图像的大小直到设置可以适合图像画布宽度和画布高度提供手动创建绘图或草图以不上传任何图像最好使用预处理器以获得良好的输出它会调整空白画布的大小来进行绘制不会影响上传的原始图像预览图片处理结果能够快速查看选择的预处理器是如何将上传的图像或绘图转换为的检测图对在渲染输出图像之前尝试各种预处理器有用可节省我们的时间隐藏处理结果删除预览图像预处理器和模型是的主要选项预处理器用于对输入图像进行预处理例如检测边缘深度和法线贴图使用输入图像作为控制图根据所需的输出用户可以选择相应的控制方法模型如果您选择了预处理器您通常会选择相应的模型但是它并不限制你混合和匹配所有的预处理器和模型但是混合多了就会产生负面效果所以最好使用更加匹配的模型并且越少越好模型与在顶部选择的稳定扩散模型一起使用预处理器下面我们介绍几个常用的并在下面举例说明如何使用它边缘检测通过使用边缘检测器创建高对比度区域的轮廓来检测输入图像线条可以捕捉到非常详细的信息但如果你的图像背景中有一些物体它很可能会检测到不需要的物体所以背景中物体越少效果越好用于此预处理器的最佳模型是这个预处理器有助于生成输入图像的深度估计深度通常用于控制图像内物体的空间定位浅色区域意味着它离用户更近而深色区域则离用户更远在大图像时它可能会丢失图像内部的细节面部表情等一般会与模型组合使用函数用于增加或减少中的大小和细节级别它的级别越高将使用更多的但可以生成更高质量的图像反之亦然有与相同的基本概念但在地图中包含更广泛的范围但有时它会从图片中捕获了太多信息可能会生成与原始图像略有不同的图像所以最好先试用两种预处理器然后决定哪一种可以在物体周围创建清晰和精细的边界输出类似于但减少了噪声和更柔软的边缘它的有效性在于能够捕捉复杂的细节和轮廓同时保留细节特征面部表情头发手指等预处理器可用于修改图像的风格和颜色用于此预处理器的最佳模型是最适合生成强有力的线条这些线条能够检测出需要独特和刚性轮廓的建筑和其他人造作品但是它不适用于处理非刚性或弯曲的物体适用于生成室内布局或建筑结构因为它可以突出直线和边缘用于此预处理器的最佳模型是法线图使用了三种主要颜色红绿蓝通过不同的角度来精确定位物体的粗糙度和光滑程度它生成法线图的基本估计可以保留相当多的细节但可能会产生意想不到的结果因为法线图完全来自图像而不是在建模软件中构建的法线图有利于突出复杂的细节和轮廓并且在定位对象方面也很有效特别是在接近度和距离方面用于调整背景成分设置一个更高的阈值可以移除背景的远处部分将其混合成紫色降低阈值将命令保留甚至显示额外的背景元素用于此预处理器的最佳模型是这个预处理器生成了一个基本的骨骼火柴人形象这种技术被广泛采用因为多个骨架可以组合成一个图像这有助于引导稳定扩散生成多个一致的主题骨架图有很多关节点每个点代表如下图所示涂鸦的目的是从简单的黑白线条画和草图生成图像用户也可以使用选项创建特定大小的空白画布用于手动素描也可以直接上传图像如果草图和绘图由白色背景上的黑线组成则需要选中复选框用于这个预处理器的最佳模型是分割预处理器检测并将上传的图像分割为同一图像内的段或区域该模型在生成一组新的图像时将图像应用于文本提示用于此预处理器的最佳模型是附录预处理器与对应模型清单总结使用绘图工具确实能提高美术工作者的生产效率但是请记住人工智能没有人工就没有智能并不是简单易上手的我们需要花费一定的时间和精力去学习和不断调试才能使其真正为我们所用高效产出效果符合需求的图片最后我为大家简单罗列一下使用的几项核心能力使用能力使用者在熟练掌握开源项目的安装调参排错编程环境设置等技能后就不会在报错时六神无主了基础出图调试能力这项能力能够让使用者无需协助就能自行摸索稳定输出可用的图片构图能力基于的构图控制是美术从业者驾驭的缰绳不会用你只会被随机噪声牵着走学习插件并组合使用的能力等小模型的训练能力进阶如本文对您有帮助欢迎将其分享给需要的朋友关注我接下来会分享更多关于的进阶内容和商业落地项目站在巨人的肩膀上',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-08-03 04:50:17',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/b_c2b4def9fa00a3d1c20200121efef2ff.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://h5.hepingan.top" title="AIGC破壁社"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="AIGC破壁社"/><span class="back-menu-item-text">AIGC破壁社</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://hepingan.top" title="GPT"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="GPT"/><span class="back-menu-item-text">GPT</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">天香园</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/d4c385314e5c9972750187aad25c4514_720.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/d4c385314e5c9972750187aad25c4514_720.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/86bc07c3c7304499c38e47d683d076f4.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/86bc07c3c7304499c38e47d683d076f4.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ES/" style="font-size: 1.05rem;">ES<sup>1</sup></a><a href="/tags/HDFS/" style="font-size: 1.05rem;">HDFS<sup>1</sup></a><a href="/tags/PASS-Assistant/" style="font-size: 1.05rem;">PASS-Assistant<sup>2</sup></a><a href="/tags/Pass-Assistant/" style="font-size: 1.05rem;">Pass Assistant<sup>1</sup></a><a href="/tags/SpringAi/" style="font-size: 1.05rem;">SpringAi<sup>2</sup></a><a href="/tags/YARN/" style="font-size: 1.05rem;">YARN<sup>1</sup></a><a href="/tags/ai%E6%A8%A1%E5%9E%8B/" style="font-size: 1.05rem;">ai模型<sup>2</sup></a><a href="/tags/ai%E7%BB%98%E7%94%BB/" style="font-size: 1.05rem;">ai绘画<sup>1</sup></a><a href="/tags/bug/" style="font-size: 1.05rem;">bug<sup>1</sup></a><a href="/tags/cursor/" style="font-size: 1.05rem;">cursor<sup>2</sup></a><a href="/tags/electron/" style="font-size: 1.05rem;">electron<sup>1</sup></a><a href="/tags/flutter/" style="font-size: 1.05rem;">flutter<sup>1</sup></a><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>3</sup></a><a href="/tags/javaweb/" style="font-size: 1.05rem;">javaweb<sup>4</sup></a><a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">java基础<sup>4</sup></a><a href="/tags/js/" style="font-size: 1.05rem;">js<sup>1</sup></a><a href="/tags/langchain4j/" style="font-size: 1.05rem;">langchain4j<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 1.05rem;">redis<sup>1</sup></a><a href="/tags/spring/" style="font-size: 1.05rem;">spring<sup>1</sup></a><a href="/tags/springcloud/" style="font-size: 1.05rem;">springcloud<sup>2</sup></a><a href="/tags/springcloud%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 1.05rem;">springcloud微服务<sup>3</sup></a><a href="/tags/uniapp/" style="font-size: 1.05rem;">uniapp<sup>2</sup></a><a href="/tags/%E4%B8%8A%E7%BA%BF/" style="font-size: 1.05rem;">上线<sup>1</sup></a><a href="/tags/%E4%BA%91%E5%B2%9A%E5%88%B0%E5%AE%B6/" style="font-size: 1.05rem;">云岚到家<sup>1</sup></a><a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 1.05rem;">娱乐<sup>1</sup></a><a href="/tags/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" style="font-size: 1.05rem;">学成在线<sup>4</sup></a><a href="/tags/%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/" style="font-size: 1.05rem;">小玩意儿<sup>1</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.05rem;">微信小程序<sup>1</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/" style="font-size: 1.05rem;">微信登录<sup>1</sup></a><a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 1.05rem;">微服务<sup>1</sup></a><a href="/tags/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B/" style="font-size: 1.05rem;">我的故事<sup>7</sup></a><a href="/tags/%E6%8D%A3%E9%BC%93/" style="font-size: 1.05rem;">捣鼓<sup>2</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>3</sup></a><a href="/tags/%E7%8E%8B%E7%9A%84%E6%95%85%E4%BA%8B/" style="font-size: 1.05rem;">王的故事<sup>2</sup></a><a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 1.05rem;">破解<sup>1</sup></a><a href="/tags/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" style="font-size: 1.05rem;">苍穹外卖<sup>3</sup></a><a href="/tags/%E9%98%BF%E9%87%8C/" style="font-size: 1.05rem;">阿里<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Ai%E7%A7%91%E6%8A%80/" itemprop="url">Ai科技</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/ai%E7%BB%98%E7%94%BB/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>ai绘画</span></a></span></div></div><h1 class="post-title" itemprop="name headline">sd绘画搭建一条路服务</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-03-28T15:42:30.000Z" title="发表于 2024-03-28 23:42:30">2024-03-28</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-08-02T20:50:17.135Z" title="更新于 2024-08-03 04:50:17">2024-08-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">7.1k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>23分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为重庆"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>重庆</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pic3.zhimg.com/80/v2-ddc6c5960c6d609ff4f49d31390fb3aa_720w.webp"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://ai.hepingan.top/2024/03/28/Ai%E7%A7%91%E6%8A%80/sd%E7%BB%98%E7%94%BB%E6%90%AD%E5%BB%BA%E4%B8%80%E6%9D%A1%E8%B7%AF%E6%9C%8D%E5%8A%A1/"><header><a class="post-meta-categories" href="/categories/Ai%E7%A7%91%E6%8A%80/" itemprop="url">Ai科技</a><a href="/tags/ai%E7%BB%98%E7%94%BB/" tabindex="-1" itemprop="url">ai绘画</a><h1 id="CrawlerTitle" itemprop="name headline">sd绘画搭建一条路服务</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">何平安</span><time itemprop="dateCreated datePublished" datetime="2024-03-28T15:42:30.000Z" title="发表于 2024-03-28 23:42:30">2024-03-28</time><time itemprop="dateCreated datePublished" datetime="2024-08-02T20:50:17.135Z" title="更新于 2024-08-03 04:50:17">2024-08-03</time></header><p><strong>一、本地部署 Stable Diffusion</strong></p>
+<p><strong>前言</strong></p>
+<p>目前市面上比较权威，并能用于工作中的AI绘画软件其实就两款。一个叫Midjourney（简称MJ），另一个叫Stable-Diffusion（简称SD）。MJ需要付费使用，而SD开源免费，但是上手难度和学习成本略大，并且非常吃电脑配置（显卡、内存）。</p>
+<p>E和Midjourney相比，Stable Diffusion 最大的优势是开源，这意味着Stable Diffusion的潜力巨大、发展飞快。由于开源免费属性，SD 已经收获了大量活跃用户，开发者社群已经为此提供了大量免费高质量的外接预训练模型（fine-tune）和插件，并且在持续维护更新。在第三方插件和模型的加持下，SD拥有比Midjourney更加丰富的个性化功能，在经过使用者调教后可以生成更贴近需求的图片，甚至在 AI 视频特效、AI音乐生成等领域，Stable Diffusion 也占据了一席之地。</p>
+<p>Stable Diffusion是一种潜在扩散模型（Latent Diffusion Model），能够从文本描述中生成详细的图像。它还可以用于图像修复、图像绘制、文本到图像和图像到图像等任务。简单地说，我们只要给出想要的图片的文字描述在提Stable Diffusion就能生成符合你要求的逼真的图像！</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-ddc6c5960c6d609ff4f49d31390fb3aa_720w.webp" alt="img"></p>
+<p><strong>电脑配置</strong></p>
+<p>电脑配置最核心的关键点：看显卡、看内存、看硬盘、看CPU。其中最重要的是看显卡。N卡（英伟达Nvida独立显卡）首选，效率远超集显&#x2F;AMD&#x2F;Intel显卡和CPU渲染，最低10系起步，体验感佳用40系，显存最低4G，6G及格，上不封顶；内存最低8G，16G及格，上不封顶；硬盘可用空间最好有个500G朝上，固态最佳。</p>
+<p>系统要求：支持 Win10&#x2F;Win11&#x2F;macOS（仅限Apple Silicon，Intel 版本的 Mac 无法调用 Radeon 显卡）和 Linux 系统，苹果版 SD 兼容的插件数量较少，功能性不及 Windows 与 Linux 电脑。</p>
+<p>如果身边没有合适的电脑可以考虑购买云主机，比如腾讯GPU云服务器。若无法使用独立显卡和云服务，亦可修改启动配置，使用CPU渲染（兼容性强，出图速度慢，需要16G以上内存）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-f0ba84744604aff06fb0a6462b355f96_720w.webp" alt="img"></p>
+<p>从图中可看出，与AMD或英特尔的任何产品相比，Nvidia的GPU提供了卓越的性能–有时是以巨大的优势。随着Torch的DLL修复到位，RTX 4090的性能比带有xformers的RTX 3090 Ti高出50%，而没有xformers的性能则高出43%。生成每张图片只需要三秒多。</p>
+<p><strong>安装方法</strong></p>
+<p>SD开源地址：<a href="https://link.zhihu.com/?target=https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki">https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki</a></p>
+<p>目前大家普遍采用的Stable Diffusion Web UI是发布于开源程序分享网站 Github 的 Python 项目，和平常软件安装方法有所不同，不是下载安装即可用的软件，需要准备执行环境、编译源码，针对不同操作系统（操作系统依赖）、不同电脑（硬件依赖）还有做些手工调整，这需要使用者拥有一定的程序开发经验（可以现学），已经有很多大佬们写了详细的安装教程。（如<a href="https://link.zhihu.com/?target=https://www.tonyisstark.com/846.html">https://www.tonyisstark.com/846.html</a> @托尼不是塔克）</p>
+<p>如果像我一样是小白不会装，现在可以直接使用大佬们做的一键启动程序包，比如国内@秋葉aaaki大大开发的整合包，极大的降低了安装门槛（强烈推荐！）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic2.zhimg.com/80/v2-89894ef22d19fa2382153cbaedc2f21d_720w.webp" alt="img"></p>
+<p>（详见<a href="https://link.zhihu.com/?target=https://www.bilibili.com/video/BV1ne4y1V7QU">https://www.bilibili.com/video/BV1ne4y1V7QU</a>）一键启动包只是封装了可视化的一键界面，不影响出图效果，只是降低了本地部署的门槛。</p>
+<p>Nvidia 显卡用户须知：在使用SD前，请登录 Nvidia 官网<a href="https://link.zhihu.com/?target=https://www.nvidia.cn/geforce/drivers/">https://www.nvidia.cn/geforce/drivers/</a>下载安装对应显卡最新版驱动程序，与<a href="https://link.zhihu.com/?target=https://blog.csdn.net/weixin_44177494/article/details/120444922">https://blog.csdn.net/weixin_44177494&#x2F;article&#x2F;details&#x2F;120444922</a>显卡支持的最新版 CUDA 驱动。</p>
+<p><strong>启动SD</strong></p>
+<p>进入SD安装文件夹，双击 webui-user.bat，待其加载完成方可使用浏览器（Chrome&#x2F;Edge）登录默认的加载IP <a href="https://link.zhihu.com/?target=http://127.0.0.1:7860/">http://127.0.0.1:7860/</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic2.zhimg.com/80/v2-e9cfefe29dd80365fa9ff7bc1517f47d_720w.webp" alt="img"></p>
+<p><strong>界面汉化</strong></p>
+<p>如果需要中文语言包，可以下载如下中文语言包扩展，下载界面网址为：<a href="https://link.zhihu.com/?target=https://github.com/VinsonLaro/stable-diffusion-webui-chinese">https://github.com/VinsonLaro/stable-diffusion-webui-chinese</a></p>
+<p>方法1：通过WebUI拓展进行安装<br>1.打开stable diffusion webui，进入”Extensions”选项卡<br>2.点击”Install from URL”，注意”URL for extension’s git repository”下方的输入框<br>3.粘贴或输入本Git仓库地址<a href="https://link.zhihu.com/?target=https://github.com/VinsonLaro/stable-diffusion-webui-chinese">https://github.com/VinsonLaro/stable-diffusion-webui-chinese</a><br>4.点击下方的黄色按钮”Install”即可完成安装，然后重启WebUI(点击”Install from URL”左方的”Installed”，然后点击黄色按钮”Apply and restart UI”网页下方的”Reload UI”完成重启)<br>5.点击”Settings”，左侧点击”User interface”界面，在界面里最下方的”Localization (requires restart)”，选择”Chinese-All”或者”Chinese-English”<br>6.点击界面最上方的黄色按钮”Apply settings”，再点击右侧的”Reload UI”即可完成汉化</p>
+<p><strong>二、界面基础</strong></p>
+<p><strong>了解界面</strong></p>
+<p>接下来是具体的使用方法简介。目前SD并不存在通行可靠的使用规范，每个人的电脑配置、需求都不尽相同，cpkd&#x2F;Safetensors大模型、VAE、embeding、lora等AI模型、各类插件、提示词、输出参数的组合牵一发则动全身，需要大家有足够的耐心查阅插件开发者的说明文档和来自<a href="https://link.zhihu.com/?target=https://civitai.com/">https://civitai.com/</a>等分享网站的使用心得，大家可以先到civitai上搜索中意的图例，复用原作者的出图提示词、参数和模型，再以此修改，这样学习的效果最为直观。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-8712f8736f92b80fb19dff0d8f220d0a_720w.webp" alt="img"></p>
+<p><strong>文生图</strong>：根据文本提示生成图像<br><strong>图生图</strong>：根据提供的图像作为范本、结合文本提示生成图像<br><strong>更多</strong>：优化(清晰、扩展)图像<br><strong>图片信息</strong>：显示图像基本信息,包含提示词和模型信息（除非信息被隐藏）<br><strong>模型合并</strong>：把已有的模型按不同比例进行合并生成新模型<br>训练：根据提供的图片训练具有某种图像风格的模型</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-f3a273c5f3e0f8c02822091f1cb9858a_720w.webp" alt="img"></p>
+<p>描述语分为正向&#x2F;负向描述，它们也叫tag(标签）或prompt(提示词）<br><strong>正面提示词</strong>：相比Midjourney需要写得更精准和细致，描述少就给AI更多自由发挥空间。<br><strong>负面提示词</strong>：不想让SD生成的内容。<br>正向：masterpiece, best quality, 更多画质词，画面描述<br>反向：nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers,extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry,根据画面产出加不想出现的画面。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-5ada42c007dbdbf9b941cc82113acf8c_720w.webp" alt="img"></p>
+<p><strong>生成下面的5个小图标（从左到右依次分别是）</strong></p>
+<ul>
+<li>复原上次生成图片的提示词（自动记录）</li>
+<li>清空当前所有提示词</li>
+<li>打开模型选择界面</li>
+<li>应用选择的风格模板到当前的提示词</li>
+<li>存档当前的正反向提示词</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-91b6f73a0a896678425fb672114f5830_720w.webp" alt="img"></p>
+<p><strong>采样方法</strong><br>1.建议根据自己使用的checkpoint使用脚本跑网格图（用自己关心的参数）然后选择自己想要的结果。<br>2.懒得对比：请使用DPM++ 2M或DPM++ 2M Karras（二次元图）或UniPC，想要点惊喜和变化，Euler a、DPM++ SDE、DPM++ SDE Karras（写实图）、DPM2 a Karras（注意调整对应eta值）<br>3.eta和sigma都是多样性相关的，但是它们的多样性来自步数的变化，追求更大多样性的话应该关注seed的变化，这两项参数应该是在图片框架被选定后，再在此基础上做微调时使用的参数。</p>
+<p><strong>采样步数</strong><br>稳定扩散通过从充满噪音的画布开始创建图像，并逐渐去噪以达到最终输出。此参数控制这些去噪步骤的数量。通常越高越好，但在一定程度上，我们使用的默认值是25个步骤。以下是不同情况下使用哪个步骤编号的一般指南：</p>
+<ul>
+<li>如果您正在测试新的提示，并希望获得快速结果来调整您的输入，请使用10-15个步骤</li>
+<li>当您找到您喜欢的提示时，请将步骤增加到25</li>
+<li>如果是有毛皮的动物或有纹理的主题，生成的图像缺少一些细节，尝试将其提高到40</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-0cd6be5cc8b6bc5f9813638ef9cb8a1e_720w.webp" alt="img"></p>
+<p><strong>面部修复</strong>：修复人物的面部，但是非写实风格的人物开启面部修复可能导致面部崩坏。<br><strong>平铺</strong>：生成一张可以平铺的图像<br><strong>高分辨率重绘</strong>：使用两个步骤的过程进行生成，以较小的分辨率创建图像，然后在不改变构图的情况下改进其中的细节，选中该选项会有一系列新的参数，<br>其中重要的是：<br><strong>放大算法</strong>：Latent 在许多情况下效果不错，但重绘幅度小于 0.5 后就不甚理想。ESRGAN_4x、SwinR 4x 对 0.5 以下的重绘幅度有较好支持。<br><strong>放大倍数</strong>: 通常2倍即可<br><strong>重绘幅度</strong>：决定算法对图像内容的保留程度。该值越高，放大后图像就比放大前图像差别越大。低 denoising 意味着修正原图，高 denoising 就和原图就没有大的相关性了。一般来讲阈值是 0.7 左右，超过 0.7 和原图基本上无关，0.3 以下就是稍微改一些，0什么都不会改变，1会得到一个完全不同的图像。具体的执行步骤为 重绘强度 * 重绘步数。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic4.zhimg.com/80/v2-59dd1d7689b46313cd27b5fd9a85201f_720w.webp" alt="img"></p>
+<p><strong>长宽尺寸</strong>(分辨率）<br>长宽尺寸并非数值越大越好，最佳的范围应在512至768像素之间，比如正方形图多是512<em>512和768</em>768，人像肖像 512x768，风景画 768×512，可按比例加大或减小，这个值必须是 8 的倍数。如果不希望主题对象出现重复，应在此范围内选择适当的尺寸。如果需要更高分辨率的图片，建议先使用SD模型生成图片，然后再使用合适的模型进行upscale。</p>
+<p><strong>生成批次</strong>：每次生成图像的组数。一次运行生成图像的数量为生成批次 * 每批数量。<br><strong>每批数量</strong>：同时生成多少个图像。增加这个值可以提高性能，但你也需要更多的 VRAM。图像总数是这个值乘以批次数。除 4090 等高级显卡以外通常保持为 1。</p>
+<p><strong>提示词相关性CFG</strong>：较高的数值将提高生成结果与提示的匹配度。<br>OpenArt上使用的默认CFG是7，这在创造力和生成你想要的东西之间提供了最佳平衡。通常不建议低于5。<br>CFG量表可以分为不同的范围，每个范围都适合不同的提示类型和目标<br>CFG 2 – 6：有创意，但可能太扭曲，没有遵循提示。对于简短的提示来说，可以很有趣和有用<br>CFG 710：推荐用于大多数提示。创造力和引导一代之间的良好平衡<br>CFG 10-15：当您确定您的提示是详细且非常清晰的，您希望图像是什么样子时<br>CFG 16-20：除非提示非常详细，否则通常不推荐。可能影响一致性和质量<br>CFG &gt;20：几乎无法使用</p>
+<p><strong>随机种子（Seed）</strong>:生成每张图片时的随机种子，这个种子是用来作为确定扩散初始状态的基础。不懂的话，用随机的即可。</p>
+<p><strong>提示词生成</strong></p>
+<p>开始不知道怎么写提示词，可以先参考优秀的风格模板作为起手式，还可以借助描述语工具和网站，多出图多研究，掌握了出图规律，慢慢就可以自己写提示词啦，写提示词要尽可能写的详细。跑AI的过程就像抽卡，抽出一堆卡，选出你审美范畴里觉得好看的。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-189f1c9b48f41d2c2939757ddd9b610c_720w.webp" alt="img"></p>
+<p>找tag关键词网站：<br>可参考Civitai | Stable Diffusion models, embeddings, hypernetworks and more中优秀作品的提示词作为模板。<br>其他网站还有：<br>ChatGPT：<a href="https://link.zhihu.com/?target=https://chat.openai.com/">https://chat.openai.com/</a><br>AI Creator：<a href="https://link.zhihu.com/?target=https://ai-creator.net/arts">https://ai-creator.net/arts</a><br>NovelAI：<a href="https://link.zhihu.com/?target=https://spell.novelai.dev">https://spell.novelai.dev</a><br>魔咒百科词典：<a href="https://link.zhihu.com/?target=https://aitag.top">https://aitag.top</a><br>AI咒术生成器：<a href="https://link.zhihu.com/?target=https://tag.redsex.cc/">https://tag.redsex.cc/</a><br>AI词汇加速器 AcceleratorI Prompt：<br>词图 PromptTool：<a href="https://link.zhihu.com/?target=https://www.prompttool.com/NovelAI">https://www.prompttool.com/NovelAI</a><br>鳖哲法典：<a href="https://link.zhihu.com/?target=http://tomxlysplay.com.cn/%23/">http://tomxlysplay.com.cn/#/</a><br>Danbooru tag：Tag Groups Wiki | Danbooru (<a href="https://link.zhihu.com/?target=http://donmai.us">http://donmai.us</a>)</p>
+<p><strong>Prompt格式优化</strong></p>
+<p>第一段：画质tag，画风tag<br>第二段：画面主体，主体强调，主体细节概括（主体可以是人、事、物、景）画面核心内容<br>第三段：画面场景细节，或人物细节，embedding tag。画面细节内容<br>第二段一般提供人数，人物主要特征，主要动作（一般置于人物之前），物体主要特征，主景或景色框架等</p>
+<p><strong>举个例子</strong><br>(具体场景还是要灵活应用，多尝试，找到合适自己的节奏和风格）<br>第一段：masterpiece, best quality, 4k, ( Pixar - style :1.4)<br>第二段：1boy,(Cute,handsome,wearing outdoor sportswear :0.7), 3D,(Face close-up :1.2), (at night, surrounded by glowing plants, flowers, flying fireflies, bonfires), (Ultra detailed, aesthetic, beautiful composition, rich bright colors, volumetric soft light).<br>第三段：Inspired by Alice in Wonderland, magic, fairy tales. unreal Engine, octane render, cuteness render, awe inspiring, beautiful, <a href="lora:blindbox_V1Mix:1">lora:blindbox_V1Mix:1</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-abe713ec346a9e8d82398373aaf5444e_720w.webp" alt="img"></p>
+<p><strong>Prompt规则细节</strong></p>
+<p>\1. 越靠前的Tag权重越大。<br>\2. 生成图片的大小会影响Prompt的效果，图片越大需要的Prompt越多，不然Prompt会相互污染。<br>3.Stable-diffusion中，可以使用括号人工修改提示词的权重，方法如下：<br>(word) - 将权重提高 1.1 倍<br>((word)) - 将权重提高 1.21 倍（&#x3D; 1.1 * 1.1）<br>[word] - 将权重降低至原先的 90.91%<br>(word:1.5) - 将权重提高 1.5 倍<br>(word:0.25) - 将权重减少为原先的 25%<br>请注意，权重值最好不要超过 1.5</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-8af7500f4597553e3348f0bebb4f0fa2_720w.webp" alt="img"></p>
+<p>\4. Prompt支持使用emoji，可通过添加emoji达到表现效果。如 形容表情， 可修手。<br>5.“+” ， “ AND” ， “|” 用法：“+”和“ AND ”都是用于连接短Tag，但AND两端要加空格。”+”约等于” and “；“|” 为循环绘制符号（融合符号）(Prompt A: w1)|(Prompt B: w2)<br>以上表达适用于WebUI，w1、w2为权重。AI会对A、 B两Prompt进行循环绘制。可往后无限加入Prompt。<br>6.tag不一定是多么充满细节，只要模型稳定。小图+高分辨率重绘。800<em>400的图变成1600</em>800，初识小图减少崩坏概率。<br>7.关键词最好具有特异性，譬如 Anime(动漫)一词就相对泛化，而Jojo一词就能清晰地指向 Jojo动漫的画风。措辞越不抽象越好，尽可能避免留下解释空间的措辞。</p>
+<p><strong>三、了解模型</strong></p>
+<p><strong>下载模型</strong></p>
+<p>主流模型下载网站：<br>Hugging face是一个专注于构建、训练和部署先进开源机器学习模型的网站：<a href="https://link.zhihu.com/?target=https://huggingface.co/">https://huggingface.co/</a><br>Civitai是一个专为Stable Diffusion AI艺术模型设计的网站，是非常好的AI模型库：<a href="https://link.zhihu.com/?target=https://civitai.com/">https://civitai.com/</a><br>主流模型被删除可以去备用模型站下载：<a href="https://link.zhihu.com/?target=https://www.4b3.com">https://www.4b3.com</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic2.zhimg.com/80/v2-45091ab3c9ea33d2c4cc12eb8bdcc031_720w.webp" alt="img"></p>
+<p><strong>模型选择</strong></p>
+<p>如何选择合适模型是最重要的。<br>从你想画的风格（写实、二次元、卡通盲盒等）来选择大模型，再搭配合适的Lora。</p>
+<p><strong>1.Checkpoint</strong><br>体积较大，也被称为大模型，不同的大模型使用不同的图片训练而成，对应不同的风格，相当于最底层的引擎。有时候需要大模型+VAE+emb+Lora联合搭配使用以达到需要的效果。<br>下载的大模型可放置于SD文件夹&#x2F;models&#x2F;Stable-diffusion内。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic2.zhimg.com/80/v2-dcefdb6c297905e79e1880f5aed650ed_720w.webp" alt="img"></p>
+<p><strong>2.Lora</strong></p>
+<p>Lora是特征模型，体积较小，是基于某个确定的角色、确定的风格或者固定的动作训练而成的模型，可使用权重控制，确定性要远强于embedding。embedding和Lora有功能交集的部分，也有互相不可取代的地方。</p>
+<p>在ckpt大模型上附加使用，对人物、姿势、物体表现较好。在webui界面的Additional Networks下勾线Enable启用，然后在Model下选择模型，并可用Weight调整权重。权重越大，该 Lora 的影响也越大。不建议权重过大（超过1.2），否则很容易出现扭曲的结果。</p>
+<p>多个Lora模型混合使用可以起到叠加效果，譬如一个控制面部的Lora 配合一个控制画风的 Lora就可以生成具有特定画风的特定人物。因此可以使用多个专注于不同方面优化的Lora，分别调整权重，结合出自己想要实现的效果。</p>
+<p>LoHA 模型是一种 LORA 模型的改进。<br>LoCon 模型也一种 LORA 模型的改进，泛化能力更强。<br>下载的Lora可放置于SD文件夹&#x2F;models&#x2F;Lora内。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-fda222f7c354e0b7777c3f5177e71d10_720w.webp" alt="img"></p>
+<p><strong>3.VAE</strong><br>VAE模型类似滤镜，对画面进行调色与微调，一般需要搭配相应的模型一起使用。（如果图片比较灰，颜色不太靓丽，就可能是没加载vae)<br>下载的VAE可放置于SD文件夹&#x2F;models&#x2F;VAE内。</p>
+<p><strong>4.Textual inversion（embedding）</strong><br>关键词预设模型，即关键词打包，即等于预设好一篮子关键词a,b,c打包，进而来指代特定的对象&#x2F;风格。也可以通过下载Textual inversion进行使用。<br>下载的embedding可放置于SD文件夹&#x2F;embeddings内。</p>
+<p><strong>四、ControlNet</strong></p>
+<p>ControlNet使得SD从玩具变成做商业项目的神器，接下来会重中之重来详细讲解一下。<br>ControlNet是斯坦福大学研究人员开发的Stable Diffusion的扩展，使创作者能够轻松地控制AI图像和视频中的对象。它将根据边缘检测、草图处理或人体姿势等各种条件来控制图像生成。ControlNet可以概括为一种简单的稳定扩散微调方法。ControlNet的工作原理是将可训练的网络模块附加到稳定扩散模型的U-Net （噪声预测器）的各个部分。Stable Diffusion 模型的权重是锁定的，在训练过程中它们是不变的。在训练期间仅修改附加模块。</p>
+<p><strong>安装</strong><br>从github上找到并把网址填到扩展里安装，安装完后记得点击 Apply and restart UI（<a href="https://link.zhihu.com/?target=https://github.com/Mikubill/sd-webui-controlnet">https://github.com/Mikubill/sd-webui-controlnet</a>）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic4.zhimg.com/80/v2-c08d40337960bebab28092dce6b331b7_720w.webp" alt="img"></p>
+<p>1.将ControlNet模型（.pt、.pth、.ckpt或.safetensors）放入models&#x2F;ControlNet文件夹。<br>2.打开“txt2img”或“img2img”选项卡，写下您的提示。<br>3.按“刷新模型”，选择要使用的模型。（若没有出现，请尝试重新加载&#x2F;重新启动webui）<br>4.上传您的图像并选择预处理器，完成。<br>目前，它支持完整型号和修剪型号。使用extract_controlnet.py从原始.pth文件中提取controlnet。<br>预训练模型：<a href="https://link.zhihu.com/?target=https://huggingface.co/lllyasviel/ControlNet/tree/main/models">https://huggingface.co/lllyasviel/ControlNet/tree/main/models</a></p>
+<p><strong>界面介绍</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-934c4f18855d9fbd10d25549d44158b4_720w.webp" alt="img"></p>
+<p><strong>开启</strong> :选中此框以启用ControlNet。<br><strong>颜色反转</strong>：交换黑色和白色。例如，它可以在您上传涂鸦时使用。ControlNet 需要黑色背景和白色涂鸦。如果您使用白色背景的外部软件创建涂鸦，则必须使用此选项。如果您使用 ControlNet 的界面创建涂鸦，则不需要使用此选项。<br><strong>RGB转为BGR</strong> :用于检测用户导入图像中的颜色信息。有时图像中的颜色信息可能与扩展所期望的不同。如果您上传图像并使用预处理，则无需选中此框。<br><strong>低显存</strong>:这将减缓ETA进程，但有助于使用更少的计算空间(显存小于8 GB VRAM建议使用)，检查您是否用完了 GPU 内存，或者想要增加处理的图像数量。<br><strong>推测模式</strong>:ControlNet自动识别图像(不需要提示和负面提示)与选定的预处理器。它强制 ControlNet 编码器遵循输入控制图（如深度、边缘等)，即使没有提示也是如此。使用此模式时使用更高的步进，例如50，但是这个效果不一定好。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-7a2d84822fb58596f7e2f1758a2226ac_720w.webp" alt="img"></p>
+<p>**权重（Weight)**：代表使用 ControlNet 生成图片时被应用的权重占比。<br>**引导介入时机（Guidance Start)**：在理解此功能之前，我们应该先知道生成图片的 Sampling steps 采样步数功能，步数代表生成一张图片要刷新计算多少次，Guidance Start(T) 设置为 0 即代表开始时就介入，默认为 0，设置为 0.5 时即代表 ControlNet 从 50% 步数时开始介入计算。<br>**引导退出时机（Guidance End)**：和引导介入时机相对应，如设置为1，则表示在100%计算完时才会退出介入也就是不退出，默认为 1，可调节范围 0-1，如设置为 0.8 时即代表从80% 步数时退出介入。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic4.zhimg.com/80/v2-557a54044f165ca8d0ec1a7e0b043173_720w.webp" alt="img"></p>
+<p>调整大小模式提供了调整ControlNet大小和上传图像的纵横比。<br><strong>Just Resize</strong>:不保留纵横比的情况下，改变ControlNet图像的大小以匹配Txt2Img设置的宽度和高度。这包括拉伸或压缩图像以适应指定的尺寸。<br><strong>Scale to Fit (Inner Fit)</strong>:调整ControlNet图像的大小以适应Txt2Image的尺寸。它将调整图像的大小，直到它能够适应Txt2Image设置的宽度和高度。<br><strong>Envelope (Outer Fit)</strong>:调整Txt2Image的大小以适应ControlNet图像的尺寸。它将调整图像的大小，直到Txt2Image设置可以适合ControlNet图像。<br><strong>画布宽度 和 画布高度</strong> 提供手动创建绘图或草图以，不上传任何图像（最好使用 Scribble 预处理器以获得良好的输出）。它会调整空白画布的大小来进行绘制，不会影响上传的原始图像。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic2.zhimg.com/80/v2-7468dde77697fbb5543c4e56149acb41_720w.webp" alt="img"></p>
+<p><strong>预览图片处理结果</strong>：能够快速查看选择的预处理器是如何将上传的图像或绘图转换为 ControlNet的检测图。对在渲染输出图像之前尝试各种预处理器有用，可节省我们的时间。<br><strong>隐藏处理结果</strong>：删除预览图像。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic4.zhimg.com/80/v2-937665d029d4e7197cbc5c4e18945937_720w.webp" alt="img"></p>
+<p>预处理器和模型是ControlNet的主要选项。<br><strong>预处理器</strong>：用于对输入图像进行预处理，例如检测边缘、深度和法线贴图。None使用输入图像作为控制图。 根据所需的输出，用户可以选择相应的控制方法。<br><strong>模型</strong>：如果您选择了预处理器，您通常会选择相应的模型。但是它并不限制你混合和匹配所有的预处理器和模型，但是混合多了就会产生负面效果，所以最好使用更加匹配的模型并且越少越好。ControlNet模型与在AUTOMATIC1111 GUI顶部选择的稳定扩散模型一起使用。</p>
+<p><strong>预处理器</strong></p>
+<p>下面我们介绍几个常用的 ControlNet，并在下面举例说明如何使用它。</p>
+<p><strong>1、Canny边缘检测</strong><br>Canny通过使用边缘检测器创建高对比度区域的轮廓来检测输入图像。线条可以捕捉到非常详细的信息，但如果你的图像背景中有一些物体，它很可能会检测到不需要的物体。所以背景中物体越少效果越好。用于此预处理器的最佳模型是control_sd15_canny。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-b1c53af984360b0217ccd3e2c4887ad6_720w.webp" alt="img"></p>
+<p><strong>2、Depth &amp; Depth Leres</strong><br>这个预处理器有助于生成输入图像的深度估计。深度通常用于控制图像内物体的空间定位。浅色区域意味着它离用户更近，而深色区域则离用户更远。<br>在大图像时它可能会丢失图像内部的细节(面部表情等)。一般会与control_sd15_depth模型组合使用。Midas Resolution函数用于增加或减少detectmap中的大小和细节级别。它的级别越高，将使用更多的VRAM，但可以生成更高质量的图像，反之亦然。<br>Depth Leres有与Depth 相同的基本概念，但在地图中包含更广泛的范围。但有时它会从图片中捕获了太多信息，可能会生成与原始图像略有不同的图像。所以最好先试用两种预处理器，然后决定哪一种。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic4.zhimg.com/80/v2-9a694ed81408f57cb3dac6ea6d32a11f_720w.webp" alt="img"></p>
+<p><strong>3、HED (Holistically-Nested Edge Detection)</strong><br>Hed可以在物体周围创建清晰和精细的边界，输出类似于Canny，但减少了噪声和更柔软的边缘。它的有效性在于能够捕捉复杂的细节和轮廓，同时保留细节特征(面部表情、头发、手指等)。Hed预处理器可用于修改图像的风格和颜色。用于此预处理器的最佳模型是control_sd15_hed。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-1c2337626e557a396beff1e7a1c74b5a_720w.webp" alt="img"></p>
+<p><strong>4、MLSD ( Mobile Line Segment Detection)</strong><br>MLSD Preprocessor 最适合生成强有力的线条，这些线条能够检测出需要独特和刚性轮廓的建筑和其他人造作品。但是它不适用于处理非刚性或弯曲的物体。MLSD适用于生成室内布局或建筑结构，因为它可以突出直线和边缘。用于此预处理器的最佳模型是control_sd15_mlsd。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic2.zhimg.com/80/v2-523d96396c2af3d266688bc27f941c1d_720w.webp" alt="img"></p>
+<p><strong>5、Normal map</strong><br>法线图使用了三种主要颜色(红、绿、蓝)，通过不同的角度来精确定位物体的粗糙度和光滑程度。它生成法线图的基本估计，可以保留相当多的细节，但可能会产生意想不到的结果，因为法线图完全来自图像，而不是在3D建模软件中构建的。<br>法线图有利于突出复杂的细节和轮廓，并且在定位对象方面也很有效，特别是在接近度和距离方面。“Normal Background Threshold”用于调整背景成分。设置一个更高的阈值可以移除背景的远处部分(将其混合成紫色)。降低阈值将命令AI保留甚至显示额外的背景元素。用于此预处理器的最佳模型是control_sd15_normal。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic4.zhimg.com/80/v2-f1e80b5281beced419c71ee884c8d1ff_720w.webp" alt="img"></p>
+<p><strong>6、OpenPose</strong><br>这个预处理器生成了一个基本的骨骼火柴人形象。这种技术被广泛采用，因为多个 OpenPose骨架可以组合成一个图像，这有助于引导稳定扩散生成多个一致的主题。骨架图有很多关节点，每个点代表如下图所示。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-5979d8f2284d698c10c55646546816ac_720w.webp" alt="img"></p>
+<p><strong>7、Scribble</strong><br>涂鸦的目的是从简单的黑白线条画和草图生成图像。用户也可以使用“Canvas”选项创建特定大小的空白画布，用于手动素描（也可以直接上传图像）。如果草图和绘图由白色背景上的黑线组成，则需要选中“Invert Input Color”复选框。用于这个预处理器的最佳模型是control_sd15_openpose。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic3.zhimg.com/80/v2-dfca58146adafab31b4a77037647fa56_720w.webp" alt="img"></p>
+<p><strong>8、Segmentation</strong><br>分割预处理器检测并将上传的图像分割为同一图像内的段或区域。该模型在生成一组新的图像时，将detectmap图像应用于文本提示。用于此预处理器的最佳模型是control_sd15_seg。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic4.zhimg.com/80/v2-5347107433e8bd44fba0ab6101a36b83_720w.webp" alt="img"></p>
+<p><strong>附录：预处理器与对应模型清单</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/80/v2-2f68a20f9ff5f97601b90e4df3f6e9f8_720w.webp" alt="img"></p>
+<p><strong>总结</strong></p>
+<p>使用AI绘图工具Stable Diffusion确实能提高美术工作者的生产效率，但是请记住：人工智能，没有人工就没有智能。Stable Diffusion并不是简单易上手的APP，我们需要花费一定的时间和精力去学习和不断调试，才能使其真正为我们所用，高效产出效果符合需求的图片。</p>
+<p>最后，我为大家简单罗列一下使用SD的几项核心能力：<br>1.Github使用能力，使用者在熟练掌握Github开源项目的安装、调参、排错、编程环境设置等技能后，就不会在SD报错时六神无主了。<br>2.基础出图调试能力，这项能力能够让使用者无需协助就能自行摸索稳定输出可用的图片。<br>3.Controlnet构图能力，基于Controlnet的构图控制是美术从业者驾驭SD的缰绳，不会用Controlnet，你只会被随机噪声牵着走。<br>4.学习插件并组合使用的能力。<br>5.Lora等小模型的训练能力（进阶）。</p>
+<p>如本文对您有帮助，欢迎将其分享给需要的朋友～关注我，接下来会分享更多关于Stable Diffusion的进阶内容和商业落地项目。</p>
+<p><strong>站在巨人的肩膀上</strong></p>
+<p><a href="https://link.zhihu.com/?target=https://avoid.overfit.cn/post/acbb609d015a40fc8d0cd26f8e215dd9">https://avoid.overfit.cn/post/acbb609d015a40fc8d0cd26f8e215dd9</a><br><a href="https://link.zhihu.com/?target=https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features%23attentionemphasis">https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#attentionemphasis</a><br><a href="https://link.zhihu.com/?target=https://muhou.net/document/236688.html">https://muhou.net/document/236688.html</a><br><a href="https://link.zhihu.com/?target=https://guide.novelai.dev/guide/prompt-engineering/practice">https://guide.novelai.dev/guide/prompt-engineering/practice</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/619721909">https://zhuanlan.zhihu.com/p/619721909</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/612572004">https://zhuanlan.zhihu.com/p/612572004</a><br><a href="https://link.zhihu.com/?target=https://www.163.com/dy/article/I22IV66G0518R7MO.html">https://www.163.com/dy/article/I22IV66G0518R7MO.html</a><br><a href="https://link.zhihu.com/?target=https://stable-diffusion-art.com/controlnet/">https://stable-diffusion-art.com</a></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page1/a.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page1/a.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">何平安</div><div class="post-copyright__author_desc">何平安个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://ai.hepingan.top/2024/03/28/Ai%E7%A7%91%E6%8A%80/sd%E7%BB%98%E7%94%BB%E6%90%AD%E5%BB%BA%E4%B8%80%E6%9D%A1%E8%B7%AF%E6%9C%8D%E5%8A%A1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://ai.hepingan.top/2024/03/28/Ai%E7%A7%91%E6%8A%80/sd%E7%BB%98%E7%94%BB%E6%90%AD%E5%BB%BA%E4%B8%80%E6%9D%A1%E8%B7%AF%E6%9C%8D%E5%8A%A1/')">sd绘画搭建一条路服务</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/d4c385314e5c9972750187aad25c4514_720.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/d4c385314e5c9972750187aad25c4514_720.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/86bc07c3c7304499c38e47d683d076f4.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/86bc07c3c7304499c38e47d683d076f4.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://ai.hepingan.top/2024/03/28/Ai%E7%A7%91%E6%8A%80/sd%E7%BB%98%E7%94%BB%E6%90%AD%E5%BB%BA%E4%B8%80%E6%9D%A1%E8%B7%AF%E6%9C%8D%E5%8A%A1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=sd绘画搭建一条路服务&amp;url=http://ai.hepingan.top/2024/03/28/Ai%E7%A7%91%E6%8A%80/sd%E7%BB%98%E7%94%BB%E6%90%AD%E5%BB%BA%E4%B8%80%E6%9D%A1%E8%B7%AF%E6%9C%8D%E5%8A%A1/&amp;pic=https://pic3.zhimg.com/80/v2-ddc6c5960c6d609ff4f49d31390fb3aa_720w.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ai.hepingan.top" target="_blank">天香园</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/ai%E7%BB%98%E7%94%BB/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>ai绘画<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/dab6bb56580e202d2a7d81727645704c_720.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/17/IT%E7%AC%94%E8%AE%B0/%E5%9F%BA%E4%BA%8ETimeSea%E7%9A%84sd%E7%BB%98%E7%94%BB%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E4%B8%BA%E9%98%BF%E9%87%8C%E4%BA%91FC/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">基于TimeSea的sd绘画接口修改为阿里云FC</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/28/Ai%E7%A7%91%E6%8A%80/GPT-sovits-%E8%87%AA%E5%AE%9A%E4%B9%89AI%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic2.zhimg.com/80/v2-e192c1e5e187755a6d8ddd73c8ddf201_720w.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">GPT-sovits=自定义AI语言模型训练</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page1/a.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">IT圈的史蒂夫，用代码铸造自己的赛博乌托邦|<b style="color:#fff">兴趣,毅力,创新,前沿</b>|商务合作：qq1973016127<b style="color:#fff"></b><b style="color:#fff"></b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">祝您在<b style="color:#fff">天香园</b>玩得开心<b style="color:#fff"></b>。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">何平安</h1><div class="author-info__desc">何平安个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/hepingan11" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/443081814" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">励志打造国内年轻人的IT乌托邦~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/52bb70bd663efac8bb4be2c3e6b8fe30.jpg) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/28d657ca07d679f2a6f222a1535bdf30_720.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/14/%E7%8E%8B%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E5%9B%9B%E4%B8%8A%EF%BC%89/" title="王的故事（大四上）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/dab6bb56580e202d2a7d81727645704c_720.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="王的故事（大四上）"/></a><div class="content"><a class="title" href="/2026/02/14/%E7%8E%8B%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E5%9B%9B%E4%B8%8A%EF%BC%89/" title="王的故事（大四上）">王的故事（大四上）</a><time datetime="2026-02-14T14:29:33.000Z" title="发表于 2026-02-14 22:29:33">2026-02-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/08/%E6%88%91%E7%9A%84%E7%B2%BE%E5%8D%8E/SpringcloudAlibaba%E5%85%A8%E5%AE%B6%E6%A1%B6%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%EF%BC%8C%E4%BB%8E%E9%9B%B6%E8%AE%BE%E8%AE%A1%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84-%E5%8C%85%E5%90%ABNacos-RabbitMQ-Sentinel-Seata/" title="SpringcloudAlibaba全家桶项目架构搭建教程，从零设计微服务架构(包含Nacos+RabbitMQ+Sentinel)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/20251008045407.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringcloudAlibaba全家桶项目架构搭建教程，从零设计微服务架构(包含Nacos+RabbitMQ+Sentinel)"/></a><div class="content"><a class="title" href="/2025/10/08/%E6%88%91%E7%9A%84%E7%B2%BE%E5%8D%8E/SpringcloudAlibaba%E5%85%A8%E5%AE%B6%E6%A1%B6%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%EF%BC%8C%E4%BB%8E%E9%9B%B6%E8%AE%BE%E8%AE%A1%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84-%E5%8C%85%E5%90%ABNacos-RabbitMQ-Sentinel-Seata/" title="SpringcloudAlibaba全家桶项目架构搭建教程，从零设计微服务架构(包含Nacos+RabbitMQ+Sentinel)">SpringcloudAlibaba全家桶项目架构搭建教程，从零设计微服务架构(包含Nacos+RabbitMQ+Sentinel)</a><time datetime="2025-10-07T20:50:46.000Z" title="发表于 2025-10-08 04:50:46">2025-10-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/21/SpringAi%E8%87%AA%E5%AE%9A%E4%B9%89Mcp%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%80%89%E6%8B%A9%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" title="SpringAi自定义Mcp客户端选择工具调用"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/20250821090645.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringAi自定义Mcp客户端选择工具调用"/></a><div class="content"><a class="title" href="/2025/08/21/SpringAi%E8%87%AA%E5%AE%9A%E4%B9%89Mcp%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%80%89%E6%8B%A9%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" title="SpringAi自定义Mcp客户端选择工具调用">SpringAi自定义Mcp客户端选择工具调用</a><time datetime="2025-08-21T00:19:44.000Z" title="发表于 2025-08-21 08:19:44">2025-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/19/SpringAi%E9%AB%98%E5%BA%A6%E8%87%AA%E5%AE%9A%E4%B9%89Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%99%E7%A8%8B/" title="SpringAi高度自定义Mysql数据库持久化教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/20250819021537.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringAi高度自定义Mysql数据库持久化教程"/></a><div class="content"><a class="title" href="/2025/08/19/SpringAi%E9%AB%98%E5%BA%A6%E8%87%AA%E5%AE%9A%E4%B9%89Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%99%E7%A8%8B/" title="SpringAi高度自定义Mysql数据库持久化教程">SpringAi高度自定义Mysql数据库持久化教程</a><time datetime="2025-08-18T18:13:24.000Z" title="发表于 2025-08-19 02:13:24">2025-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/10/%E6%88%91%E7%9A%84%E7%B2%BE%E5%8D%8E/%E7%8E%8B%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%89%E4%B8%8B%EF%BC%89/" title="王的故事（大三下）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-hepingan.oss-cn-hangzhou.aliyuncs.com/page/17a1e8e987f1fa9abf91ae3abd9f623a_720.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="王的故事（大三下）"/></a><div class="content"><a class="title" href="/2025/08/10/%E6%88%91%E7%9A%84%E7%B2%BE%E5%8D%8E/%E7%8E%8B%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88%E5%A4%A7%E4%B8%89%E4%B8%8B%EF%BC%89/" title="王的故事（大三下）">王的故事（大三下）</a><time datetime="2025-08-09T16:28:28.000Z" title="发表于 2025-08-10 00:28:28">2025-08-10</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2022 - 2026 By <a class="footer-bar-link" href="/" title="何平安" target="_blank">何平安</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://hepingan.top" title="Pass Assistant">Pass Assistant</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="渝ICP备2023004248号">渝ICP备2023004248号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">87</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">39</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://h5.hepingan.top" title="AIGC破壁社"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="AIGC破壁社"/><span class="back-menu-item-text">AIGC破壁社</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://hepingan.top" title="GPT"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="GPT"/><span class="back-menu-item-text">GPT</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ES/" style="font-size: 0.88rem;">ES<sup>1</sup></a><a href="/tags/HDFS/" style="font-size: 0.88rem;">HDFS<sup>1</sup></a><a href="/tags/PASS-Assistant/" style="font-size: 0.88rem;">PASS-Assistant<sup>2</sup></a><a href="/tags/Pass-Assistant/" style="font-size: 0.88rem;">Pass Assistant<sup>1</sup></a><a href="/tags/SpringAi/" style="font-size: 0.88rem;">SpringAi<sup>2</sup></a><a href="/tags/YARN/" style="font-size: 0.88rem;">YARN<sup>1</sup></a><a href="/tags/ai%E6%A8%A1%E5%9E%8B/" style="font-size: 0.88rem;">ai模型<sup>2</sup></a><a href="/tags/ai%E7%BB%98%E7%94%BB/" style="font-size: 0.88rem;">ai绘画<sup>1</sup></a><a href="/tags/bug/" style="font-size: 0.88rem;">bug<sup>1</sup></a><a href="/tags/cursor/" style="font-size: 0.88rem;">cursor<sup>2</sup></a><a href="/tags/electron/" style="font-size: 0.88rem;">electron<sup>1</sup></a><a href="/tags/flutter/" style="font-size: 0.88rem;">flutter<sup>1</sup></a><a href="/tags/hexo/" style="font-size: 0.88rem;">hexo<sup>3</sup></a><a href="/tags/javaweb/" style="font-size: 0.88rem;">javaweb<sup>4</sup></a><a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">java基础<sup>4</sup></a><a href="/tags/js/" style="font-size: 0.88rem;">js<sup>1</sup></a><a href="/tags/langchain4j/" style="font-size: 0.88rem;">langchain4j<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 0.88rem;">redis<sup>1</sup></a><a href="/tags/spring/" style="font-size: 0.88rem;">spring<sup>1</sup></a><a href="/tags/springcloud/" style="font-size: 0.88rem;">springcloud<sup>2</sup></a><a href="/tags/springcloud%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 0.88rem;">springcloud微服务<sup>3</sup></a><a href="/tags/uniapp/" style="font-size: 0.88rem;">uniapp<sup>2</sup></a><a href="/tags/%E4%B8%8A%E7%BA%BF/" style="font-size: 0.88rem;">上线<sup>1</sup></a><a href="/tags/%E4%BA%91%E5%B2%9A%E5%88%B0%E5%AE%B6/" style="font-size: 0.88rem;">云岚到家<sup>1</sup></a><a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 0.88rem;">娱乐<sup>1</sup></a><a href="/tags/%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF/" style="font-size: 0.88rem;">学成在线<sup>4</sup></a><a href="/tags/%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/" style="font-size: 0.88rem;">小玩意儿<sup>1</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 0.88rem;">微信小程序<sup>1</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/" style="font-size: 0.88rem;">微信登录<sup>1</sup></a><a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 0.88rem;">微服务<sup>1</sup></a><a href="/tags/%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B/" style="font-size: 0.88rem;">我的故事<sup>7</sup></a><a href="/tags/%E6%8D%A3%E9%BC%93/" style="font-size: 0.88rem;">捣鼓<sup>2</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>3</sup></a><a href="/tags/%E7%8E%8B%E7%9A%84%E6%95%85%E4%BA%8B/" style="font-size: 0.88rem;">王的故事<sup>2</sup></a><a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 0.88rem;">破解<sup>1</sup></a><a href="/tags/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/" style="font-size: 0.88rem;">苍穹外卖<sup>3</sup></a><a href="/tags/%E9%98%BF%E9%87%8C/" style="font-size: 0.88rem;">阿里<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/my/m/music/playlist?id=480799561&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/01/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2022 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 何平安 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'g2KFVkZ3rdcqJJRAa38Sju6T-gzGzoHsz',
+      appKey: 'v8x4JDMNouxwHf0fF3XuTjej',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://g2KFVkZ3.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'g2KFVkZ3rdcqJJRAa38Sju6T-gzGzoHsz',
+        "X-LC-Key": 'v8x4JDMNouxwHf0fF3XuTjej',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = ''
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
