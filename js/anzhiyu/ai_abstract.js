@@ -205,6 +205,8 @@
   async function aiAbstract(num = basicWordCount) {
     if (mode === "tianli") {
       await aiAbstractTianli(num);
+    } else if (mode === "hh") {
+      await aiAbstractHH(num);
     } else {
       aiAbstractLocal();
     }
@@ -275,6 +277,61 @@
         startAI("摘要获取失败!!!请检查Tianli服务是否正常!!!");
       }
       clearInterval(animationInterval);
+    } catch (error) {
+      console.error(error);
+      explanation.innerHTML = "发生异常" + error;
+    }
+  }
+
+  async function aiAbstractHH(num) {
+    indexI = 0;
+    indexJ = 1;
+    clearTimeouts();
+    animationRunning = false;
+    elapsed = 0;
+    observer.disconnect();
+
+    num = Math.max(10, Math.min(2000, num));
+    const truncateDescription = (title + pageFillDescription).trim().substring(0, num);
+
+    const requestBody = {
+      "model": "glm-4.7-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请简要的总结该文章，150字以内：" + truncateDescription
+        }
+      ],
+      "thinking": {
+        "type": "enabled"
+      },
+      "max_tokens": 65536,
+      "temperature": 1.0
+    };
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer 2766d530635e4d578bc0df75c5725aa3.Lok5yQW5SgVXp9k6"
+      },
+      body: JSON.stringify(requestBody),
+    };
+
+    try {
+      explanation.innerHTML = "生成中...";
+      const response = await fetch("https://open.bigmodel.cn/api/paas/v4/chat/completions", requestOptions);
+      const result = await response.json();
+      const summary = result.choices[0].message.content.trim();
+
+      setTimeout(() => {
+        aiTitleRefreshIcon.style.opacity = "1";
+      }, 300);
+      if (summary) {
+        startAI(summary);
+      } else {
+        startAI("摘要获取失败!!!请检查HH服务是否正常!!!");
+      }
     } catch (error) {
       console.error(error);
       explanation.innerHTML = "发生异常" + error;
@@ -361,6 +418,8 @@
   function introduce() {
     if (mode == "tianli") {
       startAI("我是文章辅助AI: TianliGPT，点击下方的按钮，让我生成本文简介、推荐相关文章等。");
+    } else if (mode == "hh") {
+      startAI("我是文章辅助AI: HH GPT，点击下方的按钮，让我生成本文简介、推荐相关文章等。");
     } else {
       startAI(`我是文章辅助AI: ${gptName} GPT，点击下方的按钮，让我生成本文简介、推荐相关文章等。`);
     }
@@ -376,6 +435,12 @@
       document.getElementById("go-tianli-blog").style.display = "block";
       startAI(
         "你好，我是Tianli开发的摘要生成助理TianliGPT，是一个基于GPT-4的生成式AI。我在这里只负责摘要的预生成和显示，你无法与我直接沟通，如果你也需要一个这样的AI摘要接口，可以在下方购买。"
+      );
+    } else if (mode === "hh") {
+      post_ai.querySelectorAll(".ai-btn-item").forEach(item => (item.style.display = "block"));
+      document.getElementById("go-tianli-blog").style.display = "none";
+      startAI(
+        "你好，我是HH开发的摘要生成助理HH GPT，是一个基于GLM-5的生成式AI。我在这里只负责摘要的预生成和显示，你无法与我直接沟通。"
       );
     } else {
       post_ai.querySelectorAll(".ai-btn-item").forEach(item => (item.style.display = "block"));
@@ -431,6 +496,8 @@
   function showAiBtn() {
     if (mode === "tianli") {
       document.getElementById("ai-tag").innerHTML = "TianliGPT";
+    } else if (mode === "hh") {
+      document.getElementById("ai-tag").innerHTML = "HH GPT";
     } else {
       document.getElementById("ai-tag").innerHTML = gptName + " GPT";
     }
